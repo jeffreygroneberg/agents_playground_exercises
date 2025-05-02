@@ -1,0 +1,48 @@
+# GitHub Actions workflow for deploying MkDocs site to GitHub Pages
+
+name: Deploy MkDocs site to GitHub Pages
+
+# Trigger the workflow on push events to the main branch
+on:
+  push:
+    branches:
+      - main # Or your default branch
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: write # Allows checking out the code and pushing to gh-pages branch
+  pages: write # Allows deploying to GitHub Pages
+  id-token: write # Allows authentication for deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x # Use a recent Python 3 version
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material # Installs mkdocs and the material theme
+          # Add any other mkdocs plugins you used, e.g.:
+          # pip install pymdown-extensions
+
+      - name: Build MkDocs site
+        # Assumes mkdocs.yml and docs/ are in the root of the repository
+        # If they are in a subdirectory (e.g., workshop_mkdocs/), adjust the path:
+        # run: mkdocs build --config-file workshop_mkdocs/mkdocs.yml --site-dir ./site
+        run: mkdocs build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site # Directory containing the built site
+          # Optional: Specify a custom domain if you have one configured
+          # cname: your.custom.domain.com
+
