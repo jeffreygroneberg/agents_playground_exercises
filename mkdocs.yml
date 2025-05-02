@@ -1,0 +1,79 @@
+site_name: AI Agent Workshop
+site_url: https://your-actual-site-url.com/ # Replace with your actual URL
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: teal
+      accent: purple 
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: teal
+      accent: lime
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - Introduction:
+    - Overview: intro/overview.md
+    - Setup: intro/setup.md
+  - Day 1 Foundations:
+    - Module 1 - Basics: day1/module1/basics.md
+    - Module 1 - Exercises: day1/module1/exercises.md
+    - Module 1 - Solutions: day1/module1/solutions.md
+    - Module 2 - Multimodal: day1/module2/multimodal.md
+    - Module 2 - Exercises: day1/module2/exercises.md
+    - Module 2 - Solutions: day1/module2/solutions.md
+    - Module 3 - Complex Data: day1/module3/complex_data.md
+    - Module 3 - Exercises: day1/module3/exercises.md
+    - Module 3 - Solutions: day1/module3/solutions.md
+  - Day 2 Single Agents & Orchestration:
+    - Module 4 - Complex Problems: day2/module4/complex_problems.md
+    - Module 4 - Exercises: day2/module4/exercises.md
+    - Module 4 - Solutions: day2/module4/solutions.md
+    - Module 5 - Single Agents (ReAct): day2/module5/single_agent.md
+    - Module 5 - Exercises: day2/module5/exercises.md
+    - Module 5 - Solutions: day2/module5/solutions.md
+    - Module 6 - Human-in-the-Loop: day2/module6/human_loop.md
+    - Module 6 - Exercises: day2/module6/exercises.md
+    - Module 6 - Solutions: day2/module6/solutions.md
+  - Day 3 Advanced Multi-Agent Systems:
+    - Module 7 - Multi-Agent Collaboration: day3/module7/multi_agent.md
+    - Module 7 - Exercises: day3/module7/exercises.md
+    - Module 7 - Solutions: day3/module7/solutions.md
+    - Module 8 - Society of Agents: day3/module8/society.md
+    - Module 8 - Exercises: day3/module8/exercises.md
+    - Module 8 - Solutions: day3/module8/solutions.md
+  - Code Examples: code/index.md # Placeholder for code reference
+
