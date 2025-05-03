@@ -4,7 +4,7 @@ These are the solutions or discussion points for the exercises in Module 2.
 
 ## Solution 2.1: Describing a Different Image
 
-Assuming you saved an image as `my_image.jpg` in the `src/02-multimodal-models/` directory and wanted to ask "What is the main animal in this image?", you would modify `src/02-multimodal-models/inspect-image.py` like this:
+Assuming you saved an image as `my_image.jpg` in the `src/02-multimodal-models/` directory and wanted to ask "What is the main animal in this image?", you would modify [`src/02-multimodal-models/inspect-image.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/inspect-image.py){target="_blank"} like this:
 
 ```python
 import os
@@ -76,7 +76,7 @@ print(response.choices[0].message.content)
 
 ## Solution 2.2: Comparing Different Images for Similarities
 
-Assuming you saved two images as `image_A.png` and `image_B.png` in the `src/02-multimodal-models/` directory, you would modify `src/02-multimodal-models/compare-images.py` like this:
+Assuming you saved two images as `image_A.png` and `image_B.png` in the `src/02-multimodal-models/` directory, you would modify [`src/02-multimodal-models/compare-images.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/compare-images.py){target="_blank"} like this:
 
 ```python
 import os

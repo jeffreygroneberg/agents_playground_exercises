@@ -4,7 +4,7 @@ These are the solutions or discussion points for the exercises in Module 7.
 
 ## Solution 7.1: Changing the Coding Task (Multi-Agent)
 
-Modify `src/07-multi-agent-collaboration/coding-agents.py`:
+Modify [`src/07-multi-agent-collaboration/coding-agents.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/coding-agents.py){target="_blank"}:
 
 ```python
 # ... (imports, state, nodes, graph definition remain the same) ...
@@ -53,7 +53,7 @@ def sum_of_squares(numbers):
 
 ## Solution 7.2: Adjusting Review Criteria (Multi-Agent)
 
-Modify `src/07-multi-agent-collaboration/coding-agents.py`:
+Modify [`src/07-multi-agent-collaboration/coding-agents.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/coding-agents.py){target="_blank"}:
 
 ```python
 # ... (imports, state, nodes, graph definition remain the same) ...

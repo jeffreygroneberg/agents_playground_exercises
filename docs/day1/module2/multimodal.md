@@ -194,12 +194,6 @@ This is a web interface (using Flask and WebSockets) that interacts with the bac
 
 ---
 
-## Hands-on Exercise Ideas (Module 2)
-
-See the [Module 2 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources (Multimodal Models)"
 
     Explore these resources to learn more about multimodal LLMs:

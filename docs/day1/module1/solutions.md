@@ -4,7 +4,7 @@ These are the solutions for the exercises in Module 1.
 
 ## Solution 1.1: Changing Language and Persona
 
-Modify `src/01-basics/hello-world.py`:
+Modify [`src/01-basics/hello-world.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/hello-world.py){target="_blank"}:
 
 ```python
 import os
@@ -48,7 +48,7 @@ print(response.choices[0].message.content)
 
 ## Solution 1.2: Using the Time Tool for a Different City
 
-Modify `src/01-basics/tool-calling.py`:
+Modify [`src/01-basics/tool-calling.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py){target="_blank"}:
 
 ```python
 # ... (imports and function definitions remain the same) ...
@@ -71,7 +71,7 @@ messages=[
 
 ## Solution 1.3 (Advanced): Adding a Simple Calculator Tool
 
-Modify `src/01-basics/tool-calling.py`:
+Modify [`src/01-basics/tool-calling.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py){target="_blank"}:
 
 ```python
 import os

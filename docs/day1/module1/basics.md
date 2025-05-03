@@ -286,12 +286,6 @@ You will see output indicating the function call (`Calling function 'get_current
 
 ---
 
-## Hands-on Exercise Ideas (Module 1)
-
-See the [Module 1 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources"
 
     To deepen your understanding of basic LLM interaction and tool calling, explore these resources:

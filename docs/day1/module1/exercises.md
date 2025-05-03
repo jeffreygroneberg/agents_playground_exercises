@@ -1,12 +1,12 @@
 # Day 1 - Module 1: Exercises
 
-These exercises are based on the concepts and code presented in Module 1: Basic LLM Interaction & Tool Calling (`src/01-basics/`).
+These exercises are based on the concepts and code presented in Module 1: Basic LLM Interaction & Tool Calling ([`src/01-basics/`](https://github.com/denniszielke/agentic-playground/tree/main/src/01-basics){target="_blank"}).
 
 ## Exercise 1.1: Changing Language and Persona
 
 **Goal:** Practice modifying the system prompt to change the LLM's behavior.
 
-1.  Open the `src/01-basics/hello-world.py` script.
+1.  Open the [`src/01-basics/hello-world.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/hello-world.py){target="_blank"} script.
 2.  Modify the `system` message content from "antworte alles in französisch" to instruct the model to respond like a pirate (e.g., "Answer everything like a pirate.").
 3.  Modify the `user` message content to ask a different question (e.g., "What is the weather like today?").
 4.  Run the script (`python hello-world.py`) and observe the pirate-themed response.
@@ -15,7 +15,7 @@ These exercises are based on the concepts and code presented in Module 1: Basic 
 
 **Goal:** Practice changing the user input to trigger a tool call with different arguments.
 
-1.  Open the `src/01-basics/tool-calling.py` script.
+1.  Open the [`src/01-basics/tool-calling.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py){target="_blank"} script.
 2.  Locate the initial `user` message:
     ```python
     messages=[
@@ -35,9 +35,9 @@ These exercises are based on the concepts and code presented in Module 1: Basic 
 
 Tool calling allows the LLM to interact with external functions or APIs to retrieve information or perform actions. The diagram below illustrates the concept:
 
-![Tool Calling Concept](../../assets/images/concepts_tools.png)
+![Tool Calling Concept](https://raw.githubusercontent.com/denniszielke/agentic-playground/refs/heads/main/img/tools.png)
 
-1.  Open the `src/01-basics/tool-calling.py` script.
+1.  Open the [`src/01-basics/tool-calling.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py){target="_blank"} script.
 2.  **Define a new Python function:** Add a function that performs simple addition.
     ```python
     def add_numbers(a: int, b: int) -> int:

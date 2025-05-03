@@ -28,3 +28,9 @@ We encourage you to explore the repository alongside the workshop materials.
 *   **Day 2: Single Agents & Orchestration:** Equipping agents with tools, implementing autonomous agents (ReAct), and incorporating human-in-the-loop workflows.
 *   **Day 3: Advanced Multi-Agent Systems:** Designing systems with multiple collaborating agents using structured workflows and dynamic group chats.
 
+
+
+
+**Conceptual Stack:**
+
+![Logical Stack](https://raw.githubusercontent.com/denniszielke/agentic-playground/refs/heads/main/img/logicalstack.png)

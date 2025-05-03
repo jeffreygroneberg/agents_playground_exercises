@@ -290,12 +290,6 @@ Inspect `invoice_parsed.xml`. Compare it with `invoice_template.xml` and the ori
 
 ---
 
-## Hands-on Exercise Ideas (Module 3)
-
-See the [Module 3 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources (Knowledge Graphs, Ontologies & LLMs)"
 
     Dive deeper into using LLMs with structured data:

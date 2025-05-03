@@ -116,12 +116,6 @@ Enter some initial text at the `User:>` prompt (e.g., "Draft a short paragraph a
 
 ---
 
-## Hands-on Exercise Ideas (Module 6)
-
-See the [Module 6 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources (Human-in-the-Loop)"
 
     Explore how different frameworks implement HIL:

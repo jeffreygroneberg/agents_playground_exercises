@@ -118,12 +118,6 @@ Observe the flow. The MagenticOne orchestrator dynamically decides to call the `
 
 ---
 
-## Hands-on Exercise Ideas (Module 8)
-
-See the [Module 8 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources (Society of Agents / AutoGen)"
 
     Delve deeper into AutoGen and dynamic multi-agent systems:

@@ -133,15 +133,4 @@ Enter the question "What is the current time here?" at the `User:>` prompt. Obse
 
 ---
 
-## Hands-on Exercise Ideas (Module 5)
-
-1.  **Modify the Input Query:** In any of the three scripts (`react-agent-lc.py`, `react-agent-li.py`, `reasoning-agent-sk.py`), change the input query to something slightly more complex that requires multiple tool calls, e.g., "What is the weather like for Dennis right now?" (This requires getting username -> location -> weather).
-2.  **Add a Tool:**
-    *   In `react-agent-lc.py` or `react-agent-li.py`, define a new simple tool function (e.g., `add_numbers(a: int, b: int) -> int`) and add it to the `tools` list.
-    *   In `plugins.py`, add a similar function to `ChefPlugin`.
-    *   Modify the input query to trigger the new tool (e.g., "What is 5 plus 7?"). Run the corresponding script and see if the agent uses the new tool.
-3.  **Examine Error Handling:** In `react-agent-lc.py`, temporarily modify the `get_current_time` tool to sometimes raise an error. Observe how the `AgentExecutor` (with `handle_parsing_errors=True`) attempts to handle it or report the failure.
-
----
-
 This module introduced the ReAct pattern for building single autonomous agents using LangChain, LlamaIndex, and Semantic Kernel. The next module will explore how to introduce human oversight and intervention into agent workflows.

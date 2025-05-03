@@ -4,7 +4,7 @@ These are the solutions or discussion points for the exercises in Module 4.
 
 ## Solution 4.1: Modifying the Trucking DSL Plan
 
-Modify `src/04-complex-problems/trucking-plan.py`:
+Modify [`src/04-complex-problems/trucking-plan.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/trucking-plan.py){target="_blank"}:
 
 ```python
 # ... (imports, client setup, commandprompt definition remain the same) ...
@@ -40,7 +40,7 @@ This demonstrates the LLM correctly interpreting the new box quantities, weights
 
 ## Solution 4.2: Triggering a Tool in the Trucking DSL Execution
 
-Modify `src/04-complex-problems/trucking-execute.py`:
+Modify [`src/04-complex-problems/trucking-execute.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/trucking-execute.py){target="_blank"}:
 
 ```python
 # ... (imports, tool definitions, client setup, commandprompt, run_conversation remain the same) ...

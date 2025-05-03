@@ -6,7 +6,7 @@ These are the solutions or discussion points for the exercises in Module 5.
 
 **Goal:** Observe the agent calling multiple tools in sequence.
 
-**Modification (Example using LangChain - `react-agent-lc.py`):**
+**Modification (Example using LangChain - [`react-agent-lc.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/react-agent-lc.py){target="_blank"}):**
 
 ```python
 # ... (imports, tool definitions, llm setup, prompt template remain the same) ...
@@ -56,7 +56,7 @@ Final Answer: The weather for Dennis in Berlin is currently sunny with a tempera
 
 **Goal:** Extend the agent with a calculator tool.
 
-**Modification (Example using LlamaIndex - `react-agent-li.py`):**
+**Modification (Example using LlamaIndex - [`react-agent-li.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/react-agent-li.py){target="_blank"}):**
 
 ```python
 # ... (imports, other tool definitions, llm setup remain the same) ...

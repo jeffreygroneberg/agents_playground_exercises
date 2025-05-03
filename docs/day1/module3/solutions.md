@@ -4,7 +4,7 @@ These are the solutions or discussion points for the exercises in Module 3.
 
 ## Solution 3.1: Generating a Different Knowledge Graph
 
-Modify `src/03-complex-data/knowledge-graphs.py`:
+Modify [`src/03-complex-data/knowledge-graphs.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/knowledge-graphs.py){target="_blank"}:
 
 ```python
 # ... (imports, class definitions, generate_graph function remain the same) ...
@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
 ## Solution 3.2: Using the Ontology with an Irrelevant Image
 
-Modify `src/03-complex-data/use-onthology.py`:
+Modify [`src/03-complex-data/use-onthology.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/use-onthology.py){target="_blank"}:
 
 ```python
 # ... (imports, get_image_data_url, client setup remain the same) ...

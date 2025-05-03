@@ -218,12 +218,6 @@ python do-research.py
 
 ---
 
-## Hands-on Exercise Ideas (Module 4)
-
-See the [Module 4 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources"
 
     Explore these topics further:

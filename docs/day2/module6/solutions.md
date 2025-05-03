@@ -4,7 +4,7 @@ These are the solutions or discussion points for the exercises in Module 6.
 
 ## Solution 6.1: Changing the Interrupt Message
 
-Modify `src/06-human-in-the-loop/interrupt.py`:
+Modify [`src/06-human-in-the-loop/interrupt.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/06-human-in-the-loop/interrupt.py){target="_blank"}:
 
 ```python
 # ... (imports, State definition, node1, node3 remain the same) ...
@@ -29,7 +29,7 @@ When the script pauses after `node1`, instead of asking for age, the output befo
 Running the script and providing "Write a tweet about the importance of testing software." at the `User:` prompt will initiate the Writer/Reviewer loop for this new topic.
 
 **Part B: Modify Reviewer Instructions:**
-Modify `src/06-human-in-the-loop/report-agents.py`:
+Modify [`src/06-human-in-the-loop/report-agents.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/06-human-in-the-loop/report-agents.py){target="_blank"}:
 
 ```python
 # ... (imports, other agent definitions remain the same) ...

@@ -124,12 +124,6 @@ The choice between these approaches depends on the complexity of the task, the n
 
 ---
 
-## Hands-on Exercise Ideas (Module 7)
-
-See the [Module 7 Exercises](./exercises.md) page for practical tasks.
-
----
-
 !!! abstract "Further Reading & Resources (Multi-Agent Collaboration)"
 
     Explore frameworks and concepts for building multi-agent systems:
