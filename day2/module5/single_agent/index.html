@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day2/module5/single_agent/">
+        <link rel="canonical" href="https://example.com/day2/module5/single_agent/">
       
       
         <link rel="prev" href="../../module4/solutions/">
@@ -254,7 +254,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -276,7 +276,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -504,7 +504,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -515,7 +515,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -766,7 +766,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -777,7 +777,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1119,7 +1119,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1130,7 +1130,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1319,7 +1319,7 @@
 
 <h1 id="day-2-module-5-implementing-single-agents-react-pattern">Day 2 - Module 5: Implementing Single Agents (ReAct Pattern)</h1>
 <p><strong>Objective:</strong> Understand and implement the ReAct (Reason + Act) pattern to create autonomous agents that can use tools iteratively to solve problems.</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/05-single-agent/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/05-single-agent" target="_blank"><code>src/05-single-agent/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>Having explored how to equip LLMs with tools and structure their thinking (Module 4), we now focus on building agents that can autonomously decide <em>which</em> tools to use and <em>when</em> to use them to accomplish a given task. A popular pattern for this is <strong>ReAct (Reason + Act)</strong>.</p>
@@ -1340,11 +1340,11 @@
 <p>All examples use a similar set of tools defined in <code>plugins.py</code> (for Semantic Kernel) or directly in the scripts (for LangChain/LlamaIndex) for getting user info, location, and time.</p>
 <h2 id="shared-tools-concept">Shared Tools Concept</h2>
 <ul>
-<li><strong><code>plugins.py</code> (for Semantic Kernel):</strong> Defines a <code>ChefPlugin</code> class with methods decorated by <code>@kernel_function</code>. These methods (<code>get_weather</code>, <code>get_medical_history</code>, <code>get_available_incredients</code>, <code>get_current_username</code>, <code>get_current_location_of_user</code>, <code>get_current_time</code>) become tools available to the Semantic Kernel agent.</li>
+<li><strong><a href="https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/plugins.py" target="_blank"><code>plugins.py</code></a> (for Semantic Kernel):</strong> Defines a <code>ChefPlugin</code> class with methods decorated by <code>@kernel_function</code>. These methods (<code>get_weather</code>, <code>get_medical_history</code>, <code>get_available_incredients</code>, <code>get_current_username</code>, <code>get_current_location_of_user</code>, <code>get_current_time</code>) become tools available to the Semantic Kernel agent.</li>
 <li><strong>LangChain/LlamaIndex Examples:</strong> Define similar functions (<code>get_current_username</code>, <code>get_current_location</code>, <code>get_current_time</code>) and wrap them using framework-specific decorators or classes (<code>@tool</code> for LangChain, <code>FunctionTool.from_defaults</code> for LlamaIndex) to make them usable by the respective agents.</li>
 </ul>
 <h2 id="1-react-with-langchain">1. ReAct with LangChain</h2>
-<p><strong>File:</strong> <code>src/05-single-agent/react-agent-lc.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/react-agent-lc.py" target="_blank"><code>src/05-single-agent/react-agent-lc.py</code></a></p>
 <p>This script uses LangChain to create a ReAct agent.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1382,7 +1382,7 @@
 </code></pre></div>
 <p>Observe the verbose output. You will see the agent's reasoning steps (Thought), the tools it chooses (Action), the inputs it provides (Action Input), and the results it gets back (Observation) as it works towards answering "What is the current time here?". It should first get the username, then the location, then the time for that location.</p>
 <h2 id="2-react-with-llamaindex">2. ReAct with LlamaIndex</h2>
-<p><strong>File:</strong> <code>src/05-single-agent/react-agent-li.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/react-agent-li.py" target="_blank"><code>src/05-single-agent/react-agent-li.py</code></a></p>
 <p>This script implements the same ReAct logic using LlamaIndex.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1407,7 +1407,7 @@
 </code></pre></div>
 <p>Again, observe the output stream. You should see the agent reasoning, selecting tools (<code>get_current_username</code>, <code>get_current_location</code>, <code>get_current_time</code>), executing them, and finally providing the answer.</p>
 <h2 id="3-reasoning-agent-with-semantic-kernel">3. Reasoning Agent with Semantic Kernel</h2>
-<p><strong>File:</strong> <code>src/05-single-agent/reasoning-agent-sk.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/reasoning-agent-sk.py" target="_blank"><code>src/05-single-agent/reasoning-agent-sk.py</code></a></p>
 <p>This script uses Semantic Kernel's agent capabilities. While not explicitly called "ReAct" in the code, the <code>ChatCompletionAgent</code> with automatic function calling enabled achieves a similar iterative reasoning and tool-use loop.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>

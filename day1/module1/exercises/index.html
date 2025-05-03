@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day1/module1/exercises/">
+        <link rel="canonical" href="https://example.com/day1/module1/exercises/">
       
       
         <link rel="prev" href="../basics/">
@@ -256,7 +256,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -276,7 +276,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -509,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -520,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -835,7 +835,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -846,7 +846,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1092,7 +1092,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1103,7 +1103,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1318,6 +1318,8 @@
 </ol>
 <h2 id="exercise-13-advanced-adding-a-simple-calculator-tool">Exercise 1.3 (Advanced): Adding a Simple Calculator Tool</h2>
 <p><strong>Goal:</strong> Practice defining and integrating a new tool for the LLM to use.</p>
+<p>Tool calling allows the LLM to interact with external functions or APIs to retrieve information or perform actions. The diagram below illustrates the concept:</p>
+<p><img alt="Tool Calling Concept" src="../assets/images/concepts_tools.png" /></p>
 <ol>
 <li>Open the <code>src/01-basics/tool-calling.py</code> script.</li>
 <li><strong>Define a new Python function:</strong> Add a function that performs simple addition.
@@ -1357,7 +1359,7 @@
 </ul>
 </li>
 <li><strong>Update the user query:</strong> Change the initial <code>user</code> message to ask an addition question, e.g., "What is 123 plus 456?".</li>
-<li><strong>Run the script:</strong> <code>python tool-calling.py</code>.</li>
+<li><strong>Run the script:</strong> <code>python3.11 tool-calling.py</code>.</li>
 <li>Observe the output. Does the LLM correctly identify the need for the <code>add_numbers</code> tool? Is the function called with the correct arguments? Does the final response contain the sum?</li>
 </ol>
 

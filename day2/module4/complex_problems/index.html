@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day2/module4/complex_problems/">
+        <link rel="canonical" href="https://example.com/day2/module4/complex_problems/">
       
       
         <link rel="prev" href="../../../day1/module3/solutions/">
@@ -254,7 +254,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -276,7 +276,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -504,7 +504,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -515,7 +515,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -766,7 +766,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -777,7 +777,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1110,7 +1110,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1121,7 +1121,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1310,7 +1310,7 @@
 
 <h1 id="day-2-module-4-solving-complex-problems-with-tools-dsls">Day 2 - Module 4: Solving Complex Problems with Tools &amp; DSLs</h1>
 <p><strong>Objective:</strong> Understand how agents can tackle complex, multi-step problems by leveraging external tools, browser automation, and structured thinking patterns like Domain Specific Languages (DSLs).</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/04-complex-problems/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/04-complex-problems" target="_blank"><code>src/04-complex-problems/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>Day 1 focused on basic interactions and handling different data types. Day 2 moves towards more autonomous behavior. Real-world problems often require agents to go beyond simple Q&amp;A or single-tool use. They might need to:</p>
@@ -1327,10 +1327,13 @@
 <li><strong>Process Frameworks:</strong> Using libraries like Semantic Kernel's process framework to define and manage sequential workflows.</li>
 <li><strong>Browser Automation:</strong> Enabling agents to interact with websites to perform tasks like research, data extraction, or form submission.</li>
 </ol>
+<div class="admonition info">
+<p class="admonition-title">Moving Beyond Simple Tools</p>
+<p>This module marks a shift towards more sophisticated agent capabilities. By combining LLMs with structured planning (DSLs), process management, and the ability to interact with the web, we can build agents capable of handling significantly more complex tasks.</p>
+</div>
 <h2 id="1-domain-specific-languages-dsls-for-structured-thinking">1. Domain Specific Languages (DSLs) for Structured Thinking</h2>
-<p><strong>Files:</strong>
-*   <code>src/04-complex-problems/trucking-plan.py</code>
-*   <code>src/04-complex-problems/trucking-execute.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/trucking-plan.py" target="_blank"><code>src/04-complex-problems/trucking-plan.py</code></a>
+*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/trucking-execute.py" target="_blank"><code>src/04-complex-problems/trucking-execute.py</code></a></p>
 <p>Instead of letting the LLM generate free-form plans, we can constrain its output to a specific set of commands (a DSL) that represent valid actions within a particular domain. This makes the agent's behavior more predictable and easier to integrate with existing systems.</p>
 <p><strong>Concept (Trucking Example):</strong></p>
 <p>The goal is to plan the logistics of loading boxes onto trucks and driving them.</p>
@@ -1391,12 +1394,17 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>trucking-execute.py
 </code></pre></div>
 <p>Observe the output. You should see the LLM potentially calling <code>get_current_time</code> or <code>calculate_travel_time</code> and then generating the DSL plan or a final answer incorporating the calculated times.</p>
-<p><strong>Benefits of DSLs:</strong>
-*   More reliable and predictable agent behavior.
-*   Easier integration with existing code (parse the DSL commands and execute corresponding actions).
-*   Forces the LLM to think step-by-step within defined constraints.</p>
+<div class="admonition success">
+<p class="admonition-title">Benefits of DSLs</p>
+<ul>
+<li><strong>Predictability:</strong> Constrains LLM output to valid, expected actions.</li>
+<li><strong>Reliability:</strong> Reduces chances of hallucinated or nonsensical plans.</li>
+<li><strong>Integration:</strong> Makes it easier to connect LLM plans to existing code or APIs that understand the DSL.</li>
+<li><strong>Structured Thinking:</strong> Forces the LLM to break down problems into domain-specific steps.</li>
+</ul>
+</div>
 <h2 id="2-process-frameworks-semantic-kernel-example">2. Process Frameworks (Semantic Kernel Example)</h2>
-<p><strong>File:</strong> <code>src/04-complex-problems/process-step.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/process-step.py" target="_blank"><code>src/04-complex-problems/process-step.py</code></a></p>
 <p>For tasks that involve a clear sequence of steps, process frameworks provide a structured way to define and manage the flow.</p>
 <p><strong>Concept (Semantic Kernel Process):</strong></p>
 <p>This example uses Semantic Kernel's experimental process framework to create a simple two-step process: get the user's name, then display a greeting.</p>
@@ -1432,17 +1440,22 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>python<span class="w"> </span>process-step.py
 </code></pre></div>
 <p>The script will prompt you for your name and then print the greeting, demonstrating the sequential execution managed by the framework.</p>
-<p><strong>Benefits of Process Frameworks:</strong>
-*   Clear definition of complex workflows.
-*   Manages state transitions between steps.
-*   Facilitates error handling and retries (though not shown in this simple example).</p>
+<div class="admonition tip">
+<p class="admonition-title">Benefits of Process Frameworks</p>
+<ul>
+<li><strong>Clarity:</strong> Explicitly defines the steps and transitions in a complex workflow.</li>
+<li><strong>State Management:</strong> Provides a structured way to pass information between steps.</li>
+<li><strong>Modularity:</strong> Encapsulates logic within individual steps.</li>
+<li><strong>Extensibility:</strong> Can support more complex features like error handling, retries, and conditional branching (though not shown here).</li>
+</ul>
+</div>
 <h2 id="3-browser-automation-for-web-interaction">3. Browser Automation for Web Interaction</h2>
 <p><strong>Files:</strong>
-*   <code>src/04-complex-problems/browser-use.py</code>
-*   <code>src/04-complex-problems/do-research.py</code>
-*   <code>src/04-complex-problems/apply-for-job.py</code>
-*   <code>src/04-complex-problems/find-contract.py</code>
-*   (Uses library from <code>src/browser_use/</code>) - Note: This seems to be a custom library within the repo.</p>
+*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/browser-use.py" target="_blank"><code>src/04-complex-problems/browser-use.py</code></a>
+*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/do-research.py" target="_blank"><code>src/04-complex-problems/do-research.py</code></a>
+*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/apply-for-job.py" target="_blank"><code>src/04-complex-problems/apply-for-job.py</code></a>
+*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/find-contract.py" target="_blank"><code>src/04-complex-problems/find-contract.py</code></a>
+*   (Uses library from <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/browser_use" target="_blank"><code>src/browser_use/</code></a>) - Note: This seems to be a custom library within the repo.</p>
 <p>Many tasks require interacting with websites. Agents can use browser automation tools (like Playwright, Selenium, or the custom <code>browser_use</code> library here) to perform actions like:</p>
 <ul>
 <li>Navigating to URLs.</li>
@@ -1460,12 +1473,15 @@
 <li><code>BrowserContext</code>: Passed to actions, allowing them to interact with the current browser page.</li>
 <li><code>ActionResult</code>: A standard return type for actions, potentially including extracted content or error messages.</li>
 </ul>
-<p>The <code>Agent</code> likely works by:
-1.  Receiving the current page state (HTML, visible elements).
-2.  Sending the page state, task description, and available actions (from the <code>Controller</code>) to the LLM.
-3.  The LLM decides the next action (e.g., <code>click</code>, <code>input</code>, <code>scroll</code>, or a custom action like <code>read_cv</code> or <code>save_jobs</code>).
-4.  The <code>Agent</code> executes the action via the <code>Browser</code> or <code>Controller</code>.
-5.  Repeats until the task is complete.</p>
+<p>The <code>Agent</code> likely works in a loop:
+1.  <strong>Perceive:</strong> Get the current page state (HTML, visible elements, URL).
+2.  <strong>Plan:</strong> Send the page state, task description, and available actions (from the <code>Controller</code>) to the LLM.
+3.  <strong>Act:</strong> The LLM decides the next action (e.g., <code>click</code>, <code>input</code>, <code>scroll</code>, or a custom action like <code>read_cv</code> or <code>save_jobs</code>). The <code>Agent</code> executes the action via the <code>Browser</code> or <code>Controller</code>.
+4.  Repeat until the task is complete or an error occurs.</p>
+<div class="admonition info">
+<p class="admonition-title">The Perception-Planning-Action Loop</p>
+<p>This iterative cycle is fundamental to many autonomous agents. The agent perceives its environment (the webpage), plans its next move based on its goal and capabilities (available actions), and then executes that action, changing the environment and starting the loop again.</p>
+</div>
 <p><strong>Code Examples:</strong></p>
 <ul>
 <li><strong><code>browser-use.py</code>:</strong> A very simple example tasking the agent to compare prices by likely browsing the web.</li>
@@ -1495,20 +1511,39 @@
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Ensure battery_chem.xml exists</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>python<span class="w"> </span><span class="k">do</span>-research.py
 </code></pre></div>
-<p>Running these might be complex due to the custom library and potential browser setup needs. Focus on understanding the pattern: <strong>LLM decides -&gt; Action executed -&gt; Page state updated -&gt; LLM decides again.</strong></p>
-<p><strong>Key Concepts for Browser Automation:</strong>
-*   Agents can perceive web pages (DOM structure, visible elements).
-*   Agents can act on web pages (click, type, scroll, upload).
-*   Custom actions allow agents to interact with local files or external APIs during browsing.
-*   Essential for tasks involving information gathering from the web or interacting with web applications.</p>
+<div class="admonition warning">
+<p class="admonition-title">Running Browser Automation</p>
+<p>Running these examples might be complex due to the custom <code>browser_use</code> library and potential browser setup needs (installing browsers, drivers, handling paths). Focus on understanding the pattern: <strong>LLM decides -&gt; Action executed -&gt; Page state updated -&gt; LLM decides again.</strong></p>
+</div>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-4">Hands-on Exercise Ideas (Module 4)</h2>
-<ol>
-<li><strong>Modify <code>trucking-plan.py</code>:</strong> Change the user query to include different numbers/types of boxes or a different distance. Observe how the generated DSL plan changes.</li>
-<li><strong>Modify <code>trucking-execute.py</code>:</strong> Change the user query to ask for the arrival time explicitly after loading and driving. See if the agent uses the <code>calculate_travel_time</code> tool.</li>
-<li><strong>(Conceptual)</strong> How would you define a DSL for making a simple cup of tea (e.g., <code>boil_water</code>, <code>add_tea_bag</code>, <code>pour_water</code>, <code>add_milk</code>, <code>wait</code>)? Write down the commands and a sample plan.</li>
-<li><strong>(Conceptual, based on <code>do-research.py</code>)</strong> If you wanted the research agent to <em>summarize</em> the findings instead of just saving them, how might you modify the task description or add a new custom action?</li>
-</ol>
+<p>See the <a href="../exercises/">Module 4 Exercises</a> page for practical tasks.</p>
+<hr />
+<div class="admonition abstract">
+<p class="admonition-title">Further Reading &amp; Resources</p>
+<p>Explore these topics further:</p>
+<ul>
+<li><strong>Domain Specific Languages (DSLs) &amp; LLMs:</strong><ul>
+<li><a href="https://medium.com/@andreasmuelder/large-language-models-for-domain-specific-language-generation-how-to-train-your-dragon-0b5360e8ed76" target="_blank">Large Language Models for Domain-Specific Language Generation (Medium - Part 1)</a></li>
+<li><a href="https://medium.com/@andreasmuelder/large-language-models-for-domain-specific-language-generation-part-2-how-to-constrain-your-dragon-e0e2439b6a53" target="_blank">Large Language Models for Domain-Specific Language Generation (Medium - Part 2: Constraints)</a></li>
+<li><a href="https://kili-technology.com/large-language-models-llms/building-domain-specific-llms-examples-and-techniques" target="_blank">Building Domain-Specific LLMs: Examples and Techniques (Kili Technology)</a></li>
+<li><a href="https://aisera.com/blog/domain-specific-llm/" target="_blank">What is a Domain-Specific LLM? Examples and Benefits (Aisera)</a></li>
+</ul>
+</li>
+<li><strong>Browser Automation &amp; Web Agents:</strong><ul>
+<li><a href="https://playwright.dev/python/docs/intro" target="_blank">Playwright Documentation</a> (Popular browser automation library)</li>
+<li><a href="https://www.selenium.dev/documentation/" target="_blank">Selenium Documentation</a> (Another popular browser automation library)</li>
+<li><a href="https://python.langchain.com/docs/integrations/tools/browserbase/" target="_blank">LangChain Browser Integration</a> (Example of integrating browsing tools with agents)</li>
+<li><a href="https://www.youtube.com/watch?v=Ij99P3GUQzA" target="_blank">Building Autonomous Agents that Browse the Web (YouTube - AssemblyAI)</a></li>
+</ul>
+</li>
+<li><strong>Process Frameworks / Orchestration:</strong><ul>
+<li><a href="https://learn.microsoft.com/en-us/semantic-kernel/overview/" target="_blank">Semantic Kernel Documentation</a> (Explore planners and orchestration features)</li>
+<li><a href="https://python.langchain.com/docs/modules/agents/" target="_blank">LangChain Agents: Introduction</a> (Covers different agent types and execution loops)</li>
+</ul>
+</li>
+</ul>
+</div>
 <hr />
 <p>This module demonstrated how agents can tackle more complex problems using structured approaches like DSLs, process frameworks, and browser automation. The next module will focus on implementing single, autonomous agents using patterns like ReAct.</p>
 

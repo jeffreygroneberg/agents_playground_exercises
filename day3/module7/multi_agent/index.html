@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day3/module7/multi_agent/">
+        <link rel="canonical" href="https://example.com/day3/module7/multi_agent/">
       
       
         <link rel="prev" href="../../../day2/module6/solutions/">
@@ -254,7 +254,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -274,7 +274,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -504,7 +504,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -515,7 +515,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -761,7 +761,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -772,7 +772,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1023,7 +1023,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1034,7 +1034,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1301,7 +1301,7 @@
 
 <h1 id="day-3-module-7-multi-agent-collaboration">Day 3 - Module 7: Multi-Agent Collaboration</h1>
 <p><strong>Objective:</strong> Explore patterns and frameworks for building systems where multiple specialized agents collaborate to achieve a common goal.</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/07-multi-agent-collaboration/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/07-multi-agent-collaboration" target="_blank"><code>src/07-multi-agent-collaboration/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>While single agents (Module 5) can handle complex tasks, breaking down problems and assigning specialized roles to different agents often leads to more robust, maintainable, and scalable solutions. Multi-agent systems allow for:</p>
@@ -1315,8 +1315,12 @@
 <li><strong>Structured Collaboration (LangGraph):</strong> Defining explicit roles and interaction patterns (e.g., a Coder agent and a Reviewer agent improving code iteratively).</li>
 <li><strong>Reasoning-Based Approach (AutoGen/MagenticOne):</strong> Using a powerful reasoning model (like o1-mini) to handle tasks that might otherwise require multiple specialized agents.</li>
 </ol>
+<div class="admonition info">
+<p class="admonition-title">The Power of Collaboration</p>
+<p>Just like human teams, multi-agent systems leverage diverse skills and parallel processing to solve problems more effectively than a single entity might. Designing the communication and workflow between agents is key.</p>
+</div>
 <h2 id="1-structured-collaboration-coder-reviewer-langgraph">1. Structured Collaboration: Coder &amp; Reviewer (LangGraph)</h2>
-<p><strong>File:</strong> <code>src/07-multi-agent-collaboration/coding-agents.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/coding-agents.py" target="_blank"><code>src/07-multi-agent-collaboration/coding-agents.py</code></a></p>
 <p>This script implements a multi-agent system using LangGraph where two agents, a Coder and a Reviewer, collaborate to generate and refine code based on an initial objective.</p>
 <p><strong>Concept:</strong></p>
 <ul>
@@ -1368,10 +1372,13 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Ensure langgraph, langchain-openai are installed</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>coding-agents.py
 </code></pre></div>
-<p>Observe the output. You'll see the </p>
-<p>Coder generating initial code, the Reviewer providing feedback, the Coder revising, and the cycle repeating until the <code>deployment_ready</code> condition is met (either feedback addressed or iteration limit exceeded), finally ending with the <code>handle_result</code> node.</p>
+<p>Observe the output. You'll see the Coder generating initial code, the Reviewer providing feedback, the Coder revising, and the cycle repeating until the <code>deployment_ready</code> condition is met (either feedback addressed or iteration limit exceeded), finally ending with the <code>handle_result</code> node.</p>
+<div class="admonition tip">
+<p class="admonition-title">LangGraph for Structured Workflows</p>
+<p>LangGraph excels at defining explicit, potentially complex, workflows involving multiple agents or steps with clear transitions and conditional logic. It provides more control over the interaction pattern compared to more free-form agent frameworks.</p>
+</div>
 <h2 id="2-reasoning-based-approach-single-reasoning-coder-autogenmagenticone">2. Reasoning-Based Approach: Single Reasoning Coder (AutoGen/MagenticOne)</h2>
-<p><strong>File:</strong> <code>src/07-multi-agent-collaboration/reasoning-coder.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/reasoning-coder.py" target="_blank"><code>src/07-multi-agent-collaboration/reasoning-coder.py</code></a></p>
 <p>This script contrasts the multi-agent approach by using a single, powerful reasoning agent (specifically targeting <code>o1-mini</code> via <code>autogen-ext</code>) to handle the coding task directly.</p>
 <p><strong>Concept:</strong></p>
 <p>Instead of breaking the task into explicit Coder and Reviewer roles managed by a graph, this approach relies on the advanced reasoning capabilities of the <code>o1-mini</code> model to understand the request and generate the code in one go (or potentially through internal reasoning steps not exposed externally in this simple script).</p>
@@ -1394,34 +1401,55 @@
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>python<span class="w"> </span>reasoning-coder.py
 </code></pre></div>
 <p>Observe the output. It should directly print the generated code for the regression model task, produced by the single <code>o1-mini</code> agent.</p>
+<div class="admonition success">
+<p class="admonition-title">When to Use a Single Powerful Reasoner</p>
+<p>If a single, highly capable LLM (like <code>o1-mini</code> or GPT-4) can reliably handle the entire task through its own reasoning, and explicit intermediate steps or checks aren't strictly necessary, this approach can be simpler to implement.</p>
+</div>
 <p><strong>Comparison:</strong></p>
 <ul>
 <li><strong>LangGraph (Multi-Agent):</strong><ul>
-<li>Pros: Explicit control over workflow, clear roles, potentially better for complex processes requiring specific steps or checks.</li>
+<li>Pros: Explicit control over workflow, clear roles, potentially better for complex processes requiring specific steps or checks, easier debugging of individual components.</li>
 <li>Cons: More setup required to define the graph, nodes, and transitions.</li>
 </ul>
 </li>
 <li><strong>AutoGen/o1-mini (Single Reasoning Agent):</strong><ul>
 <li>Pros: Simpler setup for certain tasks, leverages the advanced reasoning of the model.</li>
-<li>Cons: Less explicit control over the process, relies heavily on the model's ability to understand and execute the task correctly in one go.</li>
+<li>Cons: Less explicit control over the process, relies heavily on the model's ability to understand and execute the task correctly, debugging can be harder as the reasoning is internal to the LLM.</li>
 </ul>
 </li>
 </ul>
 <p>The choice between these approaches depends on the complexity of the task, the need for explicit control and intermediate checks, and the capabilities of the underlying LLMs.</p>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-7">Hands-on Exercise Ideas (Module 7)</h2>
-<ol>
-<li><strong>Modify <code>coding-agents.py</code>:</strong><ul>
-<li>Change the initial <code>query</code> to a different coding task (e.g., "Write a Python function to calculate the factorial of a number.").</li>
-<li>Increase the <code>recursion_limit</code> in <code>app.invoke</code> and observe if the agents perform more review cycles.</li>
-<li>Modify the <code>reviewer_start</code> prompt to add a new review criterion (e.g., "Ensure all functions have docstrings.").</li>
+<p>See the <a href="../exercises/">Module 7 Exercises</a> page for practical tasks.</p>
+<hr />
+<div class="admonition abstract">
+<p class="admonition-title">Further Reading &amp; Resources (Multi-Agent Collaboration)</p>
+<p>Explore frameworks and concepts for building multi-agent systems:</p>
+<ul>
+<li><strong>Frameworks &amp; Libraries:</strong><ul>
+<li><a href="https://langchain-ai.github.io/langgraphjs/tutorials/multi_agent/multi_agent_collaboration/" target="_blank">LangGraph Documentation: Multi-agent Collaboration</a></li>
+<li><a href="https://docs.crewai.com/" target="_blank">crewAI Documentation</a> (Popular framework for collaborative agents)</li>
+<li><a href="https://microsoft.github.io/autogen/" target="_blank">Microsoft AutoGen Documentation</a> (Framework for multi-agent conversation)</li>
+<li><a href="https://learn.microsoft.com/en-us/semantic-kernel/agents/" target="_blank">Semantic Kernel Documentation: Agents</a> (Includes concepts for agent collaboration)</li>
 </ul>
 </li>
-<li><strong>Modify <code>reasoning-coder.py</code>:</strong> Change the <code>query</code> to the same factorial task and compare the output quality and style to the multi-agent result.</li>
-<li><strong>(Conceptual)</strong> Sketch a LangGraph diagram for a different multi-agent scenario, like planning a trip (e.g., agents for Flights, Hotels, Activities, Itinerary Compiler).</li>
-</ol>
+<li><strong>Tutorials &amp; Guides:</strong><ul>
+<li><a href="https://blog.langchain.dev/how-to-build-the-ultimate-ai-automation-with-multi-agent-collaboration/" target="_blank">How to Build the Ultimate AI Automation with Multi-Agent Collaboration (LangChain Blog)</a></li>
+<li><a href="https://www.linkedin.com/pulse/building-multi-ai-agentsystems-practical-guide-pavan-belagatti-fjarc" target="_blank">Building Multi AI Agent Systems: A Practical Guide! (LinkedIn)</a></li>
+<li><a href="https://medium.com/@akshaykokane09/step-by-step-guide-to-develop-ai-multi-agent-system-using-microsoft-semantic-kernel-and-gpt-4o-f5991af40ea6" target="_blank">Step by Step guide to develop AI Multi-Agent system using Microsoft Semantic Kernel (Medium)</a></li>
+<li><a href="https://www.youtube.com/watch?v=gUrENDkPw_k" target="_blank">How to Build a Multi Agent AI System (YouTube - IBM)</a></li>
+<li><a href="https://www.youtube.com/watch?v=qsrl2DHYi1Y" target="_blank">Build a Multi-Agent System with CrewAI | Agentic AI Tutorial (YouTube)</a></li>
+</ul>
+</li>
+<li><strong>Courses:</strong><ul>
+<li><a href="https://learn.deeplearning.ai/courses/multi-ai-agent-systems-with-crewai/" target="_blank">Multi AI Agent Systems with crewAI (DeepLearning.AI)</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr />
-<p>This module introduced multi-agent collaboration using structured workflows (LangGraph) and contrasted it with a single powerful reasoning agent. The next module will explore more dynamic multi-agent interactions using frameworks like AutoGen.</p>
+<p>This module introduced multi-agent collaboration using structured workflows (LangGraph) and contrasted it with a single powerful reasoning agent. The next module will explore more dynamic multi-agent interactions and hierarchical structures using frameworks like AutoGen.</p>
 
 
 

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day3/module8/society/">
+        <link rel="canonical" href="https://example.com/day3/module8/society/">
       
       
         <link rel="prev" href="../../module7/solutions/">
@@ -254,7 +254,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -274,7 +274,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -504,7 +504,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -515,7 +515,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -761,7 +761,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -772,7 +772,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1023,7 +1023,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1034,7 +1034,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1310,7 +1310,7 @@
 
 <h1 id="day-3-module-8-society-of-agents-autogenmagenticone">Day 3 - Module 8: Society of Agents (AutoGen/MagenticOne)</h1>
 <p><strong>Objective:</strong> Explore dynamic multi-agent conversations and collaboration patterns using frameworks like AutoGen, specifically the MagenticOne group chat implementation.</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/08-society-of-agents/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/08-society-of-agents" target="_blank"><code>src/08-society-of-agents/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>While structured workflows like LangGraph (Module 7) provide explicit control, some scenarios benefit from more dynamic interactions where agents converse more freely, deciding who speaks next based on the conversation flow or an orchestrator. Frameworks like AutoGen (and its MagenticOne group chat implementation used here) excel at simulating these "societies" of agents.</p>
@@ -1325,6 +1325,10 @@
 <li><strong>Task Execution:</strong> The group chat is initiated with a task, and the agents collaborate through conversation, managed by the orchestrator, until a termination condition is met.</li>
 <li><strong>Termination:</strong> Conditions like <code>MaxMessageTermination</code> (limit number of messages) or <code>TextMentionTermination</code> (stop when a specific keyword like "TERMINATE" is mentioned) are used to end the chat.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">AutoGen &amp; MagenticOne</p>
+<p>AutoGen is a framework for building multi-agent applications. MagenticOne appears to be a specific group chat implementation within or compatible with AutoGen, leveraging an LLM orchestrator for dynamic turn-taking based on agent descriptions and conversation context.</p>
+</div>
 <p>This module explores variations of MagenticOne group chats:</p>
 <ol>
 <li><strong>Simple Group:</strong> Multiple specialized agents collaborating on a task.</li>
@@ -1332,7 +1336,7 @@
 <li><strong>Group with Reasoning Oversight:</strong> Adding a dedicated reasoning agent (<code>o1-mini</code>) to monitor and provide feedback on the group chat quality.</li>
 </ol>
 <h2 id="1-simple-group-chat">1. Simple Group Chat</h2>
-<p><strong>File:</strong> <code>src/08-society-of-agents/simple-group.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/simple-group.py" target="_blank"><code>src/08-society-of-agents/simple-group.py</code></a></p>
 <p>This script sets up a basic MagenticOne group chat with agents specialized in getting user information, location, and time.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1363,7 +1367,7 @@
 </code></pre></div>
 <p>Observe the console output. You will see the agents conversing, likely involving the <code>users_agent</code>, <code>location_agent</code>, and <code>time_agent</code> being called upon by the orchestrator to gather the necessary information before the <code>summary_agent</code> potentially provides the final answer or the chat hits the message limit.</p>
 <h2 id="2-chef-recommendation-group-chat">2. Chef Recommendation Group Chat</h2>
-<p><strong>File:</strong> <code>src/08-society-of-agents/chef-and-group.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/chef-and-group.py" target="_blank"><code>src/08-society-of-agents/chef-and-group.py</code></a></p>
 <p>This example presents a more complex scenario where agents need to collaborate to recommend a meal, considering user details, location, time, ingredients, and allergies.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1384,7 +1388,7 @@
 </code></pre></div>
 <p>Observe the conversation. The orchestrator should guide the agents to gather necessary context: <code>users_agent</code> for username and allergies, <code>location_agent</code> for location, <code>time_agent</code> for time, and <code>chef_agent</code> for ingredients. The <code>chef_agent</code> should ideally ask about allergies if the <code>users_agent</code> didn't provide them, demonstrating rule-following and dynamic interaction based on missing information.</p>
 <h2 id="3-group-chat-with-reasoning-oversight-o1-mini">3. Group Chat with Reasoning Oversight (o1-mini)</h2>
-<p><strong>File:</strong> <code>src/08-society-of-agents/o1-with-chef-group.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/o1-with-chef-group.py" target="_blank"><code>src/08-society-of-agents/o1-with-chef-group.py</code></a></p>
 <p>This script enhances the chef scenario by adding a dedicated, powerful reasoning agent (<code>o1-mini</code>) to act as a consultant or quality checker for the main group chat.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1401,23 +1405,39 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>o1-with-chef-group.py
 </code></pre></div>
 <p>Observe the flow. The MagenticOne orchestrator might dynamically decide to call the <code>consultation_agent</code> at certain points. When called, the <code>consultation_agent</code> uses its <code>check_conversation</code> tool, which in turn invokes the powerful <code>o1-mini</code> <code>reasoning_agent</code> to analyze the chat history and provide feedback. This demonstrates a hierarchical pattern where one agent leverages another, more capable agent for specific complex tasks like quality control.</p>
+<div class="admonition success">
+<p class="admonition-title">Hierarchical Agent Structures</p>
+<p>Integrating a powerful reasoning agent as a consultant or reviewer within a group of specialized agents is a common and effective pattern. It allows the specialized agents to handle routine tasks while the reasoning agent provides higher-level oversight, analysis, or complex decision-making.</p>
+</div>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-8">Hands-on Exercise Ideas (Module 8)</h2>
-<ol>
-<li><strong>Modify <code>simple-group.py</code>:</strong><ul>
-<li>Change the initial <code>task</code> to something requiring different information (e.g., "Where does Dennis live?").</li>
-<li>Add a new <code>AssistantAgent</code> with a simple tool (e.g., a weather agent using the <code>get_weather</code> tool) and add it to the <code>MagenticOneGroupChat</code>. Change the task to include asking about the weather.</li>
-</ul>
-</li>
-<li><strong>Modify <code>chef-and-group.py</code>:</strong><ul>
-<li>Change the <code>get_medical_history</code> tool function to return <em>no</em> allergies for Dennis. Observe if the <code>chef_agent</code> correctly asks about allergies before making a recommendation.</li>
-<li>Change the available ingredients returned by <code>get_available_incredients</code>.</li>
-</ul>
-</li>
-<li><strong>Modify <code>o1-with-chef-group.py</code>:</strong> Change the prompt within the <code>check_conversation</code> tool to ask the <code>reasoning_agent</code> to check for something specific (e.g., "Ensure the chef confirmed allergies before recommending a dish.").</li>
-</ol>
+<p>See the <a href="../exercises/">Module 8 Exercises</a> page for practical tasks.</p>
 <hr />
-<p>This module explored dynamic multi-agent conversations using AutoGen/MagenticOne, showcasing how specialized agents can collaborate under the guidance of an orchestrator, and how reasoning agents can be integrated for oversight. The final module will look at event-driven agent architectures.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Further Reading &amp; Resources (Society of Agents / AutoGen)</p>
+<p>Delve deeper into AutoGen and dynamic multi-agent systems:</p>
+<ul>
+<li><strong>AutoGen Documentation:</strong><ul>
+<li><a href="https://microsoft.github.io/autogen/" target="_blank">Microsoft AutoGen Homepage</a></li>
+<li><a href="https://microsoft.github.io/autogen/docs/concepts/agent-concepts/" target="_blank">AutoGen Concepts: Agents</a></li>
+<li><a href="https://microsoft.github.io/autogen/docs/concepts/groupchat-and-routing/" target="_blank">AutoGen Concepts: Group Chat</a></li>
+</ul>
+</li>
+<li><strong>Tutorials &amp; Examples:</strong><ul>
+<li><a href="https://microsoft.github.io/autogen/docs/tutorial/task-solving-agents/" target="_blank">AutoGen Tutorial: Automated Task Solving with Code Generation, Execution &amp; Debugging</a></li>
+<li><a href="https://microsoft.github.io/autogen/docs/tutorial/groupchat/" target="_blank">AutoGen Tutorial: Group Chat</a></li>
+<li><a href="https://microsoft.github.io/autogen/docs/Examples/" target="_blank">AutoGen Cookbook</a> (Various examples)</li>
+<li><a href="https://www.youtube.com/watch?v=h_Ky0qLq7yM" target="_blank">Building Multi-Agent Systems with AutoGen (YouTube - James Briggs)</a></li>
+</ul>
+</li>
+<li><strong>Related Concepts:</strong><ul>
+<li><a href="https://blog.llamaindex.ai/agentlite-enabling-efficient-agent-interaction-via-lite-llm-1d4d254a87c5" target="_blank">AgentLite: Enabling Efficient Agent Interaction via Lite LLM</a> (Discusses efficient orchestration)</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr />
+<p>This concludes the core modules of the workshop, covering the journey from basic LLM interaction to complex, collaborative multi-agent systems. Remember to explore the exercises for each module to solidify your understanding.</p>
 
 
 

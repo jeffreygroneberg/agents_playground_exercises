@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day1/module3/complex_data/">
+        <link rel="canonical" href="https://example.com/day1/module3/complex_data/">
       
       
         <link rel="prev" href="../../module2/solutions/">
@@ -256,7 +256,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -276,7 +276,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -509,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -520,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -877,7 +877,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -888,7 +888,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1134,7 +1134,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1145,7 +1145,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1334,7 +1334,7 @@
 
 <h1 id="day-1-module-3-handling-complex-data-structures">Day 1 - Module 3: Handling Complex Data Structures</h1>
 <p><strong>Objective:</strong> Learn how agents can process, generate, and utilize structured data formats like knowledge graphs and ontologies to represent and reason about complex information.</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/03-complex-data/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/03-complex-data" target="_blank"><code>src/03-complex-data/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>While LLMs excel at processing natural language, many real-world tasks involve structured information. Agents become more powerful when they can understand and work with data formats that explicitly define relationships and constraints. This module explores how agents can leverage:</p>
@@ -1343,8 +1343,12 @@
 <li><strong>Ontologies:</strong> Formal specifications of a domain's concepts and relationships (often using standards like OWL).</li>
 <li><strong>Structured Document Parsing:</strong> Extracting specific information from documents (like invoices) based on a predefined schema.</li>
 </ol>
+<div class="admonition info">
+<p class="admonition-title">Structured Data vs. Unstructured Data</p>
+<p>LLMs are inherently good at unstructured text. However, combining them with structured data representations like knowledge graphs or ontologies allows for more accurate, consistent, and verifiable reasoning, especially in complex domains.</p>
+</div>
 <h2 id="1-generating-knowledge-graphs">1. Generating Knowledge Graphs</h2>
-<p><strong>File:</strong> <code>src/03-complex-data/knowledge-graphs.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/knowledge-graphs.py" target="_blank"><code>src/03-complex-data/knowledge-graphs.py</code></a></p>
 <p>This script demonstrates using an LLM to generate a knowledge graph from a natural language query, representing the answer as structured data.</p>
 <p><strong>Concept:</strong> Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (<code>KnowledgeGraph</code>, <code>Node</code>, <code>Edge</code>) using the <code>client.beta.chat.completions.parse</code> feature (which seems specific to this SDK version or a helper library, allowing direct parsing into Pydantic models).</p>
 <p><strong>Code Breakdown:</strong></p>
@@ -1381,6 +1385,10 @@
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="c1"># ... (graphviz code to generate SVG from nodes/edges) ...</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">dot</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;knowledge_graph&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Pydantic for Structured Output</p>
+<p>Using Pydantic models along with features like <code>client.beta.chat.completions.parse</code> (or similar structured output mechanisms in other libraries) allows you to reliably get JSON or Python objects from the LLM, matching your desired schema.</p>
+</div>
 <ul>
 <li><strong>Define Generation Function (<code>generate_graph</code>):</strong><ul>
 <li>Takes user input text.</li>
@@ -1420,8 +1428,12 @@
 <p>After running, inspect the generated <code>knowledge_graph.svg</code> file (you might need to download it or use a browser within the environment if available) to see the visual representation of the model's understanding.</p>
 <h2 id="2-creating-and-using-ontologies">2. Creating and Using Ontologies</h2>
 <p>Ontologies provide a formal way to define the concepts, properties, and relationships within a specific domain. They allow for more rigorous and consistent reasoning.</p>
+<div class="admonition success">
+<p class="admonition-title">Ontologies vs. Knowledge Graphs</p>
+<p>While related, ontologies focus on defining the <em>schema</em> and rules of a domain (the TBox), while knowledge graphs represent the actual <em>instances</em> and relationships (the ABox). Ontologies provide the structure that knowledge graphs can populate.</p>
+</div>
 <h3 id="creating-an-ontology-from-images">Creating an Ontology from Images</h3>
-<p><strong>File:</strong> <code>src/03-complex-data/create_onthologies.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/create_onthologies.py" target="_blank"><code>src/03-complex-data/create_onthologies.py</code></a></p>
 <p>This script uses a multimodal model to generate an ontology in the Web Ontology Language (OWL) format based on analyzing images (screenshots of screw types in this case).</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1474,7 +1486,7 @@
 </code></pre></div>
 <p>Inspect the generated <code>screws.xml</code> file. It should contain OWL definitions for different screw types based on the images.</p>
 <h3 id="using-an-ontology-to-describe-an-image">Using an Ontology to Describe an Image</h3>
-<p><strong>File:</strong> <code>src/03-complex-data/use-onthology.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/use-onthology.py" target="_blank"><code>src/03-complex-data/use-onthology.py</code></a></p>
 <p>This script demonstrates how providing an existing ontology as context can help the model describe an image using the specific terminology and structure defined in that ontology.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1526,7 +1538,7 @@
 </code></pre></div>
 <p>The output should be a description of <code>reference.png</code> that attempts to use the classes and properties defined in <code>screws.xml</code>.</p>
 <h2 id="3-parsing-structured-documents-invoice-example">3. Parsing Structured Documents (Invoice Example)</h2>
-<p><strong>File:</strong> <code>src/03-complex-data/parse_invoice.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/parse_invoice.py" target="_blank"><code>src/03-complex-data/parse_invoice.py</code></a></p>
 <p>This script uses a multimodal model to extract information from an image of an invoice and populate a predefined XML template (XRechnung format).</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1581,11 +1593,34 @@
 <p>Inspect <code>invoice_parsed.xml</code>. Compare it with <code>invoice_template.xml</code> and the original <code>invoice.jpg</code> to see how well the model extracted the data and filled the structure.</p>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-3">Hands-on Exercise Ideas (Module 3)</h2>
-<ol>
-<li><strong>Modify <code>knowledge-graphs.py</code>:</strong> Change the input query to generate a graph about a different topic (e.g., "Explain the components of a simple web application: browser, web server, database"). Visualize the result.</li>
-<li><strong>Modify <code>use-onthology.py</code>:</strong> Provide a different image (e.g., <code>battery_1.png</code> or <code>battery_2.png</code> from the same folder) and see how the model describes it using the <code>screws.xml</code> ontology (it might struggle if the image isn't a screw, highlighting the importance of relevant context).</li>
-<li><strong>Examine <code>invoice_parsed.xml</code>:</strong> Carefully compare the extracted data in <code>invoice_parsed.xml</code> against the original <code>invoice.jpg</code>. Identify any fields the model missed or extracted incorrectly. Discuss why this might happen (e.g., image quality, complex layout, ambiguity).</li>
-</ol>
+<p>See the <a href="../exercises/">Module 3 Exercises</a> page for practical tasks.</p>
+<hr />
+<div class="admonition abstract">
+<p class="admonition-title">Further Reading &amp; Resources (Knowledge Graphs, Ontologies &amp; LLMs)</p>
+<p>Dive deeper into using LLMs with structured data:</p>
+<ul>
+<li><strong>Knowledge Graph Construction &amp; Use:</strong><ul>
+<li><a href="https://www.youtube.com/watch?v=tcHIDCGu6Yw" target="_blank">How to Build Knowledge Graphs With LLMs (python tutorial) (YouTube)</a></li>
+<li><a href="https://neo4j.com/blog/developer/construct-knowledge-graphs-unstructured-text/" target="_blank">Constructing Knowledge Graphs From Unstructured Text Using LLMs (Neo4j Blog)</a></li>
+<li><a href="https://medium.com/@zulqarnain.shahid.iqbal/building-knowledge-graphs-using-python-821a71254aed" target="_blank">Building Knowledge Graphs Using Python (Medium)</a></li>
+<li><a href="https://medium.com/@researchgraph/automated-knowledge-graph-construction-with-large-language-models-150512d1bc22" target="_blank">Automated Knowledge Graph Construction with Large Language Models (Medium)</a></li>
+<li><a href="https://github.com/dylanhogg/llmgraph" target="_blank">llmgraph: Create knowledge graphs with LLMs (GitHub)</a></li>
+</ul>
+</li>
+<li><strong>Integrating KGs/Ontologies with LLMs:</strong><ul>
+<li><a href="https://neo4j.com/blog/genai/unifying-llm-knowledge-graph/" target="_blank">Unifying LLMs &amp; Knowledge Graphs for GenAI: Use Cases &amp; Best Practices (Neo4j Blog)</a></li>
+<li><a href="https://towardsdatascience.com/how-to-implement-knowledge-graphs-and-large-language-models-llms-together-at-the-enterprise-level-cf2835475c47/" target="_blank">How to Implement Knowledge Graphs and Large Language Models (LLMs) Together (Towards Data Science)</a></li>
+<li><a href="https://datawalk.com/grounding-large-language-models-with-knowledge-graphs/" target="_blank">Grounding Large Language Models with Knowledge Graphs (DataWalk)</a></li>
+<li><a href="https://www.datacamp.com/tutorial/knowledge-graph-rag" target="_blank">Using a Knowledge Graph to Implement a RAG Application (DataCamp Tutorial)</a></li>
+<li><a href="https://www.cs.emory.edu/~jyang71/files/klm-tutorial.pdf" target="_blank">Integrating Large Language Models and Knowledge Graphs (PDF Tutorial - Academic)</a></li>
+</ul>
+</li>
+<li><strong>Resource Collections:</strong><ul>
+<li><a href="https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers/blob/master/topics/Knowledge%20Graph%20and%20LLMs.md" target="_blank">Knowledge Graph Tutorials and Papers (LLM Section) (GitHub)</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr />
 <p>This concludes Day 1, covering foundational interactions, multimodal inputs, and handling structured data. Day 2 will build on this by exploring how to give agents tools to solve more complex problems and implement basic autonomous agent patterns.</p>
 

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day2/module6/human_loop/">
+        <link rel="canonical" href="https://example.com/day2/module6/human_loop/">
       
       
         <link rel="prev" href="../../module5/solutions/">
@@ -254,7 +254,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -276,7 +276,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -504,7 +504,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -515,7 +515,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -766,7 +766,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -777,7 +777,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1101,7 +1101,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1112,7 +1112,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1301,23 +1301,27 @@
 
 <h1 id="day-2-module-6-human-in-the-loop-patterns">Day 2 - Module 6: Human-in-the-Loop Patterns</h1>
 <p><strong>Objective:</strong> Understand why and how to incorporate human oversight, feedback, and intervention into agent workflows.</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/06-human-in-the-loop/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/06-human-in-the-loop" target="_blank"><code>src/06-human-in-the-loop/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>While the goal is often to create fully autonomous agents, there are many scenarios where human involvement is crucial or desirable:</p>
 <ul>
-<li><strong>Safety and Control:</strong> Preventing agents from taking harmful or unintended actions.</li>
-<li><strong>Quality Assurance:</strong> Reviewing or correcting agent outputs before they are finalized.</li>
-<li><strong>Guidance and Decision Making:</strong> Providing input when the agent faces ambiguity or requires subjective judgment.</li>
-<li><strong>Learning and Improvement:</strong> Using human feedback to fine-tune agent behavior.</li>
+<li><strong>Safety and Control:</strong> Preventing agents from taking harmful or unintended actions, especially in high-stakes environments.</li>
+<li><strong>Quality Assurance:</strong> Reviewing or correcting agent outputs before they are finalized or used in downstream processes.</li>
+<li><strong>Guidance and Decision Making:</strong> Providing input when the agent faces ambiguity, requires subjective judgment, or needs to choose between multiple valid options.</li>
+<li><strong>Learning and Improvement:</strong> Using human feedback to fine-tune agent behavior, improve prompts, or identify areas for model retraining.</li>
 </ul>
 <p>This module explores patterns for integrating humans into the agent execution loop, focusing on:</p>
 <ol>
 <li><strong>Interruptible Workflows (LangGraph):</strong> Pausing agent execution at specific points to wait for human input before proceeding.</li>
 <li><strong>Collaborative Review Loops (Semantic Kernel):</strong> Designing multi-agent systems where one agent's output is reviewed (potentially by a human or another agent acting as a proxy) before further action.</li>
 </ol>
+<div class="admonition info">
+<p class="admonition-title">Why Human-in-the-Loop (HIL)?</p>
+<p>HIL combines the strengths of AI (speed, scale, data processing) with human capabilities (judgment, common sense, ethical reasoning, handling ambiguity). It's essential for building trustworthy, reliable, and effective AI systems in many real-world applications.</p>
+</div>
 <h2 id="1-interruptible-workflows-with-langgraph">1. Interruptible Workflows with LangGraph</h2>
-<p><strong>File:</strong> <code>src/06-human-in-the-loop/interrupt.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/06-human-in-the-loop/interrupt.py" target="_blank"><code>src/06-human-in-the-loop/interrupt.py</code></a></p>
 <p>LangGraph is a library (often used with LangChain) for building stateful, multi-actor applications, including agentic workflows, as graphs. It explicitly supports interrupting the graph execution to wait for external input.</p>
 <p><strong>Concept:</strong></p>
 <ul>
@@ -1361,15 +1365,18 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>interrupt.py
 </code></pre></div>
 <p>Observe the output. The program will print the progress through <code>node1</code>, then pause after <code>node2</code> prints its message and asks for the interrupt command (your age). Enter an age. The graph will resume, <code>node2</code> will receive the age, <code>node3</code> will execute, and the graph will finish.</p>
-<p><strong>Key LangGraph Concepts for HIL:</strong>
-*   Graphs define the flow.
-*   <code>interrupt()</code> pauses execution and waits for input.
-*   Checkpointer saves state during interruption.
-*   <code>Command(resume=...)</code> provides input to resume.</p>
+<div class="admonition tip">
+<p class="admonition-title">Key LangGraph Concepts for HIL</p>
+<ul>
+<li><strong>Graphs:</strong> Define the workflow structure.</li>
+<li><strong><code>interrupt()</code>:</strong> The core function to pause for human input.</li>
+<li><strong>Checkpointer:</strong> Essential for saving and resuming state across interruptions.</li>
+<li><strong><code>Command(resume=...)</code>:</strong> The mechanism to inject human input and continue the flow.</li>
+</ul>
+</div>
 <h2 id="2-collaborative-review-loops-semantic-kernel-agentgroupchat">2. Collaborative Review Loops (Semantic Kernel AgentGroupChat)</h2>
-<p><strong>File:</strong> <code>src/06-human-in-the-loop/report-agents.py</code></p>
-<p>This example uses Semantic Kernel's <code>AgentGroupChat</code> to simulate a scenario where a </p>
-<p>"Writer" agent drafts content, and a "Reviewer" agent provides feedback. The loop continues until the Reviewer deems the content satisfactory. While the Reviewer is an AI agent here, it simulates the role a human might play in a review process.</p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/06-human-in-the-loop/report-agents.py" target="_blank"><code>src/06-human-in-the-loop/report-agents.py</code></a></p>
+<p>This example uses Semantic Kernel's <code>AgentGroupChat</code> to simulate a scenario where a "Writer" agent drafts content, and a "Reviewer" agent provides feedback. The loop continues until the Reviewer deems the content satisfactory. While the Reviewer is an AI agent here, it simulates the role a human might play in a review process.</p>
 <p><strong>Concept (Semantic Kernel AgentGroupChat):</strong></p>
 <ul>
 <li><strong>Agents:</strong> Two <code>ChatCompletionAgent</code> instances are created: <code>agent_writer</code> and <code>agent_reviewer</code>, each with specific instructions defining their roles.</li>
@@ -1398,19 +1405,33 @@
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>python<span class="w"> </span>report-agents.py
 </code></pre></div>
 <p>Enter some initial text at the <code>User:&gt;</code> prompt (e.g., "Draft a short paragraph about the benefits of AI agents."). Observe the interaction: the Writer will draft, the Reviewer will critique, the Writer will revise, and so on, until the Reviewer is satisfied (or the iteration limit is reached). You can provide feedback as the user during the loop.</p>
-<p><strong>Simulating Human Review:</strong>
-This pattern demonstrates how agent interactions can model human review processes. A human could replace the <code>agent_reviewer</code>, or the <code>AgentGroupChat</code> could be integrated with a UI that presents the Writer's output to a human for explicit approval or feedback before the next step.</p>
+<div class="admonition success">
+<p class="admonition-title">Simulating Human Review</p>
+<p>This pattern demonstrates how agent interactions can model human review processes. A human could replace the <code>agent_reviewer</code>, or the <code>AgentGroupChat</code> could be integrated with a UI that presents the Writer's output to a human for explicit approval or feedback before the next step. This is a powerful way to ensure quality and alignment with human expectations.</p>
+</div>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-6">Hands-on Exercise Ideas (Module 6)</h2>
-<ol>
-<li><strong>Modify <code>interrupt.py</code>:</strong> Change the message sent during the interrupt in <code>node2</code>. Run the script and see the new message when it pauses.</li>
-<li><strong>Modify <code>report-agents.py</code>:</strong><ul>
-<li>Change the initial user input to provide a different piece of text for review.</li>
-<li>Modify the <code>REVIEWER_NAME</code> agent's instructions to be more lenient or stricter in its review criteria. Observe how this affects the number of revision cycles.</li>
+<p>See the <a href="../exercises/">Module 6 Exercises</a> page for practical tasks.</p>
+<hr />
+<div class="admonition abstract">
+<p class="admonition-title">Further Reading &amp; Resources (Human-in-the-Loop)</p>
+<p>Explore how different frameworks implement HIL:</p>
+<ul>
+<li><strong>LangGraph Documentation:</strong> <a href="https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/" target="_blank">Human-in-the-loop</a></li>
+<li><strong>LlamaIndex Documentation:</strong> <a href="https://docs.llamaindex.ai/en/stable/understanding/agent/human_in_the_loop/" target="_blank">Human in the loop</a></li>
+<li><strong>Tutorials &amp; Examples:</strong><ul>
+<li><a href="https://developer.nvidia.com/blog/build-your-first-human-in-the-loop-ai-agent-with-nvidia-nim/" target="_blank">Build Your First Human-in-the-Loop AI Agent with NVIDIA NIM (NVIDIA Blog)</a></li>
+<li><a href="https://community.sap.com/t5/artificial-intelligence-and-machine-learning-blogs/hands-on-tutorial-building-an-ai-agent-with-human-in-the-loop-control/ba-p/14050267" target="_blank">Hands-on Tutorial: Building an AI Agent with human-in-the-loop control (SAP Community)</a></li>
+<li><a href="https://m.youtube.com/watch?v=4wsV1GgIsrs" target="_blank">n8n Tutorial: AI Agents with Human Feedback (YouTube)</a></li>
+<li><a href="https://www.youtube.com/watch?v=vyuenkJQpX8" target="_blank">How to Build AI Agents with Human-In-The-Loop (YouTube)</a></li>
 </ul>
 </li>
-<li><strong>(Conceptual)</strong> How could the <code>interrupt.py</code> example be modified to ask the human for <em>approval</em> before <code>node3</code> runs, rather than just asking for data? (Hint: The human input could be "yes" or "no", and the graph could have conditional edges after <code>node2</code> based on this input).</li>
-</ol>
+<li><strong>Conceptual Discussions:</strong><ul>
+<li><a href="https://dev.to/camelai/agents-with-human-in-the-loop-everything-you-need-to-know-3fo5" target="_blank">Agents with Human in the Loop : Everything You Need to Know (Dev.to)</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr />
 <p>This concludes Day 2, covering how agents can use tools, DSLs, process frameworks, browser automation, implement autonomous patterns like ReAct, and incorporate human interaction points. Day 3 will focus on more complex architectures involving multiple agents collaborating.</p>
 

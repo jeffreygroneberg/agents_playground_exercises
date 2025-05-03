@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://your-actual-site-url.com/day1/module1/basics/">
+        <link rel="canonical" href="https://example.com/day1/module1/basics/">
       
       
         <link rel="prev" href="../../../intro/setup/">
@@ -256,7 +256,7 @@
           
   
   
-  Day 1 Foundations
+  Day 1 - Foundations
 
         </a>
       </li>
@@ -276,7 +276,7 @@
           
   
   
-  Day 2 Single Agents & Orchestration
+  Day 2 - Single Agents & Orchestration
 
         </a>
       </li>
@@ -296,7 +296,7 @@
           
   
   
-  Day 3 Advanced Multi-Agent Systems
+  Day 3- Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -509,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    Day 1 Foundations
+    Day 1 - Foundations
     
   </span>
   
@@ -520,7 +520,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Day 1 Foundations
+            Day 1 - Foundations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -862,7 +862,7 @@
   
   
   <span class="md-ellipsis">
-    Day 2 Single Agents & Orchestration
+    Day 2 - Single Agents & Orchestration
     
   </span>
   
@@ -873,7 +873,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Day 2 Single Agents & Orchestration
+            Day 2 - Single Agents & Orchestration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1119,7 +1119,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3 Advanced Multi-Agent Systems
+    Day 3- Advanced Multi-Agent Systems
     
   </span>
   
@@ -1130,7 +1130,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3 Advanced Multi-Agent Systems
+            Day 3- Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1319,7 +1319,7 @@
 
 <h1 id="day-1-module-1-basic-llm-interaction-tool-calling">Day 1 - Module 1: Basic LLM Interaction &amp; Tool Calling</h1>
 <p><strong>Objective:</strong> Understand how to interact with Large Language Models (LLMs) programmatically, handle streaming responses, and enable models to use external tools.</p>
-<p><strong>Source Code:</strong> <code>/home/ubuntu/agentic-playground/src/01-basics/</code></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/01-basics" target="_blank"><code>src/01-basics/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>At the heart of AI agents lies the ability to interact with powerful Large Language Models (LLMs). These models can understand and generate human-like text, answer questions, translate languages, and much more. In this first module, we will explore the fundamental ways to communicate with an LLM using the OpenAI API pattern (as used by the GitHub Models endpoint in this repository) and introduce the concept of "tool calling," which allows the LLM to interact with external systems or functions.</p>
@@ -1329,7 +1329,13 @@
 <li><strong>Streaming Responses:</strong> Receiving the model's response incrementally as it's generated.</li>
 <li><strong>Tool Calling:</strong> Defining functions (tools) that the model can request to use to gather information or perform actions.</li>
 </ol>
+<div class="admonition info">
+<p class="admonition-title">Core Concept: LLM Interaction</p>
+<p>Understanding how to structure API calls, manage conversation history (messages), and interpret responses is foundational for building any LLM-powered application.</p>
+</div>
 <h2 id="setup-review">Setup Review</h2>
+<div class="admonition warning">
+<p class="admonition-title">Prerequisites</p>
 <p>Before running the examples, ensure you have:</p>
 <ol>
 <li>Cloned the <code>agentic-playground</code> repository.</li>
@@ -1339,8 +1345,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># .env file content
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>GITHUB_TOKEN=&quot;your_github_pat_here&quot;
 </code></pre></div>
+</div>
 <h2 id="1-hello-world-basic-api-interaction">1. Hello World: Basic API Interaction</h2>
-<p><strong>File:</strong> <code>src/01-basics/hello-world.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/hello-world.py" target="_blank"><code>src/01-basics/hello-world.py</code></a></p>
 <p>This script demonstrates the simplest form of interaction: sending a message to the LLM and getting a single, complete response back.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1414,7 +1421,7 @@
 </code></pre></div>
 <p>You should see the answer to "What is the capital of France?" printed in French.</p>
 <h2 id="2-streaming-output">2. Streaming Output</h2>
-<p><strong>File:</strong> <code>src/01-basics/streaming-output.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/streaming-output.py" target="_blank"><code>src/01-basics/streaming-output.py</code></a></p>
 <p>Sometimes, waiting for the entire response can take time, especially for longer answers. Streaming allows you to receive the response piece by piece, making the interaction feel more responsive.</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
@@ -1431,7 +1438,7 @@
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="p">],</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">stream_options</span><span class="o">=</span><span class="p">{</span>\<span class="s1">&#39;include_usage</span><span class="se">\&#39;</span><span class="s1">: True}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">stream_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;include_usage&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">)</span>
 </code></pre></div>
 <ul>
@@ -1461,7 +1468,7 @@
 </code></pre></div>
 <p>You will see the reasons for exercising appear on the console incrementally, followed by the token usage statistics.</p>
 <h2 id="3-tool-calling-extending-llm-capabilities">3. Tool Calling: Extending LLM Capabilities</h2>
-<p><strong>File:</strong> <code>src/01-basics/tool-calling.py</code></p>
+<p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py" target="_blank"><code>src/01-basics/tool-calling.py</code></a></p>
 <p>LLMs are trained on vast datasets but lack real-time information and the ability to perform actions in the real world. Tool calling allows the LLM to request the execution of predefined functions (tools) to overcome these limitations.</p>
 <p><strong>Concept:</strong></p>
 <ol>
@@ -1471,6 +1478,10 @@
 <li><strong>Provide Result:</strong> You send the function's return value back to the LLM.</li>
 <li><strong>Final Response:</strong> The LLM uses the tool's result to formulate the final answer to the user.</li>
 </ol>
+<div class="admonition success">
+<p class="admonition-title">Why Tool Calling is Powerful</p>
+<p>Tool calling transforms LLMs from passive text generators into active agents capable of interacting with APIs, databases, or custom code, vastly expanding their potential applications.</p>
+</div>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
 <li><strong>Import additional libraries:</strong> <code>json</code> for parsing arguments, <code>pytz</code> and <code>datetime</code> for the time function.</li>
@@ -1513,6 +1524,10 @@
 <a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="p">},</span>
 <a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="p">}</span>
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Designing Good Tool Descriptions</p>
+<p>The <code>description</code> field in the tool schema is critical. It should clearly and concisely explain what the tool does and when it should be used. Use natural language that the LLM can easily understand.</p>
+</div>
 <ul>
 <li><strong>Initial API Call with Tools:</strong><ul>
 <li>The <code>tools</code> parameter is added to the <code>create</code> call, listing the available tools.</li>
@@ -1570,14 +1585,30 @@
 <p>You will see output indicating the function call (<code>Calling function 'get_current_time'...</code>), the function's return value, and finally the model's response incorporating the time information.</p>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-1">Hands-on Exercise Ideas (Module 1)</h2>
-<ol>
-<li><strong>Modify <code>hello-world.py</code>:</strong> Change the <code>system</code> message and the <code>user</code> query to ask a different question in a different language or persona.</li>
-<li><strong>Modify <code>tool-calling.py</code>:</strong><ul>
-<li>Change the initial user query to ask for the time in a different city (e.g., "What time is it in Tokyo?"). Remember the required format (e.g., <code>Asia/Tokyo</code>).</li>
-<li><em>Advanced:</em> Add a second simple tool (e.g., a function that adds two numbers) and modify the user query to trigger it.</li>
+<p>See the <a href="../exercises/">Module 1 Exercises</a> page for practical tasks.</p>
+<hr />
+<div class="admonition abstract">
+<p class="admonition-title">Further Reading &amp; Resources</p>
+<p>To deepen your understanding of basic LLM interaction and tool calling, explore these resources:</p>
+<ul>
+<li><strong>General LLM Interaction:</strong><ul>
+<li><a href="https://machinelearningmastery.com/the-beginners-guide-to-language-models-with-python/" target="_blank">The Beginner's Guide to Language Models with Python (Machine Learning Mastery)</a></li>
+<li><a href="https://medium.com/@lokaregns/using-large-language-models-apis-with-python-a-comprehensive-guide-0020a51bf5b6" target="_blank">Using Large Language Models APIs with Python (Medium)</a></li>
+<li><a href="https://www.datacamp.com/tutorial/how-to-build-llm-applications-with-langchain" target="_blank">How to Build LLM Applications with LangChain Tutorial (DataCamp)</a></li>
 </ul>
 </li>
-</ol>
+<li><strong>Tool Calling Specifics:</strong><ul>
+<li><a href="https://python.langchain.com/docs/concepts/tool_calling/" target="_blank">LangChain Documentation: Tool calling concepts</a></li>
+<li><a href="https://blog.langchain.dev/tool-calling-with-langchain/" target="_blank">LangChain Blog Post: Tool Calling with LangChain</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2024/08/tool-calling-in-llms/" target="_blank">Analytics Vidhya Guide: Guide to Tool Calling in LLMs</a></li>
+<li><a href="https://medium.com/@developer.yasir.pk/tool-calling-for-llms-a-detailed-tutorial-a2b4d78633e2" target="_blank">Medium Tutorial: Tool Calling for LLMs: A Detailed Tutorial</a></li>
+<li><a href="https://www.apideck.com/blog/llm-tool-use-and-function-calling" target="_blank">Apideck Introduction: An introduction to function calling and tool use</a></li>
+<li><a href="https://docs.mistral.ai/capabilities/function_calling/" target="_blank">Mistral AI Docs: Function calling</a></li>
+<li><a href="https://www.theregister.com/2024/08/26/ai_llm_tool_calling/" target="_blank">The Register Guide: A quick guide to tool-calling in large language models</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr />
 <p>This module covered the basics of interacting with LLMs and enabling them to use tools. In the next module, we'll explore how models can handle different types of input, specifically images and voice.</p>
 
