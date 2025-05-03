@@ -2,7 +2,7 @@
 
 **Objective:** Understand and implement the ReAct (Reason + Act) pattern to create autonomous agents that can use tools iteratively to solve problems.
 
-**Source Code:** `/home/ubuntu/agentic-playground/src/05-single-agent/`
+**Source Code:** [`src/05-single-agent/`](https://github.com/denniszielke/agentic-playground/tree/main/src/05-single-agent){target="_blank"}
 
 ---
 
@@ -28,12 +28,12 @@ All examples use a similar set of tools defined in `plugins.py` (for Semantic Ke
 
 ## Shared Tools Concept
 
-*   **`plugins.py` (for Semantic Kernel):** Defines a `ChefPlugin` class with methods decorated by `@kernel_function`. These methods (`get_weather`, `get_medical_history`, `get_available_incredients`, `get_current_username`, `get_current_location_of_user`, `get_current_time`) become tools available to the Semantic Kernel agent.
+*   **[`plugins.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/plugins.py){target="_blank"} (for Semantic Kernel):** Defines a `ChefPlugin` class with methods decorated by `@kernel_function`. These methods (`get_weather`, `get_medical_history`, `get_available_incredients`, `get_current_username`, `get_current_location_of_user`, `get_current_time`) become tools available to the Semantic Kernel agent.
 *   **LangChain/LlamaIndex Examples:** Define similar functions (`get_current_username`, `get_current_location`, `get_current_time`) and wrap them using framework-specific decorators or classes (`@tool` for LangChain, `FunctionTool.from_defaults` for LlamaIndex) to make them usable by the respective agents.
 
 ## 1. ReAct with LangChain
 
-**File:** `src/05-single-agent/react-agent-lc.py`
+**File:** [`src/05-single-agent/react-agent-lc.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/react-agent-lc.py){target="_blank"}
 
 This script uses LangChain to create a ReAct agent.
 
@@ -72,7 +72,7 @@ Observe the verbose output. You will see the agent's reasoning steps (Thought), 
 
 ## 2. ReAct with LlamaIndex
 
-**File:** `src/05-single-agent/react-agent-li.py`
+**File:** [`src/05-single-agent/react-agent-li.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/react-agent-li.py){target="_blank"}
 
 This script implements the same ReAct logic using LlamaIndex.
 
@@ -102,7 +102,7 @@ Again, observe the output stream. You should see the agent reasoning, selecting 
 
 ## 3. Reasoning Agent with Semantic Kernel
 
-**File:** `src/05-single-agent/reasoning-agent-sk.py`
+**File:** [`src/05-single-agent/reasoning-agent-sk.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/05-single-agent/reasoning-agent-sk.py){target="_blank"}
 
 This script uses Semantic Kernel's agent capabilities. While not explicitly called "ReAct" in the code, the `ChatCompletionAgent` with automatic function calling enabled achieves a similar iterative reasoning and tool-use loop.
 

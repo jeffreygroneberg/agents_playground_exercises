@@ -2,7 +2,7 @@
 
 **Objective:** Learn how agents can process, generate, and utilize structured data formats like knowledge graphs and ontologies to represent and reason about complex information.
 
-**Source Code:** `/home/ubuntu/agentic-playground/src/03-complex-data/`
+**Source Code:** [`src/03-complex-data/`](https://github.com/denniszielke/agentic-playground/tree/main/src/03-complex-data){target="_blank"}
 
 ---
 
@@ -14,9 +14,12 @@ While LLMs excel at processing natural language, many real-world tasks involve s
 2.  **Ontologies:** Formal specifications of a domain's concepts and relationships (often using standards like OWL).
 3.  **Structured Document Parsing:** Extracting specific information from documents (like invoices) based on a predefined schema.
 
+!!! info "Structured Data vs. Unstructured Data"
+    LLMs are inherently good at unstructured text. However, combining them with structured data representations like knowledge graphs or ontologies allows for more accurate, consistent, and verifiable reasoning, especially in complex domains.
+
 ## 1. Generating Knowledge Graphs
 
-**File:** `src/03-complex-data/knowledge-graphs.py`
+**File:** [`src/03-complex-data/knowledge-graphs.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/knowledge-graphs.py){target="_blank"}
 
 This script demonstrates using an LLM to generate a knowledge graph from a natural language query, representing the answer as structured data.
 
@@ -55,6 +58,9 @@ class KnowledgeGraph(BaseModel):
         # ... (graphviz code to generate SVG from nodes/edges) ...
         dot.render("knowledge_graph", view=False)
 ```
+
+!!! tip "Pydantic for Structured Output"
+    Using Pydantic models along with features like `client.beta.chat.completions.parse` (or similar structured output mechanisms in other libraries) allows you to reliably get JSON or Python objects from the LLM, matching your desired schema.
 
 *   **Define Generation Function (`generate_graph`):**
     *   Takes user input text.
@@ -97,9 +103,12 @@ After running, inspect the generated `knowledge_graph.svg` file (you might need 
 
 Ontologies provide a formal way to define the concepts, properties, and relationships within a specific domain. They allow for more rigorous and consistent reasoning.
 
+!!! success "Ontologies vs. Knowledge Graphs"
+    While related, ontologies focus on defining the *schema* and rules of a domain (the TBox), while knowledge graphs represent the actual *instances* and relationships (the ABox). Ontologies provide the structure that knowledge graphs can populate.
+
 ### Creating an Ontology from Images
 
-**File:** `src/03-complex-data/create_onthologies.py`
+**File:** [`src/03-complex-data/create_onthologies.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/create_onthologies.py){target="_blank"}
 
 This script uses a multimodal model to generate an ontology in the Web Ontology Language (OWL) format based on analyzing images (screenshots of screw types in this case).
 
@@ -161,7 +170,7 @@ Inspect the generated `screws.xml` file. It should contain OWL definitions for d
 
 ### Using an Ontology to Describe an Image
 
-**File:** `src/03-complex-data/use-onthology.py`
+**File:** [`src/03-complex-data/use-onthology.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/use-onthology.py){target="_blank"}
 
 This script demonstrates how providing an existing ontology as context can help the model describe an image using the specific terminology and structure defined in that ontology.
 
@@ -218,7 +227,7 @@ The output should be a description of `reference.png` that attempts to use the c
 
 ## 3. Parsing Structured Documents (Invoice Example)
 
-**File:** `src/03-complex-data/parse_invoice.py`
+**File:** [`src/03-complex-data/parse_invoice.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/parse_invoice.py){target="_blank"}
 
 This script uses a multimodal model to extract information from an image of an invoice and populate a predefined XML template (XRechnung format).
 
@@ -283,10 +292,30 @@ Inspect `invoice_parsed.xml`. Compare it with `invoice_template.xml` and the ori
 
 ## Hands-on Exercise Ideas (Module 3)
 
-1.  **Modify `knowledge-graphs.py`:** Change the input query to generate a graph about a different topic (e.g., "Explain the components of a simple web application: browser, web server, database"). Visualize the result.
-2.  **Modify `use-onthology.py`:** Provide a different image (e.g., `battery_1.png` or `battery_2.png` from the same folder) and see how the model describes it using the `screws.xml` ontology (it might struggle if the image isn't a screw, highlighting the importance of relevant context).
-3.  **Examine `invoice_parsed.xml`:** Carefully compare the extracted data in `invoice_parsed.xml` against the original `invoice.jpg`. Identify any fields the model missed or extracted incorrectly. Discuss why this might happen (e.g., image quality, complex layout, ambiguity).
+See the [Module 3 Exercises](./exercises.md) page for practical tasks.
+
+---
+
+!!! abstract "Further Reading & Resources (Knowledge Graphs, Ontologies & LLMs)"
+
+    Dive deeper into using LLMs with structured data:
+
+    *   **Knowledge Graph Construction & Use:**
+        *   [How to Build Knowledge Graphs With LLMs (python tutorial) (YouTube)](https://www.youtube.com/watch?v=tcHIDCGu6Yw){target="_blank"}
+        *   [Constructing Knowledge Graphs From Unstructured Text Using LLMs (Neo4j Blog)](https://neo4j.com/blog/developer/construct-knowledge-graphs-unstructured-text/){target="_blank"}
+        *   [Building Knowledge Graphs Using Python (Medium)](https://medium.com/@zulqarnain.shahid.iqbal/building-knowledge-graphs-using-python-821a71254aed){target="_blank"}
+        *   [Automated Knowledge Graph Construction with Large Language Models (Medium)](https://medium.com/@researchgraph/automated-knowledge-graph-construction-with-large-language-models-150512d1bc22){target="_blank"}
+        *   [llmgraph: Create knowledge graphs with LLMs (GitHub)](https://github.com/dylanhogg/llmgraph){target="_blank"}
+    *   **Integrating KGs/Ontologies with LLMs:**
+        *   [Unifying LLMs & Knowledge Graphs for GenAI: Use Cases & Best Practices (Neo4j Blog)](https://neo4j.com/blog/genai/unifying-llm-knowledge-graph/){target="_blank"}
+        *   [How to Implement Knowledge Graphs and Large Language Models (LLMs) Together (Towards Data Science)](https://towardsdatascience.com/how-to-implement-knowledge-graphs-and-large-language-models-llms-together-at-the-enterprise-level-cf2835475c47/){target="_blank"}
+        *   [Grounding Large Language Models with Knowledge Graphs (DataWalk)](https://datawalk.com/grounding-large-language-models-with-knowledge-graphs/){target="_blank"}
+        *   [Using a Knowledge Graph to Implement a RAG Application (DataCamp Tutorial)](https://www.datacamp.com/tutorial/knowledge-graph-rag){target="_blank"}
+        *   [Integrating Large Language Models and Knowledge Graphs (PDF Tutorial - Academic)](https://www.cs.emory.edu/~jyang71/files/klm-tutorial.pdf){target="_blank"}
+    *   **Resource Collections:**
+        *   [Knowledge Graph Tutorials and Papers (LLM Section) (GitHub)](https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers/blob/master/topics/Knowledge%20Graph%20and%20LLMs.md){target="_blank"}
 
 ---
 
 This concludes Day 1, covering foundational interactions, multimodal inputs, and handling structured data. Day 2 will build on this by exploring how to give agents tools to solve more complex problems and implement basic autonomous agent patterns.
+

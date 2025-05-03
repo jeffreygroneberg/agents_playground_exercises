@@ -33,6 +33,10 @@ These exercises are based on the concepts and code presented in Module 1: Basic 
 
 **Goal:** Practice defining and integrating a new tool for the LLM to use.
 
+Tool calling allows the LLM to interact with external functions or APIs to retrieve information or perform actions. The diagram below illustrates the concept:
+
+![Tool Calling Concept](../assets/images/concepts_tools.png)
+
 1.  Open the `src/01-basics/tool-calling.py` script.
 2.  **Define a new Python function:** Add a function that performs simple addition.
     ```python
@@ -72,5 +76,5 @@ These exercises are based on the concepts and code presented in Module 1: Basic 
         ```
     *   Ensure this updated `tools` list is used in *both* the initial API call and the second call made after handling a potential tool invocation.
 5.  **Update the user query:** Change the initial `user` message to ask an addition question, e.g., "What is 123 plus 456?".
-6.  **Run the script:** `python tool-calling.py`.
+6.  **Run the script:** `python3.11 tool-calling.py`.
 7.  Observe the output. Does the LLM correctly identify the need for the `add_numbers` tool? Is the function called with the correct arguments? Does the final response contain the sum?

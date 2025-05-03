@@ -2,7 +2,7 @@
 
 **Objective:** Understand how to interact with Large Language Models (LLMs) programmatically, handle streaming responses, and enable models to use external tools.
 
-**Source Code:** `/home/ubuntu/agentic-playground/src/01-basics/`
+**Source Code:** [`src/01-basics/`](https://github.com/denniszielke/agentic-playground/tree/main/src/01-basics){target="_blank"}
 
 ---
 
@@ -16,22 +16,26 @@ We will cover:
 2.  **Streaming Responses:** Receiving the model's response incrementally as it's generated.
 3.  **Tool Calling:** Defining functions (tools) that the model can request to use to gather information or perform actions.
 
+!!! info "Core Concept: LLM Interaction"
+    Understanding how to structure API calls, manage conversation history (messages), and interpret responses is foundational for building any LLM-powered application.
+
 ## Setup Review
 
-Before running the examples, ensure you have:
+!!! warning "Prerequisites"
+    Before running the examples, ensure you have:
 
-1.  Cloned the `agentic-playground` repository.
-2.  Installed the required Python packages (`pip install -r requirements.txt`).
-3.  Created a `.env` file in the repository root with your `GITHUB_TOKEN` (a Personal Access Token with no specific permissions needed for GitHub Models inference).
+    1.  Cloned the `agentic-playground` repository.
+    2.  Installed the required Python packages (`pip install -r requirements.txt`).
+    3.  Created a `.env` file in the repository root with your `GITHUB_TOKEN` (a Personal Access Token with no specific permissions needed for GitHub Models inference).
 
-```
-# .env file content
-GITHUB_TOKEN="your_github_pat_here"
-```
+    ```
+    # .env file content
+    GITHUB_TOKEN="your_github_pat_here"
+    ```
 
 ## 1. Hello World: Basic API Interaction
 
-**File:** `src/01-basics/hello-world.py`
+**File:** [`src/01-basics/hello-world.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/hello-world.py){target="_blank"}
 
 This script demonstrates the simplest form of interaction: sending a message to the LLM and getting a single, complete response back.
 
@@ -110,7 +114,7 @@ You should see the answer to "What is the capital of France?" printed in French.
 
 ## 2. Streaming Output
 
-**File:** `src/01-basics/streaming-output.py`
+**File:** [`src/01-basics/streaming-output.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/streaming-output.py){target="_blank"}
 
 Sometimes, waiting for the entire response can take time, especially for longer answers. Streaming allows you to receive the response piece by piece, making the interaction feel more responsive.
 
@@ -128,7 +132,7 @@ response = client.chat.completions.create(
     ],
     model=model_name,
     stream=True,
-    stream_options={\'include_usage\': True}
+    stream_options={'include_usage': True}
 )
 ```
 
@@ -163,7 +167,7 @@ You will see the reasons for exercising appear on the console incrementally, fol
 
 ## 3. Tool Calling: Extending LLM Capabilities
 
-**File:** `src/01-basics/tool-calling.py`
+**File:** [`src/01-basics/tool-calling.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py){target="_blank"}
 
 LLMs are trained on vast datasets but lack real-time information and the ability to perform actions in the real world. Tool calling allows the LLM to request the execution of predefined functions (tools) to overcome these limitations.
 
@@ -174,6 +178,9 @@ LLMs are trained on vast datasets but lack real-time information and the ability
 3.  **Execute Tool:** Your code receives this request, executes the corresponding function with the provided arguments.
 4.  **Provide Result:** You send the function's return value back to the LLM.
 5.  **Final Response:** The LLM uses the tool's result to formulate the final answer to the user.
+
+!!! success "Why Tool Calling is Powerful"
+    Tool calling transforms LLMs from passive text generators into active agents capable of interacting with APIs, databases, or custom code, vastly expanding their potential applications.
 
 **Code Breakdown:**
 
@@ -215,6 +222,9 @@ tool={
     },
 }
 ```
+
+!!! tip "Designing Good Tool Descriptions"
+    The `description` field in the tool schema is critical. It should clearly and concisely explain what the tool does and when it should be used. Use natural language that the LLM can easily understand.
 
 *   **Initial API Call with Tools:**
     *   The `tools` parameter is added to the `create` call, listing the available tools.
@@ -278,11 +288,28 @@ You will see output indicating the function call (`Calling function 'get_current
 
 ## Hands-on Exercise Ideas (Module 1)
 
-1.  **Modify `hello-world.py`:** Change the `system` message and the `user` query to ask a different question in a different language or persona.
-2.  **Modify `tool-calling.py`:**
-    *   Change the initial user query to ask for the time in a different city (e.g., "What time is it in Tokyo?"). Remember the required format (e.g., `Asia/Tokyo`).
-    *   *Advanced:* Add a second simple tool (e.g., a function that adds two numbers) and modify the user query to trigger it.
+See the [Module 1 Exercises](./exercises.md) page for practical tasks.
+
+---
+
+!!! abstract "Further Reading & Resources"
+
+    To deepen your understanding of basic LLM interaction and tool calling, explore these resources:
+
+    *   **General LLM Interaction:**
+        *   [The Beginner's Guide to Language Models with Python (Machine Learning Mastery)](https://machinelearningmastery.com/the-beginners-guide-to-language-models-with-python/){target="_blank"}
+        *   [Using Large Language Models APIs with Python (Medium)](https://medium.com/@lokaregns/using-large-language-models-apis-with-python-a-comprehensive-guide-0020a51bf5b6){target="_blank"}
+        *   [How to Build LLM Applications with LangChain Tutorial (DataCamp)](https://www.datacamp.com/tutorial/how-to-build-llm-applications-with-langchain){target="_blank"}
+    *   **Tool Calling Specifics:**
+        *   [LangChain Documentation: Tool calling concepts](https://python.langchain.com/docs/concepts/tool_calling/){target="_blank"}
+        *   [LangChain Blog Post: Tool Calling with LangChain](https://blog.langchain.dev/tool-calling-with-langchain/){target="_blank"}
+        *   [Analytics Vidhya Guide: Guide to Tool Calling in LLMs](https://www.analyticsvidhya.com/blog/2024/08/tool-calling-in-llms/){target="_blank"}
+        *   [Medium Tutorial: Tool Calling for LLMs: A Detailed Tutorial](https://medium.com/@developer.yasir.pk/tool-calling-for-llms-a-detailed-tutorial-a2b4d78633e2){target="_blank"}
+        *   [Apideck Introduction: An introduction to function calling and tool use](https://www.apideck.com/blog/llm-tool-use-and-function-calling){target="_blank"}
+        *   [Mistral AI Docs: Function calling](https://docs.mistral.ai/capabilities/function_calling/){target="_blank"}
+        *   [The Register Guide: A quick guide to tool-calling in large language models](https://www.theregister.com/2024/08/26/ai_llm_tool_calling/){target="_blank"}
 
 ---
 
 This module covered the basics of interacting with LLMs and enabling them to use tools. In the next module, we'll explore how models can handle different types of input, specifically images and voice.
+

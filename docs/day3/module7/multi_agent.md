@@ -2,7 +2,7 @@
 
 **Objective:** Explore patterns and frameworks for building systems where multiple specialized agents collaborate to achieve a common goal.
 
-**Source Code:** `/home/ubuntu/agentic-playground/src/07-multi-agent-collaboration/`
+**Source Code:** [`src/07-multi-agent-collaboration/`](https://github.com/denniszielke/agentic-playground/tree/main/src/07-multi-agent-collaboration){target="_blank"}
 
 ---
 
@@ -19,9 +19,12 @@ This module explores different approaches to multi-agent collaboration, contrast
 1.  **Structured Collaboration (LangGraph):** Defining explicit roles and interaction patterns (e.g., a Coder agent and a Reviewer agent improving code iteratively).
 2.  **Reasoning-Based Approach (AutoGen/MagenticOne):** Using a powerful reasoning model (like o1-mini) to handle tasks that might otherwise require multiple specialized agents.
 
+!!! info "The Power of Collaboration"
+    Just like human teams, multi-agent systems leverage diverse skills and parallel processing to solve problems more effectively than a single entity might. Designing the communication and workflow between agents is key.
+
 ## 1. Structured Collaboration: Coder & Reviewer (LangGraph)
 
-**File:** `src/07-multi-agent-collaboration/coding-agents.py`
+**File:** [`src/07-multi-agent-collaboration/coding-agents.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/coding-agents.py){target="_blank"}
 
 This script implements a multi-agent system using LangGraph where two agents, a Coder and a Reviewer, collaborate to generate and refine code based on an initial objective.
 
@@ -68,13 +71,14 @@ cd /home/ubuntu/agentic-playground/src/07-multi-agent-collaboration
 python coding-agents.py
 ```
 
-Observe the output. You'll see the 
+Observe the output. You'll see the Coder generating initial code, the Reviewer providing feedback, the Coder revising, and the cycle repeating until the `deployment_ready` condition is met (either feedback addressed or iteration limit exceeded), finally ending with the `handle_result` node.
 
-Coder generating initial code, the Reviewer providing feedback, the Coder revising, and the cycle repeating until the `deployment_ready` condition is met (either feedback addressed or iteration limit exceeded), finally ending with the `handle_result` node.
+!!! tip "LangGraph for Structured Workflows"
+    LangGraph excels at defining explicit, potentially complex, workflows involving multiple agents or steps with clear transitions and conditional logic. It provides more control over the interaction pattern compared to more free-form agent frameworks.
 
 ## 2. Reasoning-Based Approach: Single Reasoning Coder (AutoGen/MagenticOne)
 
-**File:** `src/07-multi-agent-collaboration/reasoning-coder.py`
+**File:** [`src/07-multi-agent-collaboration/reasoning-coder.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/reasoning-coder.py){target="_blank"}
 
 This script contrasts the multi-agent approach by using a single, powerful reasoning agent (specifically targeting `o1-mini` via `autogen-ext`) to handle the coding task directly.
 
@@ -104,14 +108,17 @@ python reasoning-coder.py
 
 Observe the output. It should directly print the generated code for the regression model task, produced by the single `o1-mini` agent.
 
+!!! success "When to Use a Single Powerful Reasoner"
+    If a single, highly capable LLM (like `o1-mini` or GPT-4) can reliably handle the entire task through its own reasoning, and explicit intermediate steps or checks aren't strictly necessary, this approach can be simpler to implement.
+
 **Comparison:**
 
 *   **LangGraph (Multi-Agent):**
-    *   Pros: Explicit control over workflow, clear roles, potentially better for complex processes requiring specific steps or checks.
+    *   Pros: Explicit control over workflow, clear roles, potentially better for complex processes requiring specific steps or checks, easier debugging of individual components.
     *   Cons: More setup required to define the graph, nodes, and transitions.
 *   **AutoGen/o1-mini (Single Reasoning Agent):**
     *   Pros: Simpler setup for certain tasks, leverages the advanced reasoning of the model.
-    *   Cons: Less explicit control over the process, relies heavily on the model's ability to understand and execute the task correctly in one go.
+    *   Cons: Less explicit control over the process, relies heavily on the model's ability to understand and execute the task correctly, debugging can be harder as the reasoning is internal to the LLM.
 
 The choice between these approaches depends on the complexity of the task, the need for explicit control and intermediate checks, and the capabilities of the underlying LLMs.
 
@@ -119,13 +126,29 @@ The choice between these approaches depends on the complexity of the task, the n
 
 ## Hands-on Exercise Ideas (Module 7)
 
-1.  **Modify `coding-agents.py`:**
-    *   Change the initial `query` to a different coding task (e.g., "Write a Python function to calculate the factorial of a number.").
-    *   Increase the `recursion_limit` in `app.invoke` and observe if the agents perform more review cycles.
-    *   Modify the `reviewer_start` prompt to add a new review criterion (e.g., "Ensure all functions have docstrings.").
-2.  **Modify `reasoning-coder.py`:** Change the `query` to the same factorial task and compare the output quality and style to the multi-agent result.
-3.  **(Conceptual)** Sketch a LangGraph diagram for a different multi-agent scenario, like planning a trip (e.g., agents for Flights, Hotels, Activities, Itinerary Compiler).
+See the [Module 7 Exercises](./exercises.md) page for practical tasks.
 
 ---
 
-This module introduced multi-agent collaboration using structured workflows (LangGraph) and contrasted it with a single powerful reasoning agent. The next module will explore more dynamic multi-agent interactions using frameworks like AutoGen.
+!!! abstract "Further Reading & Resources (Multi-Agent Collaboration)"
+
+    Explore frameworks and concepts for building multi-agent systems:
+
+    *   **Frameworks & Libraries:**
+        *   [LangGraph Documentation: Multi-agent Collaboration](https://langchain-ai.github.io/langgraphjs/tutorials/multi_agent/multi_agent_collaboration/){target="_blank"}
+        *   [crewAI Documentation](https://docs.crewai.com/){target="_blank"} (Popular framework for collaborative agents)
+        *   [Microsoft AutoGen Documentation](https://microsoft.github.io/autogen/){target="_blank"} (Framework for multi-agent conversation)
+        *   [Semantic Kernel Documentation: Agents](https://learn.microsoft.com/en-us/semantic-kernel/agents/){target="_blank"} (Includes concepts for agent collaboration)
+    *   **Tutorials & Guides:**
+        *   [How to Build the Ultimate AI Automation with Multi-Agent Collaboration (LangChain Blog)](https://blog.langchain.dev/how-to-build-the-ultimate-ai-automation-with-multi-agent-collaboration/){target="_blank"}
+        *   [Building Multi AI Agent Systems: A Practical Guide! (LinkedIn)](https://www.linkedin.com/pulse/building-multi-ai-agentsystems-practical-guide-pavan-belagatti-fjarc){target="_blank"}
+        *   [Step by Step guide to develop AI Multi-Agent system using Microsoft Semantic Kernel (Medium)](https://medium.com/@akshaykokane09/step-by-step-guide-to-develop-ai-multi-agent-system-using-microsoft-semantic-kernel-and-gpt-4o-f5991af40ea6){target="_blank"}
+        *   [How to Build a Multi Agent AI System (YouTube - IBM)](https://www.youtube.com/watch?v=gUrENDkPw_k){target="_blank"}
+        *   [Build a Multi-Agent System with CrewAI | Agentic AI Tutorial (YouTube)](https://www.youtube.com/watch?v=qsrl2DHYi1Y){target="_blank"}
+    *   **Courses:**
+        *   [Multi AI Agent Systems with crewAI (DeepLearning.AI)](https://learn.deeplearning.ai/courses/multi-ai-agent-systems-with-crewai/){target="_blank"}
+
+---
+
+This module introduced multi-agent collaboration using structured workflows (LangGraph) and contrasted it with a single powerful reasoning agent. The next module will explore more dynamic multi-agent interactions and hierarchical structures using frameworks like AutoGen.
+

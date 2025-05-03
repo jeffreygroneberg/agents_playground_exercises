@@ -36,6 +36,10 @@ These exercises are based on the concepts and code presented in Module 4: Solvin
 
 **Goal:** Practice defining a Domain Specific Language for a simple, everyday process.
 
+A Domain Specific Language (DSL) is a set of commands tailored for a specific task, allowing an agent (or human) to express complex instructions concisely. The trucking example uses a DSL for logistics. The diagram below shows how a DSL fits into the agent's process:
+
+![DSL Concept](../assets/images/concepts_dsl.png)
+
 1.  Imagine you want an agent to make a cup of tea. Define a set of simple commands (a DSL) that represent the necessary actions. Think about the parameters each command might need.
     *   Examples: `boil_water(kettle_id)`, `get_cup(cup_id)`, `add_tea_bag(cup_id, tea_type)`, `pour_water(kettle_id, cup_id)`, `add_milk(cup_id, amount_ml)`, `add_sugar(cup_id, spoons)`, `wait(seconds)`, `serve(cup_id)`.
 2.  Write down your list of DSL commands and their parameters.

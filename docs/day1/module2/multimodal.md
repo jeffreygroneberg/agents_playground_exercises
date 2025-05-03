@@ -2,7 +2,7 @@
 
 **Objective:** Understand how AI agents can perceive and reason about non-textual data like images and voice, using multimodal LLMs.
 
-**Source Code:** `/home/ubuntu/agentic-playground/src/02-multimodal-models/`
+**Source Code:** [`src/02-multimodal-models/`](https://github.com/denniszielke/agentic-playground/tree/main/src/02-multimodal-models){target="_blank"}
 
 ---
 
@@ -14,6 +14,9 @@ In this module, we will explore:
 
 1.  **Vision Capabilities:** How to provide images to an LLM and ask questions about them (e.g., describing content, comparing images).
 2.  **Voice Interaction (Conceptual):** Understanding the components involved in creating a voice-based agent that can listen and speak in real-time (using the provided `voice-agent.py` and `voice-interaction` app as examples).
+
+!!! info "What is Multimodality?"
+    Multimodality in AI refers to the ability of models to process and understand information from multiple types of data (modalities) simultaneously, such as text, images, audio, and video. This allows for a richer understanding of context, similar to human perception.
 
 **Note:** The voice interaction examples might require specific Azure credentials or setup beyond the basic GitHub PAT, as indicated in the `voice-agent.py` code (referencing Azure OpenAI endpoints and deployments). We will focus on the concepts and code structure.
 
@@ -36,7 +39,7 @@ def get_image_data_url(image_file: str, image_format: str) -> str:
 
 ### Inspecting a Single Image
 
-**File:** `src/02-multimodal-models/inspect-image.py`
+**File:** [`src/02-multimodal-models/inspect-image.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/inspect-image.py){target="_blank"}
 
 This script sends a single image to the model and asks it to describe the content.
 
@@ -91,7 +94,7 @@ The output will be the model's textual description of the F1 car image.
 
 ### Comparing Multiple Images
 
-**File:** `src/02-multimodal-models/compare-images.py`
+**File:** [`src/02-multimodal-models/compare-images.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/compare-images.py){target="_blank"}
 
 This script sends *two* images to the model and asks it to compare them.
 
@@ -149,9 +152,8 @@ The output will be the model's comparison of the two F1 car images, highlighting
 
 ## 2. Voice Interaction (Conceptual Overview)
 
-**Files:**
-*   `src/02-multimodal-models/voice-agent.py`
-*   `src/02-multimodal-models/voice-interaction/` (Flask app)
+**File:** [`src/02-multimodal-models/voice-agent.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/voice-agent.py){target="_blank"}
+*   [`src/02-multimodal-models/voice-interaction/`](https://github.com/denniszielke/agentic-playground/tree/main/src/02-multimodal-models/voice-interaction){target="_blank"} (Flask app)
 
 These examples demonstrate a more complex scenario: a real-time voice conversation with an agent. This involves several components working together:
 
@@ -161,6 +163,9 @@ These examples demonstrate a more complex scenario: a real-time voice conversati
 4.  **Text-to-Speech (TTS):** Converting the LLM's text response back into audio.
 5.  **Audio Output:** Playing the generated audio back to the user.
 6.  **Turn Detection:** Determining when the user has finished speaking and when the agent should respond (Voice Activity Detection - VAD).
+
+!!! tip "Real-time Voice Pipeline"
+    Mic -> STT -> LLM (with Tools) -> TTS -> Speaker. Latency and turn detection (VAD) are critical for a natural conversational experience.
 
 **Code Structure (`voice-agent.py`):**
 
@@ -179,34 +184,40 @@ These examples demonstrate a more complex scenario: a real-time voice conversati
 **Flask App (`voice-interaction/app.py`):**
 This appears to be a web interface (likely using Flask and WebSockets) that interacts with the backend logic (potentially `voice-agent.py` concepts or the `rtmt.py` module mentioned in the file structure) to provide a web-based voice chat experience.
 
-**Key Concepts for Workshop:**
+!!! warning "Running the Voice Demo"
+    Running `python voice-interaction/app.py` might require:
+    *   Specific Azure credentials set as environment variables (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, `AZURE_VOICE_COMPLETION_DEPLOYMENT_NAME`, `AZURE_VOICE_COMPLETION_MODEL`).
+    *   Installation of additional audio dependencies (`pip install pyaudio sounddevice pydub semantic-kernel[realtime]`).
+    *   Correct audio device configuration.
 
-*   Explain the pipeline: Mic -> STT -> LLM -> TTS -> Speaker.
-*   Discuss the importance of low latency for a natural conversation.
-*   Highlight the role of VAD/Turn Detection.
-*   Show how tools can be integrated into a voice conversation.
-*   Mention that real-time voice often requires specialized APIs and infrastructure (like the Azure endpoint referenced).
-
-**Running the Voice Demo (Caution):**
-Running `python voice-interaction/app.py` might require:
-*   Specific Azure credentials set as environment variables (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, `AZURE_VOICE_COMPLETION_DEPLOYMENT_NAME`, `AZURE_VOICE_COMPLETION_MODEL`).
-*   Installation of additional audio dependencies (`pip install pyaudio sounddevice pydub semantic-kernel[realtime]`).
-*   Correct audio device configuration.
-
-Due to these complexities, it might be best to treat this as a code walkthrough and conceptual explanation unless the workshop environment is specifically prepared for Azure voice services.
+    Due to these complexities, it might be best to treat this as a code walkthrough and conceptual explanation unless the workshop environment is specifically prepared for Azure voice services.
 
 ---
 
 ## Hands-on Exercise Ideas (Module 2)
 
-1.  **Modify `inspect-image.py`:**
-    *   Use a different image (find one online, save it, and update the filename).
-    *   Change the text prompt to ask a different question about the image (e.g., "What is the main color in this image?", "Are there any people in this picture?").
-2.  **Modify `compare-images.py`:**
-    *   Use two different images.
-    *   Change the prompt to focus on similarities instead of differences.
-3.  **(Conceptual)** Discuss how you would modify the `tool-calling.py` example from Module 1 to *describe* an image instead of getting the time. What would the tool definition look like? (Hint: The "tool" is now built into the model itself via the `image_url` input).
+See the [Module 2 Exercises](./exercises.md) page for practical tasks.
+
+---
+
+!!! abstract "Further Reading & Resources (Multimodal Models)"
+
+    Explore these resources to learn more about multimodal LLMs:
+
+    *   **General Concepts & Overviews:**
+        *   [Exploring Multimodal Large Language Models (GeeksforGeeks)](https://www.geeksforgeeks.org/exploring-multimodal-large-language-models/){target="_blank"}
+        *   [Multimodal Models — LLMs That Can See and Hear (Towards Data Science)](https://medium.com/towards-data-science/multimodal-models-llms-that-can-see-and-hear-5c6737c981d3){target="_blank"}
+        *   [Multimodality and Large Multimodal Models (LMMs) (Chip Huyen Blog)](https://huyenchip.com/2023/10/10/multimodal.html){target="_blank"}
+    *   **Tutorials & Practical Guides:**
+        *   [Master Multimodal Data Analysis with LLMs and Python (freeCodeCamp)](https://www.freecodecamp.org/news/master-multimodal-data-analysis-with-llms-and-python/){target="_blank"}
+        *   [Coding a Multimodal (Vision) Language Model from scratch (YouTube)](https://www.youtube.com/watch?v=vAmKB7iPkWw){target="_blank"}
+        *   [Multimodal Data Analysis with LLMs and Python – Tutorial (YouTube)](https://www.youtube.com/watch?v=3-4qAkFRpAk){target="_blank"}
+    *   **Academic & Research Perspectives:**
+        *   [MLLM Tutorial @ CVPR 2024](https://mllm2024.github.io/CVPR2024/){target="_blank"} (Covers architecture, instruction tuning, evaluation, and agentic MLLMs)
+        *   [Large Multimodal Models: Notes on CVPR 2023 Tutorial (arXiv Paper)](https://arxiv.org/abs/2306.14895){target="_blank"}
+        *   [CS25: V4 I From Large Language Models to Large Multimodal Models (Stanford Lecture Video)](https://www.youtube.com/watch?v=cYfKQ6YG9Qo){target="_blank"}
 
 ---
 
 This module explored how agents can interact with visual and auditory information. The next module will delve into handling complex, structured data formats like knowledge graphs and ontologies.
+

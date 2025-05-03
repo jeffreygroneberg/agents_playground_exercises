@@ -2,7 +2,7 @@
 
 **Objective:** Explore dynamic multi-agent conversations and collaboration patterns using frameworks like AutoGen, specifically the MagenticOne group chat implementation.
 
-**Source Code:** `/home/ubuntu/agentic-playground/src/08-society-of-agents/`
+**Source Code:** [`src/08-society-of-agents/`](https://github.com/denniszielke/agentic-playground/tree/main/src/08-society-of-agents){target="_blank"}
 
 ---
 
@@ -19,6 +19,9 @@ While structured workflows like LangGraph (Module 7) provide explicit control, s
 *   **Task Execution:** The group chat is initiated with a task, and the agents collaborate through conversation, managed by the orchestrator, until a termination condition is met.
 *   **Termination:** Conditions like `MaxMessageTermination` (limit number of messages) or `TextMentionTermination` (stop when a specific keyword like "TERMINATE" is mentioned) are used to end the chat.
 
+!!! info "AutoGen & MagenticOne"
+    AutoGen is a framework for building multi-agent applications. MagenticOne appears to be a specific group chat implementation within or compatible with AutoGen, leveraging an LLM orchestrator for dynamic turn-taking based on agent descriptions and conversation context.
+
 This module explores variations of MagenticOne group chats:
 
 1.  **Simple Group:** Multiple specialized agents collaborating on a task.
@@ -27,7 +30,7 @@ This module explores variations of MagenticOne group chats:
 
 ## 1. Simple Group Chat
 
-**File:** `src/08-society-of-agents/simple-group.py`
+**File:** [`src/08-society-of-agents/simple-group.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/simple-group.py){target="_blank"}
 
 This script sets up a basic MagenticOne group chat with agents specialized in getting user information, location, and time.
 
@@ -61,7 +64,7 @@ Observe the console output. You will see the agents conversing, likely involving
 
 ## 2. Chef Recommendation Group Chat
 
-**File:** `src/08-society-of-agents/chef-and-group.py`
+**File:** [`src/08-society-of-agents/chef-and-group.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/chef-and-group.py){target="_blank"}
 
 This example presents a more complex scenario where agents need to collaborate to recommend a meal, considering user details, location, time, ingredients, and allergies.
 
@@ -87,7 +90,7 @@ Observe the conversation. The orchestrator should guide the agents to gather nec
 
 ## 3. Group Chat with Reasoning Oversight (o1-mini)
 
-**File:** `src/08-society-of-agents/o1-with-chef-group.py`
+**File:** [`src/08-society-of-agents/o1-with-chef-group.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/o1-with-chef-group.py){target="_blank"}
 
 This script enhances the chef scenario by adding a dedicated, powerful reasoning agent (`o1-mini`) to act as a consultant or quality checker for the main group chat.
 
@@ -110,18 +113,34 @@ python o1-with-chef-group.py
 
 Observe the flow. The MagenticOne orchestrator might dynamically decide to call the `consultation_agent` at certain points. When called, the `consultation_agent` uses its `check_conversation` tool, which in turn invokes the powerful `o1-mini` `reasoning_agent` to analyze the chat history and provide feedback. This demonstrates a hierarchical pattern where one agent leverages another, more capable agent for specific complex tasks like quality control.
 
+!!! success "Hierarchical Agent Structures"
+    Integrating a powerful reasoning agent as a consultant or reviewer within a group of specialized agents is a common and effective pattern. It allows the specialized agents to handle routine tasks while the reasoning agent provides higher-level oversight, analysis, or complex decision-making.
+
 ---
 
 ## Hands-on Exercise Ideas (Module 8)
 
-1.  **Modify `simple-group.py`:**
-    *   Change the initial `task` to something requiring different information (e.g., "Where does Dennis live?").
-    *   Add a new `AssistantAgent` with a simple tool (e.g., a weather agent using the `get_weather` tool) and add it to the `MagenticOneGroupChat`. Change the task to include asking about the weather.
-2.  **Modify `chef-and-group.py`:**
-    *   Change the `get_medical_history` tool function to return *no* allergies for Dennis. Observe if the `chef_agent` correctly asks about allergies before making a recommendation.
-    *   Change the available ingredients returned by `get_available_incredients`.
-3.  **Modify `o1-with-chef-group.py`:** Change the prompt within the `check_conversation` tool to ask the `reasoning_agent` to check for something specific (e.g., "Ensure the chef confirmed allergies before recommending a dish.").
+See the [Module 8 Exercises](./exercises.md) page for practical tasks.
 
 ---
 
-This module explored dynamic multi-agent conversations using AutoGen/MagenticOne, showcasing how specialized agents can collaborate under the guidance of an orchestrator, and how reasoning agents can be integrated for oversight. The final module will look at event-driven agent architectures.
+!!! abstract "Further Reading & Resources (Society of Agents / AutoGen)"
+
+    Delve deeper into AutoGen and dynamic multi-agent systems:
+
+    *   **AutoGen Documentation:**
+        *   [Microsoft AutoGen Homepage](https://microsoft.github.io/autogen/){target="_blank"}
+        *   [AutoGen Concepts: Agents](https://microsoft.github.io/autogen/docs/concepts/agent-concepts/){target="_blank"}
+        *   [AutoGen Concepts: Group Chat](https://microsoft.github.io/autogen/docs/concepts/groupchat-and-routing/){target="_blank"}
+    *   **Tutorials & Examples:**
+        *   [AutoGen Tutorial: Automated Task Solving with Code Generation, Execution & Debugging](https://microsoft.github.io/autogen/docs/tutorial/task-solving-agents/){target="_blank"}
+        *   [AutoGen Tutorial: Group Chat](https://microsoft.github.io/autogen/docs/tutorial/groupchat/){target="_blank"}
+        *   [AutoGen Cookbook](https://microsoft.github.io/autogen/docs/Examples/){target="_blank"} (Various examples)
+        *   [Building Multi-Agent Systems with AutoGen (YouTube - James Briggs)](https://www.youtube.com/watch?v=h_Ky0qLq7yM){target="_blank"}
+    *   **Related Concepts:**
+        *   [AgentLite: Enabling Efficient Agent Interaction via Lite LLM](https://blog.llamaindex.ai/agentlite-enabling-efficient-agent-interaction-via-lite-llm-1d4d254a87c5){target="_blank"} (Discusses efficient orchestration)
+
+---
+
+This concludes the core modules of the workshop, covering the journey from basic LLM interaction to complex, collaborative multi-agent systems. Remember to explore the exercises for each module to solidify your understanding.
+
