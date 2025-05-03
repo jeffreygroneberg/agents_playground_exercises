@@ -1291,11 +1291,11 @@
 
 
 <h1 id="day-1-module-1-exercises">Day 1 - Module 1: Exercises</h1>
-<p>These exercises are based on the concepts and code presented in Module 1: Basic LLM Interaction &amp; Tool Calling (<code>src/01-basics/</code>).</p>
+<p>These exercises are based on the concepts and code presented in Module 1: Basic LLM Interaction &amp; Tool Calling (<a href="https://github.com/denniszielke/agentic-playground/tree/main/src/01-basics" target="_blank"><code>src/01-basics/</code></a>).</p>
 <h2 id="exercise-11-changing-language-and-persona">Exercise 1.1: Changing Language and Persona</h2>
 <p><strong>Goal:</strong> Practice modifying the system prompt to change the LLM's behavior.</p>
 <ol>
-<li>Open the <code>src/01-basics/hello-world.py</code> script.</li>
+<li>Open the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/hello-world.py" target="_blank"><code>src/01-basics/hello-world.py</code></a> script.</li>
 <li>Modify the <code>system</code> message content from "antworte alles in französisch" to instruct the model to respond like a pirate (e.g., "Answer everything like a pirate.").</li>
 <li>Modify the <code>user</code> message content to ask a different question (e.g., "What is the weather like today?").</li>
 <li>Run the script (<code>python hello-world.py</code>) and observe the pirate-themed response.</li>
@@ -1303,7 +1303,7 @@
 <h2 id="exercise-12-using-the-time-tool-for-a-different-city">Exercise 1.2: Using the Time Tool for a Different City</h2>
 <p><strong>Goal:</strong> Practice changing the user input to trigger a tool call with different arguments.</p>
 <ol>
-<li>Open the <code>src/01-basics/tool-calling.py</code> script.</li>
+<li>Open the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py" target="_blank"><code>src/01-basics/tool-calling.py</code></a> script.</li>
 <li>Locate the initial <code>user</code> message:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">messages</span><span class="o">=</span><span class="p">[</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="p">{</span>
@@ -1319,9 +1319,9 @@
 <h2 id="exercise-13-advanced-adding-a-simple-calculator-tool">Exercise 1.3 (Advanced): Adding a Simple Calculator Tool</h2>
 <p><strong>Goal:</strong> Practice defining and integrating a new tool for the LLM to use.</p>
 <p>Tool calling allows the LLM to interact with external functions or APIs to retrieve information or perform actions. The diagram below illustrates the concept:</p>
-<p><img alt="Tool Calling Concept" src="../../../assets/images/concepts_tools.png" /></p>
+<p><img alt="Tool Calling Concept" src="https://raw.githubusercontent.com/denniszielke/agentic-playground/refs/heads/main/img/tools.png" /></p>
 <ol>
-<li>Open the <code>src/01-basics/tool-calling.py</code> script.</li>
+<li>Open the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py" target="_blank"><code>src/01-basics/tool-calling.py</code></a> script.</li>
 <li><strong>Define a new Python function:</strong> Add a function that performs simple addition.
     <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    \<span class="s2">&quot;</span><span class="se">\&quot;\&quot;</span><span class="s2">Adds two integer numbers together.</span><span class="se">\&quot;\&quot;\&quot;</span>

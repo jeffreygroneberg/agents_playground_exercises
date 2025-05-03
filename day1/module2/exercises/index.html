@@ -1291,12 +1291,12 @@
 
 
 <h1 id="day-1-module-2-exercises">Day 1 - Module 2: Exercises</h1>
-<p>These exercises are based on the concepts and code presented in Module 2: Working with Multimodal Models (<code>src/02-multimodal-models/</code>).</p>
+<p>These exercises are based on the concepts and code presented in Module 2: Working with Multimodal Models (<a href="https://github.com/denniszielke/agentic-playground/tree/main/src/02-multimodal-models" target="_blank"><code>src/02-multimodal-models/</code></a>).</p>
 <h2 id="exercise-21-describing-a-different-image">Exercise 2.1: Describing a Different Image</h2>
 <p><strong>Goal:</strong> Practice using the vision model to analyze a new image and answer a specific question.</p>
 <ol>
 <li>Find an image online (e.g., a picture of a cat, a landscape, a famous landmark). Save it to the <code>src/02-multimodal-models/</code> directory (e.g., as <code>my_image.jpg</code>).</li>
-<li>Open the <code>src/02-multimodal-models/inspect-image.py</code> script.</li>
+<li>Open the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/inspect-image.py" target="_blank"><code>src/02-multimodal-models/inspect-image.py</code></a> script.</li>
 <li>Modify the script to use your new image file:<ul>
 <li>Update the filename in the <code>get_image_data_url</code> call (e.g., <code>get_image_data_url("my_image.jpg", "jpg")</code>). Make sure the format ("jpg", "png", etc.) matches your image.</li>
 </ul>
@@ -1308,7 +1308,7 @@
 <p><strong>Goal:</strong> Practice using the vision model to compare two different images, focusing on similarities.</p>
 <ol>
 <li>Find two images online that have some similarities but also differences (e.g., two different types of dogs, two different models of cars, two different chairs). Save them to the <code>src/02-multimodal-models/</code> directory (e.g., <code>image_A.png</code>, <code>image_B.png</code>).</li>
-<li>Open the <code>src/02-multimodal-models/compare-images.py</code> script.</li>
+<li>Open the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/compare-images.py" target="_blank"><code>src/02-multimodal-models/compare-images.py</code></a> script.</li>
 <li>Modify the script to use your two new images:<ul>
 <li>Update the filenames and formats in the two <code>get_image_data_url</code> calls.</li>
 </ul>
@@ -1319,10 +1319,10 @@
 <h2 id="exercise-23-conceptual-image-input-as-a-tool">Exercise 2.3 (Conceptual): Image Input as a "Tool"</h2>
 <p><strong>Goal:</strong> Think about how multimodal input relates to the concept of tool calling.</p>
 <p>Multimodal models can process different types of input, like text and images, simultaneously. This capability can be conceptually compared to having built-in tools for understanding different data modalities, as illustrated below:</p>
-<p><img alt="Multimodal Concept" src="../../../assets/images/concepts_multimodal.png" /></p>
+<p><img alt="Multimodal Agents Concept" src="https://raw.githubusercontent.com/denniszielke/agentic-playground/refs/heads/main/img/multimodalagents.png" /></p>
 <ol>
-<li>Review the <code>tool-calling.py</code> script from Module 1, where an external <code>get_current_time</code> function was defined and called.</li>
-<li>Review the <code>inspect-image.py</code> script from Module 2, where an image is provided directly in the prompt using <code>image_url</code>.</li>
+<li>Review the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py" target="_blank"><code>tool-calling.py</code></a> script from Module 1, where an external <code>get_current_time</code> function was defined and called.</li>
+<li>Review the <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/02-multimodal-models/inspect-image.py" target="_blank"><code>inspect-image.py</code></a> script from Module 2, where an image is provided directly in the prompt using <code>image_url</code>.</li>
 <li>Discuss: In the context of <code>inspect-image.py</code>, could you consider the ability to process the <code>image_url</code> as a built-in "tool" of the multimodal model itself? Why or why not?</li>
 <li>How does providing the image directly differ from defining an external function like <code>describe_image_from_url(url: str)</code> that the LLM would have to explicitly call?</li>
 </ol>

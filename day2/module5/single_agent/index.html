@@ -951,15 +951,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#hands-on-exercise-ideas-module-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hands-on Exercise Ideas (Module 5)
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1434,18 +1425,6 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>reasoning-agent-sk.py
 </code></pre></div>
 <p>Enter the question "What is the current time here?" at the <code>User:&gt;</code> prompt. Observe the output. While it does not explicitly show "Thought/Action/Observation" like the other frameworks by default, the agent will call <code>get_current_username</code>, <code>get_current_location_of_user</code>, and <code>get_current_time</code> from the <code>ChefPlugin</code> before giving the final answer, demonstrating the underlying reasoning and tool use.</p>
-<hr />
-<h2 id="hands-on-exercise-ideas-module-5">Hands-on Exercise Ideas (Module 5)</h2>
-<ol>
-<li><strong>Modify the Input Query:</strong> In any of the three scripts (<code>react-agent-lc.py</code>, <code>react-agent-li.py</code>, <code>reasoning-agent-sk.py</code>), change the input query to something slightly more complex that requires multiple tool calls, e.g., "What is the weather like for Dennis right now?" (This requires getting username -&gt; location -&gt; weather).</li>
-<li><strong>Add a Tool:</strong><ul>
-<li>In <code>react-agent-lc.py</code> or <code>react-agent-li.py</code>, define a new simple tool function (e.g., <code>add_numbers(a: int, b: int) -&gt; int</code>) and add it to the <code>tools</code> list.</li>
-<li>In <code>plugins.py</code>, add a similar function to <code>ChefPlugin</code>.</li>
-<li>Modify the input query to trigger the new tool (e.g., "What is 5 plus 7?"). Run the corresponding script and see if the agent uses the new tool.</li>
-</ul>
-</li>
-<li><strong>Examine Error Handling:</strong> In <code>react-agent-lc.py</code>, temporarily modify the <code>get_current_time</code> tool to sometimes raise an error. Observe how the <code>AgentExecutor</code> (with <code>handle_parsing_errors=True</code>) attempts to handle it or report the failure.</li>
-</ol>
 <hr />
 <p>This module introduced the ReAct pattern for building single autonomous agents using LangChain, LlamaIndex, and Semantic Kernel. The next module will explore how to introduce human oversight and intervention into agent workflows.</p>
 
