@@ -68,12 +68,12 @@ nav:
     - Module 6 - Human-in-the-Loop: day2/module6/human_loop.md
     - Module 6 - Exercises: day2/module6/exercises.md
     - Module 6 - Solutions: day2/module6/solutions.md
-  - Day 3- Advanced Multi-Agent Systems:
+  - Day 3 - Advanced Multi-Agent Systems:
     - Module 7 - Multi-Agent Collaboration: day3/module7/multi_agent.md
     - Module 7 - Exercises: day3/module7/exercises.md
     - Module 7 - Solutions: day3/module7/solutions.md
     - Module 8 - Society of Agents: day3/module8/society.md
     - Module 8 - Exercises: day3/module8/exercises.md
     - Module 8 - Solutions: day3/module8/solutions.md
-  - Code Examples: code/index.md # Placeholder for code reference
+  - Code Examples: code/index.md
 

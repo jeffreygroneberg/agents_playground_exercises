@@ -30,7 +30,7 @@ We recommend using a virtual environment to manage dependencies.
     ```bash
     pip install -r requirements.txt
     ```
-    *Note: Some examples might require additional dependencies (e.g., `pytz`, `graphviz`, `requests`, `pyaudio`, `sounddevice`, `pydub`, `pyperclip`, specific `langchain`, `llama-index`, `semantic-kernel`, or `autogen` components). Install these as needed when running specific examples, following instructions in the module content or error messages.* 
+    *Note: Some examples require additional dependencies (e.g., `pytz`, `graphviz`, `requests`, `pyaudio`, `sounddevice`, `pydub`, `pyperclip`, specific `langchain`, `llama-index`, `semantic-kernel`, or `autogen` components). Install these as needed when running specific examples, following instructions in the module content or error messages.* 
     *For Graphviz visualization (`knowledge-graphs.py`), you also need to install the Graphviz binaries separately:* 
         *   *macOS:* `brew install graphviz`
         *   *Ubuntu/Debian:* `sudo apt-get update && sudo apt-get install -y graphviz`
@@ -45,7 +45,7 @@ Many examples in this repository interact with LLMs hosted via GitHub Models inf
     2.  Click "Generate new token" (or "Generate new token (classic)").
     3.  Give your token a descriptive name (e.g., "Agentic Playground Workshop").
     4.  Set an expiration date.
-    5.  **Crucially, for GitHub Models inference, you generally do *not* need to select any specific scopes/permissions.** A token with no scopes should suffice.
+    5.  **Crucially, for GitHub Models inference, a token with no specific scopes/permissions is sufficient.**
     6.  Click "Generate token".
     7.  **Copy the generated token immediately.** You won't be able to see it again.
 *   **Configure the PAT:** The scripts typically use the `python-dotenv` library to load environment variables from a `.env` file in the repository's root directory.

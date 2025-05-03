@@ -8,7 +8,7 @@
 
 ## Introduction
 
-While single agents (Module 5) can handle complex tasks, breaking down problems and assigning specialized roles to different agents often leads to more robust, maintainable, and scalable solutions. Multi-agent systems allow for:
+While single agents (Module 5) can handle complex tasks, breaking down problems and assigning specialized roles to different agents leads to more robust, maintainable, and scalable solutions. Multi-agent systems allow for:
 
 *   **Specialization:** Each agent focuses on a specific task or expertise (e.g., coding, reviewing, planning, research).
 *   **Modularity:** Easier to develop, test, and update individual agents.
@@ -17,10 +17,10 @@ While single agents (Module 5) can handle complex tasks, breaking down problems 
 This module explores different approaches to multi-agent collaboration, contrasting a structured workflow using LangGraph with a more reasoning-focused approach.
 
 1.  **Structured Collaboration (LangGraph):** Defining explicit roles and interaction patterns (e.g., a Coder agent and a Reviewer agent improving code iteratively).
-2.  **Reasoning-Based Approach (AutoGen/MagenticOne):** Using a powerful reasoning model (like o1-mini) to handle tasks that might otherwise require multiple specialized agents.
+2.  **Reasoning-Based Approach (AutoGen/MagenticOne):** Using a powerful reasoning model (like o1-mini) to handle tasks that would otherwise require multiple specialized agents.
 
 !!! info "The Power of Collaboration"
-    Just like human teams, multi-agent systems leverage diverse skills and parallel processing to solve problems more effectively than a single entity might. Designing the communication and workflow between agents is key.
+    Just like human teams, multi-agent systems leverage diverse skills and parallel processing to solve problems more effectively than a single entity can. Designing the communication and workflow between agents is key.
 
 ## 1. Structured Collaboration: Coder & Reviewer (LangGraph)
 
@@ -39,7 +39,7 @@ This script implements a multi-agent system using LangGraph where two agents, a 
     3.  A decision node checks if the feedback indicates the code is satisfactory or if the iteration limit is reached.
     4.  If not satisfactory, the Coder receives the feedback and revises the code.
     5.  The revised code goes back to the Reviewer (Step 2).
-    6.  If satisfactory, the process ends, potentially with a final rating.
+    6.  If satisfactory, the process ends, followed by a final rating.
 *   **LangGraph Implementation:**
     *   `StateGraph(GraphState)` defines the structure.
     *   `GraphState` holds shared information (objective, code, feedback, history, iterations, etc.).
@@ -74,7 +74,7 @@ python coding-agents.py
 Observe the output. You'll see the Coder generating initial code, the Reviewer providing feedback, the Coder revising, and the cycle repeating until the `deployment_ready` condition is met (either feedback addressed or iteration limit exceeded), finally ending with the `handle_result` node.
 
 !!! tip "LangGraph for Structured Workflows"
-    LangGraph excels at defining explicit, potentially complex, workflows involving multiple agents or steps with clear transitions and conditional logic. It provides more control over the interaction pattern compared to more free-form agent frameworks.
+    LangGraph excels at defining explicit, complex workflows involving multiple agents or steps with clear transitions and conditional logic. It provides more control over the interaction pattern compared to more free-form agent frameworks.
 
 ## 2. Reasoning-Based Approach: Single Reasoning Coder (AutoGen/MagenticOne)
 
@@ -84,7 +84,7 @@ This script contrasts the multi-agent approach by using a single, powerful reaso
 
 **Concept:**
 
-Instead of breaking the task into explicit Coder and Reviewer roles managed by a graph, this approach relies on the advanced reasoning capabilities of the `o1-mini` model to understand the request and generate the code in one go (or potentially through internal reasoning steps not exposed externally in this simple script).
+Instead of breaking the task into explicit Coder and Reviewer roles managed by a graph, this approach relies on the advanced reasoning capabilities of the `o1-mini` model to understand the request and generate the code in one go (or through internal reasoning steps not exposed externally in this simple script).
 
 *   **Agent:** An `AssistantAgent` from `autogen_agentchat` is configured to use the `o1-mini` model via `OpenAIChatCompletionClient`.
 *   **Direct Invocation:** The `generate_code` function directly invokes the `reasoning_agent` with the coding task.
@@ -102,7 +102,7 @@ Instead of breaking the task into explicit Coder and Reviewer roles managed by a
 ```bash
 cd /home/ubuntu/agentic-playground/src/07-multi-agent-collaboration
 # Ensure autogen-agentchat, autogen-core, autogen-ext are installed
-# Note: autogen-ext might be a custom extension in this repo or require separate installation.
+# Note: `autogen-ext` is used here; ensure it is installed correctly, either as a custom extension within this repository or via separate installation steps if required.
 python reasoning-coder.py
 ```
 
@@ -114,7 +114,7 @@ Observe the output. It should directly print the generated code for the regressi
 **Comparison:**
 
 *   **LangGraph (Multi-Agent):**
-    *   Pros: Explicit control over workflow, clear roles, potentially better for complex processes requiring specific steps or checks, easier debugging of individual components.
+    *   Pros: Explicit control over workflow, clear roles, better for complex processes requiring specific steps or checks, easier debugging of individual components.
     *   Cons: More setup required to define the graph, nodes, and transitions.
 *   **AutoGen/o1-mini (Single Reasoning Agent):**
     *   Pros: Simpler setup for certain tasks, leverages the advanced reasoning of the model.

@@ -12,7 +12,7 @@ While structured workflows like LangGraph (Module 7) provide explicit control, s
 
 **Key Concepts (AutoGen/MagenticOne):**
 
-*   **Agents (`AssistantAgent`):** Define individual agents with specific roles, instructions (system messages), and potentially tools.
+*   **Agents (`AssistantAgent`):** Define individual agents with specific roles, instructions (system messages), and tools.
 *   **Group Chat (`MagenticOneGroupChat`):** Manages the conversation between multiple agents.
     *   **Orchestrator:** MagenticOne uses an underlying LLM (often a powerful reasoning model like `o1-mini` or `gpt-4o`) as an orchestrator. This orchestrator analyzes the conversation history and the agents' capabilities (descriptions, tools) to decide which agent should speak next to best advance the task.
     *   **Dynamic Turns:** Unlike predefined sequences or simple round-robin, the orchestrator dynamically selects the next speaker.
@@ -20,7 +20,7 @@ While structured workflows like LangGraph (Module 7) provide explicit control, s
 *   **Termination:** Conditions like `MaxMessageTermination` (limit number of messages) or `TextMentionTermination` (stop when a specific keyword like "TERMINATE" is mentioned) are used to end the chat.
 
 !!! info "AutoGen & MagenticOne"
-    AutoGen is a framework for building multi-agent applications. MagenticOne appears to be a specific group chat implementation within or compatible with AutoGen, leveraging an LLM orchestrator for dynamic turn-taking based on agent descriptions and conversation context.
+    AutoGen is a framework for building multi-agent applications. MagenticOne is a specific group chat implementation within or compatible with AutoGen, leveraging an LLM orchestrator for dynamic turn-taking based on agent descriptions and conversation context.
 
 This module explores variations of MagenticOne group chats:
 
@@ -47,7 +47,7 @@ This script sets up a basic MagenticOne group chat with agents specialized in ge
     *   Each agent has a `description` which is crucial for the MagenticOne orchestrator to understand its capabilities.
 *   **Create Group Chat:** `MagenticOneGroupChat(...)`:
     *   Takes the list of participating agents.
-    *   Uses an underlying `model_client` (likely for the orchestrator LLM).
+    *   Uses an underlying `model_client` (for the orchestrator LLM).
     *   Sets a `termination_condition` (`MaxMessageTermination(5)`).
 *   **Run Chat:** `magenticteam.run_stream(task="what time is it here?.")` starts the chat with the initial task.
 *   **Display Output:** `Console(stream)` prints the conversation flow to the console.
@@ -60,7 +60,7 @@ cd /home/ubuntu/agentic-playground/src/08-society-of-agents
 python simple-group.py
 ```
 
-Observe the console output. You will see the agents conversing, likely involving the `users_agent`, `location_agent`, and `time_agent` being called upon by the orchestrator to gather the necessary information before the `summary_agent` potentially provides the final answer or the chat hits the message limit.
+Observe the console output. You will see the agents conversing, involving the `users_agent`, `location_agent`, and `time_agent` being called upon by the orchestrator to gather the necessary information before the `summary_agent` provides the final answer or the chat hits the message limit.
 
 ## 2. Chef Recommendation Group Chat
 
@@ -111,7 +111,7 @@ cd /home/ubuntu/agentic-playground/src/08-society-of-agents
 python o1-with-chef-group.py
 ```
 
-Observe the flow. The MagenticOne orchestrator might dynamically decide to call the `consultation_agent` at certain points. When called, the `consultation_agent` uses its `check_conversation` tool, which in turn invokes the powerful `o1-mini` `reasoning_agent` to analyze the chat history and provide feedback. This demonstrates a hierarchical pattern where one agent leverages another, more capable agent for specific complex tasks like quality control.
+Observe the flow. The MagenticOne orchestrator dynamically decides to call the `consultation_agent` at certain points. When called, the `consultation_agent` uses its `check_conversation` tool, which in turn invokes the powerful `o1-mini` `reasoning_agent` to analyze the chat history and provide feedback. This demonstrates a hierarchical pattern where one agent leverages another, more capable agent for specific complex tasks like quality control.
 
 !!! success "Hierarchical Agent Structures"
     Integrating a powerful reasoning agent as a consultant or reviewer within a group of specialized agents is a common and effective pattern. It allows the specialized agents to handle routine tasks while the reasoning agent provides higher-level oversight, analysis, or complex decision-making.

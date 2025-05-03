@@ -16,7 +16,7 @@ The ReAct pattern involves an iterative loop:
 2.  **Action:** The agent decides to use a specific tool.
 3.  **Action Input:** The agent determines the necessary input for the chosen tool.
 4.  **Observation:** The agent receives the result (output) from executing the tool.
-5.  The agent incorporates the observation into its reasoning (back to step 1) and continues the loop until it believes it can provide the final answer.
+5.  The agent incorporates the observation into its reasoning (back to step 1) and continues the loop until the final answer is determined.
 
 This module demonstrates the ReAct pattern using three different frameworks:
 
@@ -85,7 +85,7 @@ This script implements the same ReAct logic using LlamaIndex.
 *   **Create ReAct Agent:** `ReActAgent.from_tools(...)` creates the agent:
     *   Takes the list of tools.
     *   Takes the LLM instance.
-    *   Can optionally take a custom `react_chat_formatter` and system prompt (though the example seems to rely on the default prompt structure expected by `ReActAgent` or potentially updates it later, the commented `agent.update_prompts` suggests customization is possible).
+    *   Can optionally take a custom `react_chat_formatter` and system prompt (the example relies on the default prompt structure expected by `ReActAgent`; the commented `agent.update_prompts` shows customization is possible).
     *   `verbose=True` enables detailed logging of the ReAct steps.
 *   **Chat with Agent:** `agent.stream_chat(...)` initiates the conversation. LlamaIndex's ReAct agent handles the iterative tool use internally based on the prompt structure.
 *   **Stream Response:** The example uses `response_gen.print_response_stream()` to print the agent's thoughts and final answer as they are generated.
@@ -129,7 +129,7 @@ cd /home/ubuntu/agentic-playground/src/05-single-agent
 python reasoning-agent-sk.py
 ```
 
-Enter the question "What is the current time here?" at the `User:>` prompt. Observe the output. While it might not explicitly show "Thought/Action/Observation" like the other frameworks by default, the agent will likely call `get_current_username`, `get_current_location_of_user`, and `get_current_time` from the `ChefPlugin` before giving the final answer, demonstrating the underlying reasoning and tool use.
+Enter the question "What is the current time here?" at the `User:>` prompt. Observe the output. While it does not explicitly show "Thought/Action/Observation" like the other frameworks by default, the agent will call `get_current_username`, `get_current_location_of_user`, and `get_current_time` from the `ChefPlugin` before giving the final answer, demonstrating the underlying reasoning and tool use.
 
 ---
 
@@ -140,7 +140,7 @@ Enter the question "What is the current time here?" at the `User:>` prompt. Obse
     *   In `react-agent-lc.py` or `react-agent-li.py`, define a new simple tool function (e.g., `add_numbers(a: int, b: int) -> int`) and add it to the `tools` list.
     *   In `plugins.py`, add a similar function to `ChefPlugin`.
     *   Modify the input query to trigger the new tool (e.g., "What is 5 plus 7?"). Run the corresponding script and see if the agent uses the new tool.
-3.  **Examine Error Handling:** In `react-agent-lc.py`, temporarily modify the `get_current_time` tool to sometimes raise an error. Observe how the `AgentExecutor` (with `handle_parsing_errors=True`) might try to handle it or report the failure.
+3.  **Examine Error Handling:** In `react-agent-lc.py`, temporarily modify the `get_current_time` tool to sometimes raise an error. Observe how the `AgentExecutor` (with `handle_parsing_errors=True`) attempts to handle it or report the failure.
 
 ---
 

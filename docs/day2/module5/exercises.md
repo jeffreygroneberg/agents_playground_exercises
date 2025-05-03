@@ -35,7 +35,7 @@ These exercises are based on the concepts and code presented in Module 5: Implem
 
 ## Exercise 5.3 (Conceptual): Handling Tool Errors in ReAct
 
-**Goal:** Think about how an agent might react when a tool fails.
+**Goal:** Think about how an agent reacts when a tool fails.
 
 1.  Consider the ReAct loop: Thought -> Action -> Action Input -> Observation -> Thought...
 2.  Imagine the `get_weather` tool fails (e.g., the API is down, invalid location provided) and returns an error message or raises an exception.
@@ -44,5 +44,5 @@ These exercises are based on the concepts and code presented in Module 5: Implem
     *   Should it try a different tool?
     *   Should it inform the user it cannot get the weather?
     *   Should it try to guess the weather?
-4.  How does the specific prompt given to the ReAct agent (like the ones in `react-agent-lc.py` or `react-agent-li.py`) influence how it might handle errors? Do the prompts explicitly mention error handling?
+4.  How does the specific prompt given to the ReAct agent (like the ones in `react-agent-lc.py` or `react-agent-li.py`) influence how it handles errors? Do the prompts explicitly mention error handling?
 5.  How does the `handle_parsing_errors=True` option in LangChain's `AgentExecutor` relate to this? Does it handle *tool execution* errors or just errors in parsing the LLM's output?

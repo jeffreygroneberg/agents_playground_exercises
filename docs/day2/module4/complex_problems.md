@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Day 1 focused on basic interactions and handling different data types. Day 2 moves towards more autonomous behavior. Real-world problems often require agents to go beyond simple Q&A or single-tool use. They might need to:
+Day 1 focused on basic interactions and handling different data types. Day 2 moves towards more autonomous behavior. Real-world problems require agents to go beyond simple Q&A or single-tool use. They need to:
 
 *   Interact with web interfaces (browsing, filling forms).
 *   Follow specific, domain-bound procedures.
@@ -85,7 +85,7 @@ This script takes the DSL concept further by combining it with **tool calling**.
     1.  Sends the user query, DSL prompt, and available tools to the LLM.
     2.  Checks if the LLM response includes `tool_calls`.
     3.  If yes: Executes the requested Python function, appends the result to the message history (with `role: "tool"`), and calls the LLM *again* with the updated history.
-    4.  If no tool call (or after a tool call response), returns the LLM's final message (which might be DSL commands or a natural language answer incorporating tool results).
+    4.  If no tool call (or after a tool call response), returns the LLM's final message (which can be DSL commands or a natural language answer incorporating tool results).
 
 **To Run (`trucking-execute.py`):**
 
@@ -95,7 +95,7 @@ cd /home/ubuntu/agentic-playground/src/04-complex-problems
 python trucking-execute.py
 ```
 
-Observe the output. You should see the LLM potentially calling `get_current_time` or `calculate_travel_time` and then generating the DSL plan or a final answer incorporating the calculated times.
+Observe the output. You should see the LLM calling `get_current_time` or `calculate_travel_time` and then generating the DSL plan or a final answer incorporating the calculated times.
 
 !!! success "Benefits of DSLs"
     *   **Predictability:** Constrains LLM output to valid, expected actions.
@@ -152,12 +152,13 @@ The script will prompt you for your name and then print the greeting, demonstrat
 
 ## 3. Browser Automation for Web Interaction
 
-**Files:**
+Relevant files for this section include:
+
 *   [`src/04-complex-problems/browser-use.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/browser-use.py){target="_blank"}
 *   [`src/04-complex-problems/do-research.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/do-research.py){target="_blank"}
 *   [`src/04-complex-problems/apply-for-job.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/apply-for-job.py){target="_blank"}
 *   [`src/04-complex-problems/find-contract.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/find-contract.py){target="_blank"}
-*   (Uses library from [`src/browser_use/`](https://github.com/denniszielke/agentic-playground/tree/main/src/browser_use){target="_blank"}) - Note: This seems to be a custom library within the repo.
+*   The custom library used by these scripts: [`src/browser_use/`](https://github.com/denniszielke/agentic-playground/tree/main/src/browser_use){target="_blank"}
 
 Many tasks require interacting with websites. Agents can use browser automation tools (like Playwright, Selenium, or the custom `browser_use` library here) to perform actions like:
 
@@ -169,15 +170,15 @@ Many tasks require interacting with websites. Agents can use browser automation 
 
 **Concept (`browser_use` Library):**
 
-This repository includes a custom `browser_use` library (likely wrapping a tool like Playwright) that provides:
+This repository includes a custom `browser_use` library (which wraps a tool like Playwright) that provides:
 
 *   `Browser`: Manages the browser instance.
 *   `Agent`: An agent class that takes a task, an LLM, a `Controller`, and a `Browser`.
 *   `Controller`: Defines custom actions (`@controller.action`) that the agent can use. These actions often interact with the browser or local files.
 *   `BrowserContext`: Passed to actions, allowing them to interact with the current browser page.
-*   `ActionResult`: A standard return type for actions, potentially including extracted content or error messages.
+*   `ActionResult`: A standard return type for actions, including extracted content or error messages.
 
-The `Agent` likely works in a loop:
+The `Agent` works in a loop:
 1.  **Perceive:** Get the current page state (HTML, visible elements, URL).
 2.  **Plan:** Send the page state, task description, and available actions (from the `Controller`) to the LLM.
 3.  **Act:** The LLM decides the next action (e.g., `click`, `input`, `scroll`, or a custom action like `read_cv` or `save_jobs`). The `Agent` executes the action via the `Browser` or `Controller`.
@@ -188,13 +189,13 @@ The `Agent` likely works in a loop:
 
 **Code Examples:**
 
-*   **`browser-use.py`:** A very simple example tasking the agent to compare prices by likely browsing the web.
+*   **`browser-use.py`:** A very simple example tasking the agent to compare prices by browsing the web.
 *   **`do-research.py`:**
     *   Task: Research battery chemistry based on a taxonomy file and specific websites.
     *   Custom Actions: `read_taxonomy`, `save_insights` (saves findings to JSON).
     *   Demonstrates reading local files (`battery_chem.xml`) and saving structured output.
 *   **`apply-for-job.py`:**
-    *   Task: Find job offers, evaluate against a CV, potentially apply.
+    *   Task: Find job offers, evaluate against a CV, apply.
     *   Custom Actions: `read_cv` (reads PDF), `save_jobs` (saves to CSV), `upload_cv` (interacts with file input elements on a webpage).
     *   Shows PDF reading and file upload interaction.
 *   **`find-contract.py`:**
@@ -206,14 +207,14 @@ The `Agent` likely works in a loop:
 
 ```bash
 cd /home/ubuntu/agentic-playground/src/04-complex-problems
-# Ensure dependencies are installed (likely requires browser_use setup, potentially playwright, langchain, openai, pydantic)
-# May require specific browser setup (e.g., Chrome path in BrowserConfig)
+# Ensure dependencies are installed (requires browser_use setup, playwright, langchain, openai, pydantic)
+# Requires specific browser setup (e.g., Chrome path in BrowserConfig)
 # Ensure battery_chem.xml exists
 python do-research.py
 ```
 
 !!! warning "Running Browser Automation"
-    Running these examples might be complex due to the custom `browser_use` library and potential browser setup needs (installing browsers, drivers, handling paths). Focus on understanding the pattern: **LLM decides -> Action executed -> Page state updated -> LLM decides again.**
+    Running these examples can be complex due to the custom `browser_use` library and specific browser setup needs (installing browsers, drivers, handling paths). Focus on understanding the pattern: **LLM decides -> Action executed -> Page state updated -> LLM decides again.**
 
 ---
 

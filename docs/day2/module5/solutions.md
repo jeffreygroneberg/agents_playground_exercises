@@ -52,10 +52,7 @@ Thought: I have the weather information for Dennis in Berlin. I can now provide 
 Final Answer: The weather for Dennis in Berlin is currently sunny with a temperature of 22°C.
 
 > Finished chain.
-```
-The agent should call `get_current_username`, then `get_current_location`, then `get_weather` before giving the final answer.
-
-## Solution 5.2: Adding a New Tool
+`The agent calls `get_current_username`, then `get_current_location`, then `get_weather` before giving the final answer.Solution 5.2: Adding a New Tool
 
 **Goal:** Extend the agent with a calculator tool.
 
@@ -101,7 +98,7 @@ The output stream should show the agent reasoning:
 *   Thought: The user wants to add 25 and 17. I have a tool called `add_numbers` that can do this.
 *   Action: `add_numbers`
 *   Action Input: `{"a": 25, "b": 17}`
-*   (Console might print: `Tool: Adding 25 + 17`)
+*   (Console output will show: `Tool: Adding 25 + 17`)
 *   Observation: `42`
 *   Thought: The result of adding 25 and 17 is 42. I can now answer the user.
 *   Final Answer: 25 plus 17 is 42.
@@ -114,12 +111,12 @@ This is a discussion point.
     *   **Acknowledge the error:** Recognize that the previous action failed.
     *   **Analyze the error:** Understand *why* it failed, if possible (e.g., was it the tool itself, or the input provided?).
     *   **Re-plan:** Decide on the next best course of action. This could be:
-        *   **Retry (Cautiously):** If the error seems transient (like a temporary API glitch), it might try the same tool again, perhaps once.
-        *   **Try Alternative:** If the error suggests bad input (e.g., invalid location), it might try to get the input again (e.g., ask the user for clarification or use `get_current_location` again).
-        *   **Inform User:** If the tool seems fundamentally broken or the required information cannot be obtained, the agent should inform the user about the failure (e.g., "I tried to get the weather, but the weather service is currently unavailable.").
-        *   **Abandon Goal (Rare):** If the failed tool was critical and there's no alternative, it might have to report it cannot complete the task.
+        *   **Retry (Cautiously):** If the error is transient (like a temporary API glitch), it can try the same tool again.
+        *   **Try Alternative:** If the error suggests bad input (e.g., invalid location), it can try to get the input again (e.g., ask the user for clarification or use `get_current_location` again).
+        *   **Inform User:** If the tool is fundamentally broken or the required information cannot be obtained, the agent should inform the user about the failure (e.g., "I tried to get the weather, but the weather service is currently unavailable.").
+        *   **Abandon Goal (Rare):** If the failed tool was critical and there's no alternative, it may have to report it cannot complete the task.
     *   **Avoid Guessing:** The agent should generally avoid making up information if a tool fails.
 
-2.  **Influence of the Prompt:** The ReAct system prompt is crucial. If the prompt includes instructions on how to handle errors or failed actions (e.g., "If a tool returns an error, report the error to the user and stop" or "If a tool fails, try to find an alternative way to get the information"), the LLM will be more likely to follow that guidance. The prompts in the examples might not explicitly detail error handling, relying on the LLM's general reasoning.
+2.  **Influence of the Prompt:** The ReAct system prompt is crucial. If the prompt includes instructions on how to handle errors or failed actions (e.g., "If a tool returns an error, report the error to the user and stop" or "If a tool fails, try to find an alternative way to get the information"), the LLM will follow that guidance. The prompts in the examples do not explicitly detail error handling, relying on the LLM's general reasoning.
 
 3.  **`handle_parsing_errors` in LangChain:** This option specifically deals with situations where the LLM's output (its Thought/Action/Action Input block) doesn't conform to the format the `AgentExecutor` expects. For example, if the LLM forgets to specify an action or formats the JSON input incorrectly. `handle_parsing_errors=True` allows the executor to send the malformed output back to the LLM as an "Observation" with instructions to correct the format. It does *not* directly handle errors that occur *during the execution of the tool itself* (like an API failure). Tool execution errors are typically caught by the code calling the tool, and the error message is returned as the "Observation" for the agent to reason about in the next step.

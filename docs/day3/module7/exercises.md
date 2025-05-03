@@ -57,5 +57,5 @@ These exercises are based on the concepts and code presented in Module 7: Multi-
     *   `UserInteraction`: Handles communication with the user (getting preferences, presenting options, asking for confirmation).
 3.  Sketch a diagram or list the steps for a possible workflow using these agents in a LangGraph structure.
     *   What would the `GraphState` need to hold (e.g., destination, dates, flight_options, hotel_options, chosen_flight, chosen_hotel, itinerary)?
-    *   Where might you need conditional edges (e.g., based on user choices)?
-    *   Where might you need human-in-the-loop interrupts (e.g., for the user to select a flight or hotel)?
+    *   Where would conditional edges be needed (e.g., based on user choices)?
+    *   Where would human-in-the-loop interrupts be needed (e.g., for the user to select a flight or hotel)?

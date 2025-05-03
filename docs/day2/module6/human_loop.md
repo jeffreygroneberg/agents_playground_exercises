@@ -8,7 +8,7 @@
 
 ## Introduction
 
-While the goal is often to create fully autonomous agents, there are many scenarios where human involvement is crucial or desirable:
+While a common goal is to create fully autonomous agents, there are many scenarios where human involvement is crucial or desirable:
 
 *   **Safety and Control:** Preventing agents from taking harmful or unintended actions, especially in high-stakes environments.
 *   **Quality Assurance:** Reviewing or correcting agent outputs before they are finalized or used in downstream processes.
@@ -18,7 +18,7 @@ While the goal is often to create fully autonomous agents, there are many scenar
 This module explores patterns for integrating humans into the agent execution loop, focusing on:
 
 1.  **Interruptible Workflows (LangGraph):** Pausing agent execution at specific points to wait for human input before proceeding.
-2.  **Collaborative Review Loops (Semantic Kernel):** Designing multi-agent systems where one agent's output is reviewed (potentially by a human or another agent acting as a proxy) before further action.
+2.  **Collaborative Review Loops (Semantic Kernel):** Designing multi-agent systems where one agent's output is reviewed (by a human or another agent acting as a proxy) before further action.
 
 !!! info "Why Human-in-the-Loop (HIL)?"
     HIL combines the strengths of AI (speed, scale, data processing) with human capabilities (judgment, common sense, ethical reasoning, handling ambiguity). It's essential for building trustworthy, reliable, and effective AI systems in many real-world applications.
@@ -79,18 +79,18 @@ Observe the output. The program will print the progress through `node1`, then pa
 
 **File:** [`src/06-human-in-the-loop/report-agents.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/06-human-in-the-loop/report-agents.py){target="_blank"}
 
-This example uses Semantic Kernel's `AgentGroupChat` to simulate a scenario where a "Writer" agent drafts content, and a "Reviewer" agent provides feedback. The loop continues until the Reviewer deems the content satisfactory. While the Reviewer is an AI agent here, it simulates the role a human might play in a review process.
+This example uses Semantic Kernel's `AgentGroupChat` to simulate a scenario where a "Writer" agent drafts content, and a "Reviewer" agent provides feedback. The loop continues until the Reviewer deems the content satisfactory. While the Reviewer is an AI agent here, it simulates the role a human can play in a review process.
 
 **Concept (Semantic Kernel AgentGroupChat):**
 
 *   **Agents:** Two `ChatCompletionAgent` instances are created: `agent_writer` and `agent_reviewer`, each with specific instructions defining their roles.
-*   **Group Chat:** An `AgentGroupChat` manages the interaction between the agents (and potentially the user).
+*   **Group Chat:** An `AgentGroupChat` manages the interaction between the agents (and the user, if involved).
 *   **Selection Strategy:** Determines which agent speaks next. Here, `KernelFunctionSelectionStrategy` uses an LLM prompt (`selection_function`) that enforces a turn order (User -> Writer -> Reviewer -> Writer -> ...).
 *   **Termination Strategy:** Determines when the chat should end. Here, `KernelFunctionTerminationStrategy` uses another LLM prompt (`termination_function`) to check if the Reviewer's last message indicates satisfaction (contains "yes").
 *   **Chat Loop:** The `main` function takes user input (the initial content or feedback), adds it to the chat, and then calls `chat.invoke()`. The `AgentGroupChat` orchestrates the conversation based on the selection and termination strategies:
     *   Writer revises content based on user input/reviewer feedback.
     *   Reviewer checks the writer's output.
-    *   If satisfactory, the reviewer might say something indicating approval, triggering termination.
+    *   If satisfactory, the reviewer indicates approval, triggering termination.
     *   If not satisfactory, the reviewer provides feedback, and the loop continues with the writer.
 
 **Code Breakdown:**

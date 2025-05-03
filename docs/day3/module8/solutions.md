@@ -22,7 +22,7 @@ if __name__ == "__main__":
 ```
 
 **Expected Output:**
-The conversation flow should primarily involve the `users_agent` (to confirm the user is Dennis) and the `location_agent` (to get the location for Dennis). The `time_agent` should not be involved. The `summary_agent` might be called at the end to state the final answer (e.g., "Dennis lives in Berlin.") before terminating.
+The conversation flow should primarily involve the `users_agent` (to confirm the user is Dennis) and the `location_agent` (to get the location for Dennis). The `time_agent` should not be involved. The `summary_agent` is called at the end to state the final answer (e.g., "Dennis lives in Berlin.") before terminating.
 
 ## Solution 8.2: Adding a Weather Agent (Simple Group)
 
@@ -99,7 +99,7 @@ def get_medical_history(username: str) -> str:
 ```
 
 **Expected Output:**
-When the conversation reaches the `chef_agent`, having already learned the username is Dennis but that there are "No known allergies", the `chef_agent` *should* ask a clarifying question based on its system prompt (which likely includes instructions like "If allergies are unknown, ask the user"). The output should show the `chef_agent` asking something like:
+When the conversation reaches the `chef_agent`, having already learned the username is Dennis but that there are "No known allergies", the `chef_agent` asks a clarifying question based on its system prompt (which includes instructions like "If allergies are unknown, ask the user"). The output should show the `chef_agent` asking something like:
 
 ```
 ChefAgent: Okay Dennis, I see no known allergies on file. To make sure I recommend something safe, do you have any food allergies or dietary restrictions I should be aware of?
@@ -130,6 +130,6 @@ async def check_conversation(messages: list[dict[str, str]]) -> str:
 When the `consultation_agent` is invoked by the orchestrator, its output (which comes from the `reasoning_agent` via the `check_conversation` tool) should now specifically address whether the chef confirmed allergies. For example:
 
 *   If the chef *did* ask: `ConsultationAgent: Yes, the chef asked about allergies after learning none were on file before proceeding with the recommendation.`
-*   If the chef *did not* ask (perhaps due to an LLM error or prompt issue): `ConsultationAgent: No, the chef did not explicitly confirm allergies with the user before making a recommendation, even though the initial medical history check showed no known allergies.`
+*   If the chef *did not* ask (due to an LLM error or prompt issue): `ConsultationAgent: No, the chef did not explicitly confirm allergies with the user before making a recommendation, even though the initial medical history check showed no known allergies.`
 
 This demonstrates tailoring the oversight provided by the reasoning agent to focus on specific quality aspects of the multi-agent interaction.

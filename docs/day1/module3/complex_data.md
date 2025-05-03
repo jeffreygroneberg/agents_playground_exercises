@@ -23,7 +23,7 @@ While LLMs excel at processing natural language, many real-world tasks involve s
 
 This script demonstrates using an LLM to generate a knowledge graph from a natural language query, representing the answer as structured data.
 
-**Concept:** Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (`KnowledgeGraph`, `Node`, `Edge`) using the `client.beta.chat.completions.parse` feature (which seems specific to this SDK version or a helper library, allowing direct parsing into Pydantic models).
+**Concept:** Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (`KnowledgeGraph`, `Node`, `Edge`) using the `client.beta.chat.completions.parse` feature (a feature allowing direct parsing into Pydantic models).
 
 **Code Breakdown:**
 
@@ -60,7 +60,7 @@ class KnowledgeGraph(BaseModel):
 ```
 
 !!! tip "Pydantic for Structured Output"
-    Using Pydantic models along with features like `client.beta.chat.completions.parse` (or similar structured output mechanisms in other libraries) allows you to reliably get JSON or Python objects from the LLM, matching your desired schema.
+    Using Pydantic models along with features like `client.beta.chat.completions.parse` (or similar structured output mechanisms in other libraries) enables the reliable retrieval of JSON or Python objects from the LLM, matching your desired schema.
 
 *   **Define Generation Function (`generate_graph`):**
     *   Takes user input text.
@@ -97,7 +97,7 @@ cd /home/ubuntu/agentic-playground/src/03-complex-data
 python knowledge-graphs.py
 ```
 
-After running, inspect the generated `knowledge_graph.svg` file (you might need to download it or use a browser within the environment if available) to see the visual representation of the model's understanding.
+After running, inspect the generated `knowledge_graph.svg` file (you will need to download it or use a browser within the environment if available) to see the visual representation of the model's understanding.
 
 ## 2. Creating and Using Ontologies
 
@@ -209,7 +209,7 @@ response = client.chat.completions.create(
             ],
         },
     ],
-    model=model_name, # Note: Uses gpt-4o, might be needed for better ontology understanding
+    model=model_name, # Note: Uses gpt-4o, which is recommended for better ontology understanding
 )
 
 print(response.choices[0].message.content)
@@ -235,7 +235,7 @@ This script uses a multimodal model to extract information from an image of an i
 
 *   **Download Invoice:** Downloads a sample invoice image (`rechnungsvorlage.jpg`) if it doesn't exist locally.
 *   **Client Setup & Image Prep:** Standard client, uses `get_image_data_url` for the downloaded `invoice.jpg`.
-*   **Load Template & Explanation:** Reads the target XML structure from `invoice_template.xml` and potentially additional context/instructions from `invoice_explaination.txt`.
+*   **Load Template & Explanation:** Reads the target XML structure from `invoice_template.xml` and additional context/instructions from `invoice_explaination.txt`.
 *   **Construct System Prompt:** Combines instructions ("extract invoice information... create a XRechnung Beispiel XML...") with the content of the template XML file. This gives the model the target schema.
 
 ```python

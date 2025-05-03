@@ -48,8 +48,8 @@ If it meets the criteria, respond with only the word "yes".
 ```
 
 **Expected Output Comparison (Part A vs. Part B):**
-*   **Part A (Original Reviewer):** The reviewer might provide general feedback on clarity or style. The number of turns might be relatively small if the initial draft is decent.
-*   **Part B (Stricter Reviewer):** The reviewer will specifically check for length (< 100 chars) and the presence of a hashtag. If the writer's initial draft (or revisions) fails these checks, the reviewer will provide targeted feedback (e.g., "The text is too long.", "Missing hashtag."). This will likely lead to more revision cycles (more turns in the conversation) before the reviewer responds with "yes".
+*   **Part A (Original Reviewer):** The reviewer provides general feedback on clarity or style. The number of turns is relatively small if the initial draft is decent.
+*   **Part B (Stricter Reviewer):** The reviewer will specifically check for length (< 100 chars) and the presence of a hashtag. If the writer's initial draft (or revisions) fails these checks, the reviewer will provide targeted feedback (e.g., "The text is too long.", "Missing hashtag."). This will lead to more revision cycles (more turns in the conversation) before the reviewer responds with "yes".
 
 ## Solution 6.3 (Conceptual): Modifying Interrupt for Approval
 
@@ -90,7 +90,7 @@ from typing import Literal
 # Define a new node to handle rejection (optional)
 async def handle_rejection(state: State):
     print("---Node Rejection--- Plan was not approved.")
-    # Could potentially loop back or end here
+    # Can loop back or end here
     return {}
 
 # Conditional edge logic

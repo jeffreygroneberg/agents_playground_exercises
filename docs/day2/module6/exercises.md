@@ -49,6 +49,6 @@ These exercises are based on the concepts and code presented in Module 6: Human-
 3.  How would you modify `node2`?
     *   What dictionary would you pass to `interrupt()`? (e.g., `{"data_to_approve": result, "prompt": "Do you approve this plan? (yes/no)"}`)
     *   How would you check the `human_input` received after the interrupt?
-4.  How would you modify the graph structure (`builder.add_edge`)? You would likely need conditional edges after `node2`.
+4.  How would you modify the graph structure (`builder.add_edge`)? Conditional edges would be needed after `node2`.
     *   If `human_input` is "yes", add an edge from `node2` to `node3`.
     *   If `human_input` is "no", what should happen? Add an edge back to `node1`? Add an edge to a new "handle_rejection" node? Add an edge directly to `END`?

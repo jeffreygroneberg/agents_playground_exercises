@@ -116,7 +116,7 @@ You should see the answer to "What is the capital of France?" printed in French.
 
 **File:** [`src/01-basics/streaming-output.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/streaming-output.py){target="_blank"}
 
-Sometimes, waiting for the entire response can take time, especially for longer answers. Streaming allows you to receive the response piece by piece, making the interaction feel more responsive.
+Waiting for the entire response can take time, especially for longer answers. Streaming allows you to receive the response piece by piece, improving the perceived responsiveness of the interaction.
 
 **Code Breakdown:**
 
@@ -139,7 +139,7 @@ response = client.chat.completions.create(
 *   **Processing the Stream:**
     *   The `response` object is now an iterator.
     *   We loop through each `update` in the stream.
-    *   Each `update` might contain a small piece of the response text (`delta.content`). We print these pieces immediately.
+    *   Each `update` can contain a small piece of the response text (`delta.content`). We print these pieces immediately.
     *   If usage information is included, it appears in a final update.
 
 ```python

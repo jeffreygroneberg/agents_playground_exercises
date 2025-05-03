@@ -18,14 +18,14 @@ In this module, we will explore:
 !!! info "What is Multimodality?"
     Multimodality in AI refers to the ability of models to process and understand information from multiple types of data (modalities) simultaneously, such as text, images, audio, and video. This allows for a richer understanding of context, similar to human perception.
 
-**Note:** The voice interaction examples might require specific Azure credentials or setup beyond the basic GitHub PAT, as indicated in the `voice-agent.py` code (referencing Azure OpenAI endpoints and deployments). We will focus on the concepts and code structure.
+**Note:** The voice interaction examples rely on specific Azure credentials or setup beyond the basic GitHub PAT, as indicated in the `voice-agent.py` code (referencing Azure OpenAI endpoints and deployments). We will focus on the concepts and code structure.
 
 ## 1. Vision: Inspecting and Comparing Images
 
 Modern LLMs like GPT-4o (and its mini version used here) can directly process images provided within the prompt.
 
 **Helper Function (`get_image_data_url`):**
-Both `inspect-image.py` and `compare-images.py` use a helper function (defined in the scripts, but conceptually similar to one potentially in `utils.py` or `imagelibrary.py`) to convert local image files into base64-encoded data URLs. This format allows embedding the image directly into the API request.
+Both `inspect-image.py` and `compare-images.py` use a helper function (defined in the scripts, but conceptually similar to one in `utils.py` or `imagelibrary.py`) to convert local image files into base64-encoded data URLs. This format allows embedding the image directly into the API request.
 
 ```python
 import base64
@@ -35,7 +35,7 @@ def get_image_data_url(image_file: str, image_format: str) -> str:
     return f"data:image/{image_format};base64,{image_data}"
 ```
 
-**(Optional) Image Library:** The code also imports `imagelibrary.VectorDatabase` and calls `database.download_images()`. This seems related to fetching example images (`f1_car_url_1.jpg`, `f1_car_url_2.jpg`) used in the scripts, potentially from an online source if they don't exist locally. For the workshop, ensure these images are available in the execution directory.
+**(**(Optional) Image Library:** The code imports `imagelibrary.VectorDatabase` and calls `database.download_images()`. This functionality fetches example images (`f1_car_url_1.jpg`, `f1_car_url_2.jpg`) from an online source if they are not present locally. For the workshop, ensure these images are available in the execution directory.
 
 ### Inspecting a Single Image
 
@@ -159,7 +159,7 @@ These examples demonstrate a more complex scenario: a real-time voice conversati
 
 1.  **Audio Input:** Capturing audio from the user's microphone.
 2.  **Speech-to-Text (STT):** Converting the user's speech into text.
-3.  **LLM Processing:** Sending the text (and potentially conversation history) to the LLM, possibly using tools.
+3.  **LLM Processing:** Sending the text and conversation history to the LLM, which then processes it and uses tools if necessary.
 4.  **Text-to-Speech (TTS):** Converting the LLM's text response back into audio.
 5.  **Audio Output:** Playing the generated audio back to the user.
 6.  **Turn Detection:** Determining when the user has finished speaking and when the agent should respond (Voice Activity Detection - VAD).
@@ -170,8 +170,8 @@ These examples demonstrate a more complex scenario: a real-time voice conversati
 **Code Structure (`voice-agent.py`):**
 
 *   **Dependencies:** Uses `semantic-kernel[realtime]`, `pyaudio`, `sounddevice`, `pydub`, indicating reliance on Semantic Kernel's real-time capabilities and audio libraries.
-*   **Audio Handling:** Uses `AudioPlayerWebRTC` and `AudioRecorderWebRTC` (from `utils.py`) likely for handling audio input/output streams, potentially via WebRTC for web applications.
-*   **Realtime Agent:** Leverages `OpenAIRealtimeWebRTC` from Semantic Kernel, which seems to orchestrate the STT, LLM interaction, and TTS pipeline, likely using a specialized real-time API endpoint (indicated by the Azure endpoint/deployment variables).
+*   **Audio Handling:** Uses `AudioPlayerWebRTC` and `AudioRecorderWebRTC` (from `utils.py`) for handling audio input/output streams, often via WebRTC for web applications.
+*   **Realtime Agent:** Leverages `OpenAIRealtimeWebRTC` from Semantic Kernel, which orchestrates the STT, LLM interaction, and TTS pipeline, using a specialized real-time API endpoint (indicated by the Azure endpoint/deployment variables).
 *   **Settings:** Configures `OpenAIRealtimeExecutionSettings` including:
     *   `instructions`: The system prompt for the agent.
     *   `voice`: Specifies the TTS voice.
@@ -182,15 +182,15 @@ These examples demonstrate a more complex scenario: a real-time voice conversati
 *   **Event Loop:** The main loop (`async for event in realtime_agent.receive(...)`) processes events from the real-time service, including transcribed text (`RealtimeTextEvent`) and other service events (`ListenEvents`).
 
 **Flask App (`voice-interaction/app.py`):**
-This appears to be a web interface (likely using Flask and WebSockets) that interacts with the backend logic (potentially `voice-agent.py` concepts or the `rtmt.py` module mentioned in the file structure) to provide a web-based voice chat experience.
+This is a web interface (using Flask and WebSockets) that interacts with the backend logic (using `voice-agent.py` concepts or the `rtmt.py` module mentioned in the file structure) to provide a web-based voice chat experience.
 
 !!! warning "Running the Voice Demo"
-    Running `python voice-interaction/app.py` might require:
+    Running `python voice-interaction/app.py` requires:
     *   Specific Azure credentials set as environment variables (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, `AZURE_VOICE_COMPLETION_DEPLOYMENT_NAME`, `AZURE_VOICE_COMPLETION_MODEL`).
     *   Installation of additional audio dependencies (`pip install pyaudio sounddevice pydub semantic-kernel[realtime]`).
     *   Correct audio device configuration.
 
-    Due to these complexities, it might be best to treat this as a code walkthrough and conceptual explanation unless the workshop environment is specifically prepared for Azure voice services.
+    Due to these complexities, it is best to treat this as a code walkthrough and conceptual explanation unless the workshop environment is specifically prepared for Azure voice services.
 
 ---
 

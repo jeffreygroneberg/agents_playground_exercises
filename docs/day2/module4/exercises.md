@@ -29,7 +29,7 @@ These exercises are based on the concepts and code presented in Module 4: Solvin
 3.  Modify the `user_query` to explicitly ask for information that requires a tool. For example:
     *   "Load the red box (15kg) and blue box (8kg) onto truck 1. If the current time is before noon, travel 100 km. Otherwise, travel 50 km."
     *   "Prepare truck 3. Load a 20kg package. Calculate the travel time for a 300 km journey and tell me the estimated arrival time based on the current time."
-4.  Run the script (`python trucking-execute.py`). Remember you might need `pytz` (`pip install pytz`).
+4.  Run the script (`python trucking-execute.py`). Ensure `pytz` is installed (`pip install pytz`).
 5.  Observe the verbose output (if enabled in the script, or by adding `verbose=True` to `run_conversation` if needed). Does the LLM call the `get_current_time` or `calculate_travel_time` tool? Does the final output (DSL plan or natural language answer) incorporate the result from the tool?
 
 ## Exercise 4.3 (Conceptual): Designing a Tea-Making DSL
@@ -38,16 +38,16 @@ These exercises are based on the concepts and code presented in Module 4: Solvin
 
 A Domain Specific Language (DSL) is a set of commands tailored for a specific task, allowing an agent (or human) to express complex instructions concisely. The trucking example uses a DSL for logistics. The diagram below shows how a DSL fits into the agent's process:
 
-![DSL Concept](../assets/images/concepts_dsl.png)
+![DSL Concept](../../assets/images/concepts_dsl.png)
 
-1.  Imagine you want an agent to make a cup of tea. Define a set of simple commands (a DSL) that represent the necessary actions. Think about the parameters each command might need.
+1.  Imagine you want an agent to make a cup of tea. Define a set of simple commands (a DSL) that represent the necessary actions.    *   Think about the parameters each command needs.
     *   Examples: `boil_water(kettle_id)`, `get_cup(cup_id)`, `add_tea_bag(cup_id, tea_type)`, `pour_water(kettle_id, cup_id)`, `add_milk(cup_id, amount_ml)`, `add_sugar(cup_id, spoons)`, `wait(seconds)`, `serve(cup_id)`.
 2.  Write down your list of DSL commands and their parameters.
 3.  Write a sample plan using your DSL commands to make a cup of black tea with milk and two sugars, letting it steep for 60 seconds.
 
 ## Exercise 4.4 (Conceptual): Adding Summarization to Research Agent
 
-**Goal:** Think about how to modify an existing agent task and potentially add new capabilities (tools).
+**Goal:** Think about how to modify an existing agent task and add new capabilities (tools).
 
 1.  Consider the `do-research.py` example (even if you couldn't run it due to dependencies). Its task is to research battery chemistry based on a taxonomy file and save insights to JSON using the `save_insights` action.
 2.  Suppose you want the agent to *summarize* the key findings in a short paragraph *in addition* to saving the detailed insights.

@@ -26,7 +26,7 @@ response = client.chat.completions.create(
 print(f"{response.choices[0].message.content}")
 ```
 
-**Expected Output:** The output should be a sequence of DSL commands similar to this (exact box IDs might vary):
+**Expected Output:** The output should be a sequence of DSL commands similar to this (exact box IDs can vary):
 
 ```
 prepare_truck(truck_id=1)
@@ -54,9 +54,9 @@ print(response)
 ```
 
 **Expected Output:**
-*   The script execution trace should show calls to `get_current_time` (likely without arguments, or the LLM might invent a location if not specified) and `calculate_travel_time` (with `distance=300`).
-*   The final output from the `print(response)` statement will likely be a natural language sentence incorporating the results, such as: "Okay, truck 3 is prepared with the 20kg package. The current time is [time from tool]. The estimated travel time for 300 km is [time from tool]. Therefore, the estimated arrival time is approximately [calculated arrival time]."
-*   Alternatively, the LLM might still output some DSL commands mixed with the tool calls and final answer, depending on its interpretation.
+*   The script execution trace should show calls to `get_current_time` (without arguments, or the LLM invents a location if not specified) and `calculate_travel_time` (with `distance=300`).
+*   The final output from the `print(response)` statement will be a natural language sentence incorporating the results, such as: "Okay, truck 3 is prepared with the 20kg package. The current time is [time from tool]. The estimated travel time for 300 km is [time from tool]. Therefore, the estimated arrival time is approximately [calculated arrival time]."
+*   Alternatively, the LLM can also output some DSL commands mixed with the tool calls and final answer, depending on its interpretation.
 
 This shows the LLM using the available tools (`get_current_time`, `calculate_travel_time`) when the query explicitly requires information provided by those tools, integrating the results into its response.
 
@@ -105,7 +105,7 @@ You could modify the `task` string given to the `Agent` class in `do-research.py
 *   **Original (Conceptual):** "Research battery chemistry based on `battery_chem.xml` and specific websites. Save detailed insights using `save_insights` action."
 *   **Modified:** "Research battery chemistry based on `battery_chem.xml` and specific websites. Save detailed insights using `save_insights` action. **After saving the insights, provide a concise summary paragraph of the key findings.**"
 
-Adding the summarization requirement directly to the task description might be sufficient if the underlying LLM is capable enough. It might perform the research, call `save_insights`, and then generate the summary as its final output.
+Adding the summarization requirement directly to the task description is sufficient if the underlying LLM is capable enough. It performs the research, calls `save_insights`, and then generates the summary as its final output.
 
 **2. Adding a New Custom Action:**
 
@@ -125,17 +125,17 @@ def summarize_findings(findings_text: str):
     # Assume 'llm' is accessible here or passed in
     summary = llm.invoke(summary_prompt) # Or use the agent's LLM instance
     logger.info(f"Generated summary: {summary}")
-    # This action might return the summary text, which the agent 
-    # could then include in its final response, or it could just log it.
+    # This action returns the summary text, which the agent 
+    # includes in its final response, or it logs it.
     return ActionResult(extracted_content=summary, include_in_memory=True) 
 
-    # Option 2: Use a dedicated summarization library (less likely needed here)
+    # Option 2: Use a dedicated summarization library (less common needed here)
 ```
 
 **Integration:**
-*   The LLM, guided by the modified task description, would need to decide to call `summarize_findings` *after* gathering and potentially saving the research data.
-*   It would likely need to retrieve the gathered text (perhaps from the `ActionResult` of previous steps or by reading the saved JSON file via another potential tool) to pass as input to `summarize_findings`.
+*   The LLM, guided by the modified task description, would need to decide to call `summarize_findings` *after* gathering and saving the research data.
+*   It would need to retrieve the gathered text (from the `ActionResult` of previous steps or by reading the saved JSON file via another tool) to pass as input to `summarize_findings`.
 
 **Which approach is better?**
 *   Modifying the task description is simpler if the LLM can handle the sequential requirement (research -> save -> summarize).
-*   Adding a dedicated tool gives more explicit control and might be necessary if the summarization needs specific logic or needs to operate on structured data retrieved from the saved file.
+*   Adding a dedicated tool gives more explicit control and is necessary if the summarization needs specific logic or needs to operate on structured data retrieved from the saved file.

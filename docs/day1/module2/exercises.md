@@ -30,7 +30,7 @@ These exercises are based on the concepts and code presented in Module 2: Workin
 
 Multimodal models can process different types of input, like text and images, simultaneously. This capability can be conceptually compared to having built-in tools for understanding different data modalities, as illustrated below:
 
-![Multimodal Concept](../assets/images/concepts_multimodal.png)
+![Multimodal Concept](../../assets/images/concepts_multimodal.png)
 
 1.  Review the `tool-calling.py` script from Module 1, where an external `get_current_time` function was defined and called.
 2.  Review the `inspect-image.py` script from Module 2, where an image is provided directly in the prompt using `image_url`.

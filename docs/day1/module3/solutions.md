@@ -23,7 +23,7 @@ if __name__ == "__main__":
 **Expected Output:**
 *   The script should run without errors (assuming `graphviz` is installed).
 *   A file named `knowledge_graph.svg` will be created in the `src/03-complex-data/` directory.
-*   Opening `knowledge_graph.svg` should display a graph with nodes representing "Browser", "Web Server", "Database" (and potentially related concepts like "HTTP Request", "SQL Query", "HTML/CSS/JS") and edges showing the interactions (e.g., Browser sends Request to Web Server, Web Server queries Database, Database returns data to Web Server, Web Server sends Response to Browser).
+*   Opening `knowledge_graph.svg` should display a graph with nodes representing "Browser", "Web Server", "Database" (and related concepts like "HTTP Request", "SQL Query", "HTML/CSS/JS") and edges showing the interactions (e.g., Browser sends Request to Web Server, Web Server queries Database, Database returns data to Web Server, Web Server sends Response to Browser).
 
 ## Solution 3.2: Using the Ontology with an Irrelevant Image
 
@@ -76,10 +76,10 @@ print(response.choices[0].message.content)
 ```
 
 **Expected Output:**
-The model's output will likely be somewhat confused or nonsensical. It might:
+The model's output can vary depending on its interpretation. Possible outcomes include:
 *   Correctly identify the image as a battery but then awkwardly try to apply screw-related terms from the ontology (e.g., "This battery has a cylindrical head type...").
 *   Ignore the ontology entirely and just describe the battery.
-*   Explicitly state that the provided ontology doesn't seem relevant to the image content.
+*   Explicitly state that the provided ontology is not relevant to the image content.
 
 **Discussion Point:** This demonstrates that while providing context (like an ontology) can guide the LLM, the context *must be relevant* to the task and input. Providing irrelevant context can confuse the model or lead to incorrect/nonsensical outputs. The LLM doesn't inherently *know* the ontology only applies to screws; it tries to follow instructions, even if the combination doesn't logically fit.
 
@@ -95,10 +95,10 @@ This exercise requires manual comparison and discussion. There is no single code
 
 **Example Findings (Hypothetical - actual results may vary):**
 
-*   **Correct:** Invoice Number, Issue Date, Sender Name/Address, Recipient Name/Address, Total Amount might be extracted correctly.
-*   **Incorrect:** A specific line item quantity might be misread (e.g., '1' read as 'l'), a date format might be misinterpreted, a complex address line might be split incorrectly.
-*   **Missed:** A secondary contact person or a specific payment term mentioned in small print might be missed.
-*   **Hallucinated:** The model might invent a field value if it's unsure or if the template expects a field not clearly present (less common but possible).
+*   **Examples of Correct Extraction:** Fields like Invoice Number, Issue Date, Sender Name/Address, Recipient Name/Address, and Total Amount are generally extracted correctly.
+*   **Incorrect:** A specific line item quantity is misread (e.g., '1' read as 'l'), a date format is misinterpreted, or a complex address line is split incorrectly.
+*   **Missed:** A secondary contact person or a specific payment term mentioned in small print can be missed.
+*   **Hallucinated:** The model invents a field value if it's unsure or if the template expects a field not clearly present (this is less common).
 
 **Discussion Points:**
 *   **Image Quality:** Was the `invoice.jpg` clear? OCR (Optical Character Recognition), which the multimodal model performs internally, is sensitive to image resolution, rotation, lighting, and font type.
