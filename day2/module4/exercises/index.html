@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1101,7 +1101,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1112,7 +1112,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1328,15 +1328,15 @@
 <li>"Prepare truck 3. Load a 20kg package. Calculate the travel time for a 300 km journey and tell me the estimated arrival time based on the current time."</li>
 </ul>
 </li>
-<li>Run the script (<code>python trucking-execute.py</code>). Remember you might need <code>pytz</code> (<code>pip install pytz</code>).</li>
+<li>Run the script (<code>python trucking-execute.py</code>). Ensure <code>pytz</code> is installed (<code>pip install pytz</code>).</li>
 <li>Observe the verbose output (if enabled in the script, or by adding <code>verbose=True</code> to <code>run_conversation</code> if needed). Does the LLM call the <code>get_current_time</code> or <code>calculate_travel_time</code> tool? Does the final output (DSL plan or natural language answer) incorporate the result from the tool?</li>
 </ol>
 <h2 id="exercise-43-conceptual-designing-a-tea-making-dsl">Exercise 4.3 (Conceptual): Designing a Tea-Making DSL</h2>
 <p><strong>Goal:</strong> Practice defining a Domain Specific Language for a simple, everyday process.</p>
 <p>A Domain Specific Language (DSL) is a set of commands tailored for a specific task, allowing an agent (or human) to express complex instructions concisely. The trucking example uses a DSL for logistics. The diagram below shows how a DSL fits into the agent's process:</p>
-<p><img alt="DSL Concept" src="../assets/images/concepts_dsl.png" /></p>
+<p><img alt="DSL Concept" src="../../../assets/images/concepts_dsl.png" /></p>
 <ol>
-<li>Imagine you want an agent to make a cup of tea. Define a set of simple commands (a DSL) that represent the necessary actions. Think about the parameters each command might need.<ul>
+<li>Imagine you want an agent to make a cup of tea. Define a set of simple commands (a DSL) that represent the necessary actions.    *   Think about the parameters each command needs.<ul>
 <li>Examples: <code>boil_water(kettle_id)</code>, <code>get_cup(cup_id)</code>, <code>add_tea_bag(cup_id, tea_type)</code>, <code>pour_water(kettle_id, cup_id)</code>, <code>add_milk(cup_id, amount_ml)</code>, <code>add_sugar(cup_id, spoons)</code>, <code>wait(seconds)</code>, <code>serve(cup_id)</code>.</li>
 </ul>
 </li>
@@ -1344,7 +1344,7 @@
 <li>Write a sample plan using your DSL commands to make a cup of black tea with milk and two sugars, letting it steep for 60 seconds.</li>
 </ol>
 <h2 id="exercise-44-conceptual-adding-summarization-to-research-agent">Exercise 4.4 (Conceptual): Adding Summarization to Research Agent</h2>
-<p><strong>Goal:</strong> Think about how to modify an existing agent task and potentially add new capabilities (tools).</p>
+<p><strong>Goal:</strong> Think about how to modify an existing agent task and add new capabilities (tools).</p>
 <ol>
 <li>Consider the <code>do-research.py</code> example (even if you couldn't run it due to dependencies). Its task is to research battery chemistry based on a taxonomy file and save insights to JSON using the <code>save_insights</code> action.</li>
 <li>Suppose you want the agent to <em>summarize</em> the key findings in a short paragraph <em>in addition</em> to saving the detailed insights.</li>

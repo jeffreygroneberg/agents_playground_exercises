@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1110,7 +1110,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1121,7 +1121,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1313,7 +1313,7 @@
 <p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/04-complex-problems" target="_blank"><code>src/04-complex-problems/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>Day 1 focused on basic interactions and handling different data types. Day 2 moves towards more autonomous behavior. Real-world problems often require agents to go beyond simple Q&amp;A or single-tool use. They might need to:</p>
+<p>Day 1 focused on basic interactions and handling different data types. Day 2 moves towards more autonomous behavior. Real-world problems require agents to go beyond simple Q&amp;A or single-tool use. They need to:</p>
 <ul>
 <li>Interact with web interfaces (browsing, filling forms).</li>
 <li>Follow specific, domain-bound procedures.</li>
@@ -1384,7 +1384,7 @@
 <li>Sends the user query, DSL prompt, and available tools to the LLM.</li>
 <li>Checks if the LLM response includes <code>tool_calls</code>.</li>
 <li>If yes: Executes the requested Python function, appends the result to the message history (with <code>role: "tool"</code>), and calls the LLM <em>again</em> with the updated history.</li>
-<li>If no tool call (or after a tool call response), returns the LLM's final message (which might be DSL commands or a natural language answer incorporating tool results).</li>
+<li>If no tool call (or after a tool call response), returns the LLM's final message (which can be DSL commands or a natural language answer incorporating tool results).</li>
 </ol>
 </li>
 </ul>
@@ -1393,7 +1393,7 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Install pytz if needed: pip install pytz</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>trucking-execute.py
 </code></pre></div>
-<p>Observe the output. You should see the LLM potentially calling <code>get_current_time</code> or <code>calculate_travel_time</code> and then generating the DSL plan or a final answer incorporating the calculated times.</p>
+<p>Observe the output. You should see the LLM calling <code>get_current_time</code> or <code>calculate_travel_time</code> and then generating the DSL plan or a final answer incorporating the calculated times.</p>
 <div class="admonition success">
 <p class="admonition-title">Benefits of DSLs</p>
 <ul>
@@ -1450,12 +1450,14 @@
 </ul>
 </div>
 <h2 id="3-browser-automation-for-web-interaction">3. Browser Automation for Web Interaction</h2>
-<p><strong>Files:</strong>
-*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/browser-use.py" target="_blank"><code>src/04-complex-problems/browser-use.py</code></a>
-*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/do-research.py" target="_blank"><code>src/04-complex-problems/do-research.py</code></a>
-*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/apply-for-job.py" target="_blank"><code>src/04-complex-problems/apply-for-job.py</code></a>
-*   <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/find-contract.py" target="_blank"><code>src/04-complex-problems/find-contract.py</code></a>
-*   (Uses library from <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/browser_use" target="_blank"><code>src/browser_use/</code></a>) - Note: This seems to be a custom library within the repo.</p>
+<p>Relevant files for this section include:</p>
+<ul>
+<li><a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/browser-use.py" target="_blank"><code>src/04-complex-problems/browser-use.py</code></a></li>
+<li><a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/do-research.py" target="_blank"><code>src/04-complex-problems/do-research.py</code></a></li>
+<li><a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/apply-for-job.py" target="_blank"><code>src/04-complex-problems/apply-for-job.py</code></a></li>
+<li><a href="https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/find-contract.py" target="_blank"><code>src/04-complex-problems/find-contract.py</code></a></li>
+<li>The custom library used by these scripts: <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/browser_use" target="_blank"><code>src/browser_use/</code></a></li>
+</ul>
 <p>Many tasks require interacting with websites. Agents can use browser automation tools (like Playwright, Selenium, or the custom <code>browser_use</code> library here) to perform actions like:</p>
 <ul>
 <li>Navigating to URLs.</li>
@@ -1465,15 +1467,15 @@
 <li>Uploading files.</li>
 </ul>
 <p><strong>Concept (<code>browser_use</code> Library):</strong></p>
-<p>This repository includes a custom <code>browser_use</code> library (likely wrapping a tool like Playwright) that provides:</p>
+<p>This repository includes a custom <code>browser_use</code> library (which wraps a tool like Playwright) that provides:</p>
 <ul>
 <li><code>Browser</code>: Manages the browser instance.</li>
 <li><code>Agent</code>: An agent class that takes a task, an LLM, a <code>Controller</code>, and a <code>Browser</code>.</li>
 <li><code>Controller</code>: Defines custom actions (<code>@controller.action</code>) that the agent can use. These actions often interact with the browser or local files.</li>
 <li><code>BrowserContext</code>: Passed to actions, allowing them to interact with the current browser page.</li>
-<li><code>ActionResult</code>: A standard return type for actions, potentially including extracted content or error messages.</li>
+<li><code>ActionResult</code>: A standard return type for actions, including extracted content or error messages.</li>
 </ul>
-<p>The <code>Agent</code> likely works in a loop:
+<p>The <code>Agent</code> works in a loop:
 1.  <strong>Perceive:</strong> Get the current page state (HTML, visible elements, URL).
 2.  <strong>Plan:</strong> Send the page state, task description, and available actions (from the <code>Controller</code>) to the LLM.
 3.  <strong>Act:</strong> The LLM decides the next action (e.g., <code>click</code>, <code>input</code>, <code>scroll</code>, or a custom action like <code>read_cv</code> or <code>save_jobs</code>). The <code>Agent</code> executes the action via the <code>Browser</code> or <code>Controller</code>.
@@ -1484,7 +1486,7 @@
 </div>
 <p><strong>Code Examples:</strong></p>
 <ul>
-<li><strong><code>browser-use.py</code>:</strong> A very simple example tasking the agent to compare prices by likely browsing the web.</li>
+<li><strong><code>browser-use.py</code>:</strong> A very simple example tasking the agent to compare prices by browsing the web.</li>
 <li><strong><code>do-research.py</code>:</strong><ul>
 <li>Task: Research battery chemistry based on a taxonomy file and specific websites.</li>
 <li>Custom Actions: <code>read_taxonomy</code>, <code>save_insights</code> (saves findings to JSON).</li>
@@ -1492,7 +1494,7 @@
 </ul>
 </li>
 <li><strong><code>apply-for-job.py</code>:</strong><ul>
-<li>Task: Find job offers, evaluate against a CV, potentially apply.</li>
+<li>Task: Find job offers, evaluate against a CV, apply.</li>
 <li>Custom Actions: <code>read_cv</code> (reads PDF), <code>save_jobs</code> (saves to CSV), <code>upload_cv</code> (interacts with file input elements on a webpage).</li>
 <li>Shows PDF reading and file upload interaction.</li>
 </ul>
@@ -1506,14 +1508,14 @@
 </ul>
 <p><strong>To Run (Example: <code>do-research.py</code>):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/agentic-playground/src/04-complex-problems
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Ensure dependencies are installed (likely requires browser_use setup, potentially playwright, langchain, openai, pydantic)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># May require specific browser setup (e.g., Chrome path in BrowserConfig)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Ensure dependencies are installed (requires browser_use setup, playwright, langchain, openai, pydantic)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Requires specific browser setup (e.g., Chrome path in BrowserConfig)</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Ensure battery_chem.xml exists</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>python<span class="w"> </span><span class="k">do</span>-research.py
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Running Browser Automation</p>
-<p>Running these examples might be complex due to the custom <code>browser_use</code> library and potential browser setup needs (installing browsers, drivers, handling paths). Focus on understanding the pattern: <strong>LLM decides -&gt; Action executed -&gt; Page state updated -&gt; LLM decides again.</strong></p>
+<p>Running these examples can be complex due to the custom <code>browser_use</code> library and specific browser setup needs (installing browsers, drivers, handling paths). Focus on understanding the pattern: <strong>LLM decides -&gt; Action executed -&gt; Page state updated -&gt; LLM decides again.</strong></p>
 </div>
 <hr />
 <h2 id="hands-on-exercise-ideas-module-4">Hands-on Exercise Ideas (Module 4)</h2>

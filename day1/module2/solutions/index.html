@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1092,7 +1092,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1103,7 +1103,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1446,8 +1446,8 @@
 <p><strong>How does it differ from an external function call?</strong></p>
 <ul>
 <li><strong>Integration:</strong> Image processing via <code>image_url</code> is deeply integrated into the model's architecture. An external function (<code>describe_image_from_url(url: str)</code>) requires an explicit multi-step process (LLM requests tool -&gt; Code executes tool -&gt; Code sends result back -&gt; LLM uses result), similar to the <code>get_current_time</code> example.</li>
-<li><strong>Data Transfer:</strong> Providing the image via <code>image_url</code> (especially as a base64 data URL) sends the image data directly to the model endpoint in the <em>same</em> API call as the text prompt. An external function would likely involve the code fetching the image from the URL, processing it (perhaps with a separate vision model or library), and sending only the resulting <em>text description</em> back to the LLM in a <em>subsequent</em> API call.</li>
-<li><strong>Richness of Information:</strong> The built-in capability allows the LLM to directly access the rich visual features of the image. An external tool returning only a text description might lose nuances that the LLM could have perceived if it processed the image directly.</li>
+<li><strong>Data Transfer:</strong> Providing the image via <code>image_url</code> (especially as a base64 data URL) sends the image data directly to the model endpoint in the <em>same</em> API call as the text prompt. An external function involves the code fetching the image from the URL, processing it (for example, with a separate vision model or library), and sending only the resulting <em>text description</em> back to the LLM in a <em>subsequent</em> API call.</li>
+<li><strong>Richness of Information:</strong> The built-in capability allows the LLM to directly access the rich visual features of the image. An external tool returning only a text description loses nuances that the LLM could have perceived if it processed the image directly.</li>
 </ul>
 </li>
 </ul>

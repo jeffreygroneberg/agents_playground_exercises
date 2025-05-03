@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1023,7 +1023,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1034,7 +1034,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1304,7 +1304,7 @@
 <p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/07-multi-agent-collaboration" target="_blank"><code>src/07-multi-agent-collaboration/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>While single agents (Module 5) can handle complex tasks, breaking down problems and assigning specialized roles to different agents often leads to more robust, maintainable, and scalable solutions. Multi-agent systems allow for:</p>
+<p>While single agents (Module 5) can handle complex tasks, breaking down problems and assigning specialized roles to different agents leads to more robust, maintainable, and scalable solutions. Multi-agent systems allow for:</p>
 <ul>
 <li><strong>Specialization:</strong> Each agent focuses on a specific task or expertise (e.g., coding, reviewing, planning, research).</li>
 <li><strong>Modularity:</strong> Easier to develop, test, and update individual agents.</li>
@@ -1313,11 +1313,11 @@
 <p>This module explores different approaches to multi-agent collaboration, contrasting a structured workflow using LangGraph with a more reasoning-focused approach.</p>
 <ol>
 <li><strong>Structured Collaboration (LangGraph):</strong> Defining explicit roles and interaction patterns (e.g., a Coder agent and a Reviewer agent improving code iteratively).</li>
-<li><strong>Reasoning-Based Approach (AutoGen/MagenticOne):</strong> Using a powerful reasoning model (like o1-mini) to handle tasks that might otherwise require multiple specialized agents.</li>
+<li><strong>Reasoning-Based Approach (AutoGen/MagenticOne):</strong> Using a powerful reasoning model (like o1-mini) to handle tasks that would otherwise require multiple specialized agents.</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">The Power of Collaboration</p>
-<p>Just like human teams, multi-agent systems leverage diverse skills and parallel processing to solve problems more effectively than a single entity might. Designing the communication and workflow between agents is key.</p>
+<p>Just like human teams, multi-agent systems leverage diverse skills and parallel processing to solve problems more effectively than a single entity can. Designing the communication and workflow between agents is key.</p>
 </div>
 <h2 id="1-structured-collaboration-coder-reviewer-langgraph">1. Structured Collaboration: Coder &amp; Reviewer (LangGraph)</h2>
 <p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/coding-agents.py" target="_blank"><code>src/07-multi-agent-collaboration/coding-agents.py</code></a></p>
@@ -1335,7 +1335,7 @@
 <li>A decision node checks if the feedback indicates the code is satisfactory or if the iteration limit is reached.</li>
 <li>If not satisfactory, the Coder receives the feedback and revises the code.</li>
 <li>The revised code goes back to the Reviewer (Step 2).</li>
-<li>If satisfactory, the process ends, potentially with a final rating.</li>
+<li>If satisfactory, the process ends, followed by a final rating.</li>
 </ol>
 </li>
 <li><strong>LangGraph Implementation:</strong><ul>
@@ -1375,13 +1375,13 @@
 <p>Observe the output. You'll see the Coder generating initial code, the Reviewer providing feedback, the Coder revising, and the cycle repeating until the <code>deployment_ready</code> condition is met (either feedback addressed or iteration limit exceeded), finally ending with the <code>handle_result</code> node.</p>
 <div class="admonition tip">
 <p class="admonition-title">LangGraph for Structured Workflows</p>
-<p>LangGraph excels at defining explicit, potentially complex, workflows involving multiple agents or steps with clear transitions and conditional logic. It provides more control over the interaction pattern compared to more free-form agent frameworks.</p>
+<p>LangGraph excels at defining explicit, complex workflows involving multiple agents or steps with clear transitions and conditional logic. It provides more control over the interaction pattern compared to more free-form agent frameworks.</p>
 </div>
 <h2 id="2-reasoning-based-approach-single-reasoning-coder-autogenmagenticone">2. Reasoning-Based Approach: Single Reasoning Coder (AutoGen/MagenticOne)</h2>
 <p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/07-multi-agent-collaboration/reasoning-coder.py" target="_blank"><code>src/07-multi-agent-collaboration/reasoning-coder.py</code></a></p>
 <p>This script contrasts the multi-agent approach by using a single, powerful reasoning agent (specifically targeting <code>o1-mini</code> via <code>autogen-ext</code>) to handle the coding task directly.</p>
 <p><strong>Concept:</strong></p>
-<p>Instead of breaking the task into explicit Coder and Reviewer roles managed by a graph, this approach relies on the advanced reasoning capabilities of the <code>o1-mini</code> model to understand the request and generate the code in one go (or potentially through internal reasoning steps not exposed externally in this simple script).</p>
+<p>Instead of breaking the task into explicit Coder and Reviewer roles managed by a graph, this approach relies on the advanced reasoning capabilities of the <code>o1-mini</code> model to understand the request and generate the code in one go (or through internal reasoning steps not exposed externally in this simple script).</p>
 <ul>
 <li><strong>Agent:</strong> An <code>AssistantAgent</code> from <code>autogen_agentchat</code> is configured to use the <code>o1-mini</code> model via <code>OpenAIChatCompletionClient</code>.</li>
 <li><strong>Direct Invocation:</strong> The <code>generate_code</code> function directly invokes the <code>reasoning_agent</code> with the coding task.</li>
@@ -1397,7 +1397,7 @@
 <p><strong>To Run:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/agentic-playground/src/07-multi-agent-collaboration
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Ensure autogen-agentchat, autogen-core, autogen-ext are installed</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Note: autogen-ext might be a custom extension in this repo or require separate installation.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Note: `autogen-ext` is used here; ensure it is installed correctly, either as a custom extension within this repository or via separate installation steps if required.</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>python<span class="w"> </span>reasoning-coder.py
 </code></pre></div>
 <p>Observe the output. It should directly print the generated code for the regression model task, produced by the single <code>o1-mini</code> agent.</p>
@@ -1408,7 +1408,7 @@
 <p><strong>Comparison:</strong></p>
 <ul>
 <li><strong>LangGraph (Multi-Agent):</strong><ul>
-<li>Pros: Explicit control over workflow, clear roles, potentially better for complex processes requiring specific steps or checks, easier debugging of individual components.</li>
+<li>Pros: Explicit control over workflow, clear roles, better for complex processes requiring specific steps or checks, easier debugging of individual components.</li>
 <li>Cons: More setup required to define the graph, nodes, and transitions.</li>
 </ul>
 </li>

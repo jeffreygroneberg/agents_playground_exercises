@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1023,7 +1023,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1034,7 +1034,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1317,7 +1317,7 @@
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Expected Output:</strong>
-The conversation flow should primarily involve the <code>users_agent</code> (to confirm the user is Dennis) and the <code>location_agent</code> (to get the location for Dennis). The <code>time_agent</code> should not be involved. The <code>summary_agent</code> might be called at the end to state the final answer (e.g., "Dennis lives in Berlin.") before terminating.</p>
+The conversation flow should primarily involve the <code>users_agent</code> (to confirm the user is Dennis) and the <code>location_agent</code> (to get the location for Dennis). The <code>time_agent</code> should not be involved. The <code>summary_agent</code> is called at the end to state the final answer (e.g., "Dennis lives in Berlin.") before terminating.</p>
 <h2 id="solution-82-adding-a-weather-agent-simple-group">Solution 8.2: Adding a Weather Agent (Simple Group)</h2>
 <p>Modify <code>src/08-society-of-agents/simple-group.py</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ... (imports, model client, other tools definitions remain the same) ...</span>
@@ -1384,7 +1384,7 @@ The conversation should involve:
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># ... (agent definitions, group chat setup, task remain the same) ...</span>
 </code></pre></div>
 <p><strong>Expected Output:</strong>
-When the conversation reaches the <code>chef_agent</code>, having already learned the username is Dennis but that there are "No known allergies", the <code>chef_agent</code> <em>should</em> ask a clarifying question based on its system prompt (which likely includes instructions like "If allergies are unknown, ask the user"). The output should show the <code>chef_agent</code> asking something like:</p>
+When the conversation reaches the <code>chef_agent</code>, having already learned the username is Dennis but that there are "No known allergies", the <code>chef_agent</code> asks a clarifying question based on its system prompt (which includes instructions like "If allergies are unknown, ask the user"). The output should show the <code>chef_agent</code> asking something like:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ChefAgent: Okay Dennis, I see no known allergies on file. To make sure I recommend something safe, do you have any food allergies or dietary restrictions I should be aware of?
 </code></pre></div>
 This demonstrates the agent following its instructions to proactively seek missing critical information.</p>
@@ -1408,7 +1408,7 @@ This demonstrates the agent following its instructions to proactively seek missi
 When the <code>consultation_agent</code> is invoked by the orchestrator, its output (which comes from the <code>reasoning_agent</code> via the <code>check_conversation</code> tool) should now specifically address whether the chef confirmed allergies. For example:</p>
 <ul>
 <li>If the chef <em>did</em> ask: <code>ConsultationAgent: Yes, the chef asked about allergies after learning none were on file before proceeding with the recommendation.</code></li>
-<li>If the chef <em>did not</em> ask (perhaps due to an LLM error or prompt issue): <code>ConsultationAgent: No, the chef did not explicitly confirm allergies with the user before making a recommendation, even though the initial medical history check showed no known allergies.</code></li>
+<li>If the chef <em>did not</em> ask (due to an LLM error or prompt issue): <code>ConsultationAgent: No, the chef did not explicitly confirm allergies with the user before making a recommendation, even though the initial medical history check showed no known allergies.</code></li>
 </ul>
 <p>This demonstrates tailoring the oversight provided by the reasoning agent to focus on specific quality aspects of the multi-agent interaction.</p>
 

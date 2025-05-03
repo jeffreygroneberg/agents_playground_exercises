@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1092,7 +1092,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1103,7 +1103,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1308,7 +1308,7 @@
 <p><strong>Expected Output:</strong>
 *   The script should run without errors (assuming <code>graphviz</code> is installed).
 *   A file named <code>knowledge_graph.svg</code> will be created in the <code>src/03-complex-data/</code> directory.
-*   Opening <code>knowledge_graph.svg</code> should display a graph with nodes representing "Browser", "Web Server", "Database" (and potentially related concepts like "HTTP Request", "SQL Query", "HTML/CSS/JS") and edges showing the interactions (e.g., Browser sends Request to Web Server, Web Server queries Database, Database returns data to Web Server, Web Server sends Response to Browser).</p>
+*   Opening <code>knowledge_graph.svg</code> should display a graph with nodes representing "Browser", "Web Server", "Database" (and related concepts like "HTTP Request", "SQL Query", "HTML/CSS/JS") and edges showing the interactions (e.g., Browser sends Request to Web Server, Web Server queries Database, Database returns data to Web Server, Web Server sends Response to Browser).</p>
 <h2 id="solution-32-using-the-ontology-with-an-irrelevant-image">Solution 3.2: Using the Ontology with an Irrelevant Image</h2>
 <p>Modify <code>src/03-complex-data/use-onthology.py</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ... (imports, get_image_data_url, client setup remain the same) ...</span>
@@ -1355,10 +1355,10 @@
 <a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Expected Output:</strong>
-The model's output will likely be somewhat confused or nonsensical. It might:
+The model's output can vary depending on its interpretation. Possible outcomes include:
 *   Correctly identify the image as a battery but then awkwardly try to apply screw-related terms from the ontology (e.g., "This battery has a cylindrical head type...").
 *   Ignore the ontology entirely and just describe the battery.
-*   Explicitly state that the provided ontology doesn't seem relevant to the image content.</p>
+*   Explicitly state that the provided ontology is not relevant to the image content.</p>
 <p><strong>Discussion Point:</strong> This demonstrates that while providing context (like an ontology) can guide the LLM, the context <em>must be relevant</em> to the task and input. Providing irrelevant context can confuse the model or lead to incorrect/nonsensical outputs. The LLM doesn't inherently <em>know</em> the ontology only applies to screws; it tries to follow instructions, even if the combination doesn't logically fit.</p>
 <h2 id="solution-33-evaluating-invoice-parsing-accuracy">Solution 3.3: Evaluating Invoice Parsing Accuracy</h2>
 <p>This exercise requires manual comparison and discussion. There is no single code solution.</p>
@@ -1370,10 +1370,10 @@ The model's output will likely be somewhat confused or nonsensical. It might:
 </ol>
 <p><strong>Example Findings (Hypothetical - actual results may vary):</strong></p>
 <ul>
-<li><strong>Correct:</strong> Invoice Number, Issue Date, Sender Name/Address, Recipient Name/Address, Total Amount might be extracted correctly.</li>
-<li><strong>Incorrect:</strong> A specific line item quantity might be misread (e.g., '1' read as 'l'), a date format might be misinterpreted, a complex address line might be split incorrectly.</li>
-<li><strong>Missed:</strong> A secondary contact person or a specific payment term mentioned in small print might be missed.</li>
-<li><strong>Hallucinated:</strong> The model might invent a field value if it's unsure or if the template expects a field not clearly present (less common but possible).</li>
+<li><strong>Examples of Correct Extraction:</strong> Fields like Invoice Number, Issue Date, Sender Name/Address, Recipient Name/Address, and Total Amount are generally extracted correctly.</li>
+<li><strong>Incorrect:</strong> A specific line item quantity is misread (e.g., '1' read as 'l'), a date format is misinterpreted, or a complex address line is split incorrectly.</li>
+<li><strong>Missed:</strong> A secondary contact person or a specific payment term mentioned in small print can be missed.</li>
+<li><strong>Hallucinated:</strong> The model invents a field value if it's unsure or if the template expects a field not clearly present (this is less common).</li>
 </ul>
 <p><strong>Discussion Points:</strong>
 *   <strong>Image Quality:</strong> Was the <code>invoice.jpg</code> clear? OCR (Optical Character Recognition), which the multimodal model performs internally, is sensitive to image resolution, rotation, lighting, and font type.

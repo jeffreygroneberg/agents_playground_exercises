@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1101,7 +1101,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1112,7 +1112,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1304,7 +1304,7 @@
 <p><strong>Source Code:</strong> <a href="https://github.com/denniszielke/agentic-playground/tree/main/src/06-human-in-the-loop" target="_blank"><code>src/06-human-in-the-loop/</code></a></p>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>While the goal is often to create fully autonomous agents, there are many scenarios where human involvement is crucial or desirable:</p>
+<p>While a common goal is to create fully autonomous agents, there are many scenarios where human involvement is crucial or desirable:</p>
 <ul>
 <li><strong>Safety and Control:</strong> Preventing agents from taking harmful or unintended actions, especially in high-stakes environments.</li>
 <li><strong>Quality Assurance:</strong> Reviewing or correcting agent outputs before they are finalized or used in downstream processes.</li>
@@ -1314,7 +1314,7 @@
 <p>This module explores patterns for integrating humans into the agent execution loop, focusing on:</p>
 <ol>
 <li><strong>Interruptible Workflows (LangGraph):</strong> Pausing agent execution at specific points to wait for human input before proceeding.</li>
-<li><strong>Collaborative Review Loops (Semantic Kernel):</strong> Designing multi-agent systems where one agent's output is reviewed (potentially by a human or another agent acting as a proxy) before further action.</li>
+<li><strong>Collaborative Review Loops (Semantic Kernel):</strong> Designing multi-agent systems where one agent's output is reviewed (by a human or another agent acting as a proxy) before further action.</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Why Human-in-the-Loop (HIL)?</p>
@@ -1376,17 +1376,17 @@
 </div>
 <h2 id="2-collaborative-review-loops-semantic-kernel-agentgroupchat">2. Collaborative Review Loops (Semantic Kernel AgentGroupChat)</h2>
 <p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/06-human-in-the-loop/report-agents.py" target="_blank"><code>src/06-human-in-the-loop/report-agents.py</code></a></p>
-<p>This example uses Semantic Kernel's <code>AgentGroupChat</code> to simulate a scenario where a "Writer" agent drafts content, and a "Reviewer" agent provides feedback. The loop continues until the Reviewer deems the content satisfactory. While the Reviewer is an AI agent here, it simulates the role a human might play in a review process.</p>
+<p>This example uses Semantic Kernel's <code>AgentGroupChat</code> to simulate a scenario where a "Writer" agent drafts content, and a "Reviewer" agent provides feedback. The loop continues until the Reviewer deems the content satisfactory. While the Reviewer is an AI agent here, it simulates the role a human can play in a review process.</p>
 <p><strong>Concept (Semantic Kernel AgentGroupChat):</strong></p>
 <ul>
 <li><strong>Agents:</strong> Two <code>ChatCompletionAgent</code> instances are created: <code>agent_writer</code> and <code>agent_reviewer</code>, each with specific instructions defining their roles.</li>
-<li><strong>Group Chat:</strong> An <code>AgentGroupChat</code> manages the interaction between the agents (and potentially the user).</li>
+<li><strong>Group Chat:</strong> An <code>AgentGroupChat</code> manages the interaction between the agents (and the user, if involved).</li>
 <li><strong>Selection Strategy:</strong> Determines which agent speaks next. Here, <code>KernelFunctionSelectionStrategy</code> uses an LLM prompt (<code>selection_function</code>) that enforces a turn order (User -&gt; Writer -&gt; Reviewer -&gt; Writer -&gt; ...).</li>
 <li><strong>Termination Strategy:</strong> Determines when the chat should end. Here, <code>KernelFunctionTerminationStrategy</code> uses another LLM prompt (<code>termination_function</code>) to check if the Reviewer's last message indicates satisfaction (contains "yes").</li>
 <li><strong>Chat Loop:</strong> The <code>main</code> function takes user input (the initial content or feedback), adds it to the chat, and then calls <code>chat.invoke()</code>. The <code>AgentGroupChat</code> orchestrates the conversation based on the selection and termination strategies:<ul>
 <li>Writer revises content based on user input/reviewer feedback.</li>
 <li>Reviewer checks the writer's output.</li>
-<li>If satisfactory, the reviewer might say something indicating approval, triggering termination.</li>
+<li>If satisfactory, the reviewer indicates approval, triggering termination.</li>
 <li>If not satisfactory, the reviewer provides feedback, and the loop continues with the writer.</li>
 </ul>
 </li>

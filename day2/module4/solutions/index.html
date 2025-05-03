@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1101,7 +1101,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1112,7 +1112,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1321,7 +1321,7 @@
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>Expected Output:</strong> The output should be a sequence of DSL commands similar to this (exact box IDs might vary):</p>
+<p><strong>Expected Output:</strong> The output should be a sequence of DSL commands similar to this (exact box IDs can vary):</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>prepare_truck(truck_id=1)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>load_box_on_truck(truck_id=1, box_id=1, weight=10)
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>load_box_on_truck(truck_id=1, box_id=2, weight=10)
@@ -1342,9 +1342,9 @@ This demonstrates the LLM correctly interpreting the new box quantities, weights
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Expected Output:</strong>
-*   The script execution trace should show calls to <code>get_current_time</code> (likely without arguments, or the LLM might invent a location if not specified) and <code>calculate_travel_time</code> (with <code>distance=300</code>).
-*   The final output from the <code>print(response)</code> statement will likely be a natural language sentence incorporating the results, such as: "Okay, truck 3 is prepared with the 20kg package. The current time is [time from tool]. The estimated travel time for 300 km is [time from tool]. Therefore, the estimated arrival time is approximately [calculated arrival time]."
-*   Alternatively, the LLM might still output some DSL commands mixed with the tool calls and final answer, depending on its interpretation.</p>
+*   The script execution trace should show calls to <code>get_current_time</code> (without arguments, or the LLM invents a location if not specified) and <code>calculate_travel_time</code> (with <code>distance=300</code>).
+*   The final output from the <code>print(response)</code> statement will be a natural language sentence incorporating the results, such as: "Okay, truck 3 is prepared with the 20kg package. The current time is [time from tool]. The estimated travel time for 300 km is [time from tool]. Therefore, the estimated arrival time is approximately [calculated arrival time]."
+*   Alternatively, the LLM can also output some DSL commands mixed with the tool calls and final answer, depending on its interpretation.</p>
 <p>This shows the LLM using the available tools (<code>get_current_time</code>, <code>calculate_travel_time</code>) when the query explicitly requires information provided by those tools, integrating the results into its response.</p>
 <h2 id="solution-43-conceptual-designing-a-tea-making-dsl">Solution 4.3 (Conceptual): Designing a Tea-Making DSL</h2>
 <p>This requires defining commands and a sample plan.</p>
@@ -1383,7 +1383,7 @@ This demonstrates the LLM correctly interpreting the new box quantities, weights
 <li><strong>Original (Conceptual):</strong> "Research battery chemistry based on <code>battery_chem.xml</code> and specific websites. Save detailed insights using <code>save_insights</code> action."</li>
 <li><strong>Modified:</strong> "Research battery chemistry based on <code>battery_chem.xml</code> and specific websites. Save detailed insights using <code>save_insights</code> action. <strong>After saving the insights, provide a concise summary paragraph of the key findings.</strong>"</li>
 </ul>
-<p>Adding the summarization requirement directly to the task description might be sufficient if the underlying LLM is capable enough. It might perform the research, call <code>save_insights</code>, and then generate the summary as its final output.</p>
+<p>Adding the summarization requirement directly to the task description is sufficient if the underlying LLM is capable enough. It performs the research, calls <code>save_insights</code>, and then generates the summary as its final output.</p>
 <p><strong>2. Adding a New Custom Action:</strong></p>
 <p>If simply modifying the task isn't reliable, or if you want more control over the summarization process (e.g., summarizing specific parts of the saved data), you could add a new action:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># In the Controller definition within do-research.py or browser_use library</span>
@@ -1399,18 +1399,18 @@ This demonstrates the LLM correctly interpreting the new box quantities, weights
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="c1"># Assume &#39;llm&#39; is accessible here or passed in</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">summary</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">summary_prompt</span><span class="p">)</span> <span class="c1"># Or use the agent&#39;s LLM instance</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated summary: </span><span class="si">{</span><span class="n">summary</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="c1"># This action might return the summary text, which the agent </span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="c1"># could then include in its final response, or it could just log it.</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="c1"># This action returns the summary text, which the agent </span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="c1"># includes in its final response, or it logs it.</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="k">return</span> <span class="n">ActionResult</span><span class="p">(</span><span class="n">extracted_content</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span> <span class="n">include_in_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 <a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="c1"># Option 2: Use a dedicated summarization library (less likely needed here)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="c1"># Option 2: Use a dedicated summarization library (less common needed here)</span>
 </code></pre></div>
 <p><strong>Integration:</strong>
-*   The LLM, guided by the modified task description, would need to decide to call <code>summarize_findings</code> <em>after</em> gathering and potentially saving the research data.
-*   It would likely need to retrieve the gathered text (perhaps from the <code>ActionResult</code> of previous steps or by reading the saved JSON file via another potential tool) to pass as input to <code>summarize_findings</code>.</p>
+*   The LLM, guided by the modified task description, would need to decide to call <code>summarize_findings</code> <em>after</em> gathering and saving the research data.
+*   It would need to retrieve the gathered text (from the <code>ActionResult</code> of previous steps or by reading the saved JSON file via another tool) to pass as input to <code>summarize_findings</code>.</p>
 <p><strong>Which approach is better?</strong>
 *   Modifying the task description is simpler if the LLM can handle the sequential requirement (research -&gt; save -&gt; summarize).
-*   Adding a dedicated tool gives more explicit control and might be necessary if the summarization needs specific logic or needs to operate on structured data retrieved from the saved file.</p>
+*   Adding a dedicated tool gives more explicit control and is necessary if the summarization needs specific logic or needs to operate on structured data retrieved from the saved file.</p>
 
 
 

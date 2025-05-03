@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1023,7 +1023,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1034,7 +1034,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1316,7 +1316,7 @@
 <p>While structured workflows like LangGraph (Module 7) provide explicit control, some scenarios benefit from more dynamic interactions where agents converse more freely, deciding who speaks next based on the conversation flow or an orchestrator. Frameworks like AutoGen (and its MagenticOne group chat implementation used here) excel at simulating these "societies" of agents.</p>
 <p><strong>Key Concepts (AutoGen/MagenticOne):</strong></p>
 <ul>
-<li><strong>Agents (<code>AssistantAgent</code>):</strong> Define individual agents with specific roles, instructions (system messages), and potentially tools.</li>
+<li><strong>Agents (<code>AssistantAgent</code>):</strong> Define individual agents with specific roles, instructions (system messages), and tools.</li>
 <li><strong>Group Chat (<code>MagenticOneGroupChat</code>):</strong> Manages the conversation between multiple agents.<ul>
 <li><strong>Orchestrator:</strong> MagenticOne uses an underlying LLM (often a powerful reasoning model like <code>o1-mini</code> or <code>gpt-4o</code>) as an orchestrator. This orchestrator analyzes the conversation history and the agents' capabilities (descriptions, tools) to decide which agent should speak next to best advance the task.</li>
 <li><strong>Dynamic Turns:</strong> Unlike predefined sequences or simple round-robin, the orchestrator dynamically selects the next speaker.</li>
@@ -1327,7 +1327,7 @@
 </ul>
 <div class="admonition info">
 <p class="admonition-title">AutoGen &amp; MagenticOne</p>
-<p>AutoGen is a framework for building multi-agent applications. MagenticOne appears to be a specific group chat implementation within or compatible with AutoGen, leveraging an LLM orchestrator for dynamic turn-taking based on agent descriptions and conversation context.</p>
+<p>AutoGen is a framework for building multi-agent applications. MagenticOne is a specific group chat implementation within or compatible with AutoGen, leveraging an LLM orchestrator for dynamic turn-taking based on agent descriptions and conversation context.</p>
 </div>
 <p>This module explores variations of MagenticOne group chats:</p>
 <ol>
@@ -1353,7 +1353,7 @@
 </li>
 <li><strong>Create Group Chat:</strong> <code>MagenticOneGroupChat(...)</code>:<ul>
 <li>Takes the list of participating agents.</li>
-<li>Uses an underlying <code>model_client</code> (likely for the orchestrator LLM).</li>
+<li>Uses an underlying <code>model_client</code> (for the orchestrator LLM).</li>
 <li>Sets a <code>termination_condition</code> (<code>MaxMessageTermination(5)</code>).</li>
 </ul>
 </li>
@@ -1365,7 +1365,7 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Ensure autogen-agentchat, autogen-ext, pytz are installed</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>simple-group.py
 </code></pre></div>
-<p>Observe the console output. You will see the agents conversing, likely involving the <code>users_agent</code>, <code>location_agent</code>, and <code>time_agent</code> being called upon by the orchestrator to gather the necessary information before the <code>summary_agent</code> potentially provides the final answer or the chat hits the message limit.</p>
+<p>Observe the console output. You will see the agents conversing, involving the <code>users_agent</code>, <code>location_agent</code>, and <code>time_agent</code> being called upon by the orchestrator to gather the necessary information before the <code>summary_agent</code> provides the final answer or the chat hits the message limit.</p>
 <h2 id="2-chef-recommendation-group-chat">2. Chef Recommendation Group Chat</h2>
 <p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/08-society-of-agents/chef-and-group.py" target="_blank"><code>src/08-society-of-agents/chef-and-group.py</code></a></p>
 <p>This example presents a more complex scenario where agents need to collaborate to recommend a meal, considering user details, location, time, ingredients, and allergies.</p>
@@ -1404,7 +1404,7 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Ensure necessary autogen libraries are installed</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>o1-with-chef-group.py
 </code></pre></div>
-<p>Observe the flow. The MagenticOne orchestrator might dynamically decide to call the <code>consultation_agent</code> at certain points. When called, the <code>consultation_agent</code> uses its <code>check_conversation</code> tool, which in turn invokes the powerful <code>o1-mini</code> <code>reasoning_agent</code> to analyze the chat history and provide feedback. This demonstrates a hierarchical pattern where one agent leverages another, more capable agent for specific complex tasks like quality control.</p>
+<p>Observe the flow. The MagenticOne orchestrator dynamically decides to call the <code>consultation_agent</code> at certain points. When called, the <code>consultation_agent</code> uses its <code>check_conversation</code> tool, which in turn invokes the powerful <code>o1-mini</code> <code>reasoning_agent</code> to analyze the chat history and provide feedback. This demonstrates a hierarchical pattern where one agent leverages another, more capable agent for specific complex tasks like quality control.</p>
 <div class="admonition success">
 <p class="admonition-title">Hierarchical Agent Structures</p>
 <p>Integrating a powerful reasoning agent as a consultant or reviewer within a group of specialized agents is a common and effective pattern. It allows the specialized agents to handle routine tasks while the reasoning agent provides higher-level oversight, analysis, or complex decision-making.</p>

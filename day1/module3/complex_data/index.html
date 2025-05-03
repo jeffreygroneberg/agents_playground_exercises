@@ -296,7 +296,7 @@
           
   
   
-  Day 3- Advanced Multi-Agent Systems
+  Day 3 - Advanced Multi-Agent Systems
 
         </a>
       </li>
@@ -1134,7 +1134,7 @@
   
   
   <span class="md-ellipsis">
-    Day 3- Advanced Multi-Agent Systems
+    Day 3 - Advanced Multi-Agent Systems
     
   </span>
   
@@ -1145,7 +1145,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Day 3- Advanced Multi-Agent Systems
+            Day 3 - Advanced Multi-Agent Systems
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1350,7 +1350,7 @@
 <h2 id="1-generating-knowledge-graphs">1. Generating Knowledge Graphs</h2>
 <p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/knowledge-graphs.py" target="_blank"><code>src/03-complex-data/knowledge-graphs.py</code></a></p>
 <p>This script demonstrates using an LLM to generate a knowledge graph from a natural language query, representing the answer as structured data.</p>
-<p><strong>Concept:</strong> Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (<code>KnowledgeGraph</code>, <code>Node</code>, <code>Edge</code>) using the <code>client.beta.chat.completions.parse</code> feature (which seems specific to this SDK version or a helper library, allowing direct parsing into Pydantic models).</p>
+<p><strong>Concept:</strong> Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (<code>KnowledgeGraph</code>, <code>Node</code>, <code>Edge</code>) using the <code>client.beta.chat.completions.parse</code> feature (a feature allowing direct parsing into Pydantic models).</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
 <li><strong>Import Libraries:</strong> <code>OpenAI</code>, <code>pydantic</code> for data modeling, <code>graphviz</code> for visualization.</li>
@@ -1387,7 +1387,7 @@
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Pydantic for Structured Output</p>
-<p>Using Pydantic models along with features like <code>client.beta.chat.completions.parse</code> (or similar structured output mechanisms in other libraries) allows you to reliably get JSON or Python objects from the LLM, matching your desired schema.</p>
+<p>Using Pydantic models along with features like <code>client.beta.chat.completions.parse</code> (or similar structured output mechanisms in other libraries) enables the reliable retrieval of JSON or Python objects from the LLM, matching your desired schema.</p>
 </div>
 <ul>
 <li><strong>Define Generation Function (<code>generate_graph</code>):</strong><ul>
@@ -1425,7 +1425,7 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Ensure graphviz binaries are installed: sudo apt-get update &amp;&amp; sudo apt-get install -y graphviz</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>python<span class="w"> </span>knowledge-graphs.py
 </code></pre></div>
-<p>After running, inspect the generated <code>knowledge_graph.svg</code> file (you might need to download it or use a browser within the environment if available) to see the visual representation of the model's understanding.</p>
+<p>After running, inspect the generated <code>knowledge_graph.svg</code> file (you will need to download it or use a browser within the environment if available) to see the visual representation of the model's understanding.</p>
 <h2 id="2-creating-and-using-ontologies">2. Creating and Using Ontologies</h2>
 <p>Ontologies provide a formal way to define the concepts, properties, and relationships within a specific domain. They allow for more rigorous and consistent reasoning.</p>
 <div class="admonition success">
@@ -1526,7 +1526,7 @@
 <a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>            <span class="p">],</span>
 <a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>        <span class="p">},</span>
 <a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>    <span class="p">],</span>
-<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="c1"># Note: Uses gpt-4o, might be needed for better ontology understanding</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="c1"># Note: Uses gpt-4o, which is recommended for better ontology understanding</span>
 <a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="p">)</span>
 <a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>
 <a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
@@ -1544,7 +1544,7 @@
 <ul>
 <li><strong>Download Invoice:</strong> Downloads a sample invoice image (<code>rechnungsvorlage.jpg</code>) if it doesn't exist locally.</li>
 <li><strong>Client Setup &amp; Image Prep:</strong> Standard client, uses <code>get_image_data_url</code> for the downloaded <code>invoice.jpg</code>.</li>
-<li><strong>Load Template &amp; Explanation:</strong> Reads the target XML structure from <code>invoice_template.xml</code> and potentially additional context/instructions from <code>invoice_explaination.txt</code>.</li>
+<li><strong>Load Template &amp; Explanation:</strong> Reads the target XML structure from <code>invoice_template.xml</code> and additional context/instructions from <code>invoice_explaination.txt</code>.</li>
 <li><strong>Construct System Prompt:</strong> Combines instructions ("extract invoice information... create a XRechnung Beispiel XML...") with the content of the template XML file. This gives the model the target schema.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
