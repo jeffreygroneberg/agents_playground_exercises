@@ -1238,9 +1238,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-84-modifying-reasoning-oversight-o1-group" class="md-nav__link">
+  <a href="#exercise-84-adding-constraints-and-preferences-into-a-planning-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 8.4: Modifying Reasoning Oversight (o1 Group)
+      Exercise 8.4: Adding Constraints and preferences into a planning agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-85-modifying-reasoning-oversight-o1-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8.5: Modifying Reasoning Oversight (o1 Group)
     </span>
   </a>
   
@@ -1376,7 +1385,37 @@
 <li>Run the script (<code>python chef-and-group.py</code>) with the task "I want to have something to eat. What would you recommend?."</li>
 <li>Carefully read the conversation flow. Does the <code>chef_agent</code>, after finding out there are no known allergies from the <code>users_agent</code>, explicitly ask something like "Do you have any allergies I should be aware of?" before recommending a dish? (This depends on its system prompt instructions being followed correctly by the LLM).</li>
 </ol>
-<h2 id="exercise-84-modifying-reasoning-oversight-o1-group">Exercise 8.4: Modifying Reasoning Oversight (o1 Group)</h2>
+<h2 id="exercise-84-adding-constraints-and-preferences-into-a-planning-agent">Exercise 8.4: Adding Constraints and preferences into a planning agent</h2>
+<p><strong>Goal:</strong> Understand how a group of agents can collaborate without a moderator. Learn how context agents (location, user preferences) feed into a planning agent (chef). Work with a real agent configuration and extend it with constraints. </p>
+<ol>
+<li>
+<p><strong>Add Domain Expertise (10–15 min):</strong></p>
+</li>
+<li>
+<p>Add a new agent: <code>nutritionist_agent</code>.</p>
+<ul>
+<li>Role: Evaluate the nutritional quality of the suggested meal.</li>
+<li>Provide it a tool: <code>analyze_nutrition(meal: str)</code> — mock this as a function returning “balanced”, “high-fat”, etc.</li>
+</ul>
+</li>
+<li>
+<p><strong>Inject a Constraint (5 min):</strong></p>
+</li>
+<li>
+<p>Modify <code>users_agent</code> to include a dietary preference, e.g., <code>"low-carb"</code> or <code>"vegan"</code>.</p>
+</li>
+<li>
+<p>Ensure the <code>chef_agent</code> respects this constraint when generating meal options.</p>
+</li>
+<li>
+<p><strong>Optional Extensions:</strong></p>
+</li>
+<li>
+<p>Add a <code>budget_agent</code> with a <code>get_cost_estimate(meal)</code> tool.</p>
+</li>
+<li>Let agents negotiate (by reasoning in messages) over trade-offs between cost and nutrition.</li>
+</ol>
+<h2 id="exercise-85-modifying-reasoning-oversight-o1-group">Exercise 8.5: Modifying Reasoning Oversight (o1 Group)</h2>
 <p><strong>Goal:</strong> Change the focus of the quality check performed by the reasoning agent.</p>
 <ol>
 <li>Open the <code>src/08-society-of-agents/o1-with-chef-group.py</code> script.</li>

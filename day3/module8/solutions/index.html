@@ -1261,6 +1261,72 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exercise-84-adding-constraints-and-preferences-into-a-planning-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8.4: Adding Constraints and preferences into a planning agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 8.4: Adding Constraints and preferences into a planning agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expected-codechanges" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Expected Code/Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Expected Code/Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added-nutritionist_agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Added nutritionist_agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updated-user_agent-with-dietary-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updated user_agent with dietary constraint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updated-group-to-include-new-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updated group to include new agent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-behaviorexpected-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution Behavior/Expected Output:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solution-84-modifying-reasoning-oversight-o1-group" class="md-nav__link">
     <span class="md-ellipsis">
       Solution 8.4: Modifying Reasoning Oversight (o1 Group)
@@ -1365,7 +1431,7 @@ The conversation flow should primarily involve the <code>users_agent</code> (to 
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Knows the weather.&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;You provide weather information.&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">registered_tools</span><span class="o">=</span><span class="p">[</span><span class="n">get_weather</span><span class="p">]</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">get_weather</span><span class="p">]</span>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">)</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># ------------------------------</span>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
@@ -1415,21 +1481,68 @@ When the conversation reaches the <code>chef_agent</code>, having already learne
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ChefAgent: Okay Dennis, I see no known allergies on file. To make sure I recommend something safe, do you have any food allergies or dietary restrictions I should be aware of?
 </code></pre></div>
 This demonstrates the agent following its instructions to proactively seek missing critical information.</p>
+<h2 id="exercise-84-adding-constraints-and-preferences-into-a-planning-agent">Exercise 8.4: Adding Constraints and preferences into a planning agent</h2>
+<p><strong>File:</strong> <code>chef-and-group.py</code>
+<strong>Concepts:</strong> Contextual agents, collaboration, basic tool use</p>
+<hr />
+<h3 id="expected-codechanges">🔧 Expected Code/Changes</h3>
+<h4 id="added-nutritionist_agent">Added <code>nutritionist_agent</code></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">analyze_nutrition</span><span class="p">(</span><span class="n">meal</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">if</span> <span class="s2">&quot;pasta&quot;</span> <span class="ow">in</span> <span class="n">meal</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">return</span> <span class="s2">&quot;High in carbs.&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">if</span> <span class="s2">&quot;burger&quot;</span> <span class="ow">in</span> <span class="n">meal</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="k">return</span> <span class="s2">&quot;High in fat&quot;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">return</span> <span class="s2">&quot;Well-balanced.&quot;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">nutritionist_agent</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="s2">&quot;Nutritionist&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">analyze_nutrition</span><span class="p">],</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A helpful assistent that Evaluates the nutritional of meals.&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="updated-user_agent-with-dietary-constraint">Updated user_agent with dietary constraint</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_diet_preference</span><span class="p">(</span><span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="s2">&quot;Get the diet preference for a given username.&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executing get_diet_preference&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2"> is a vegetarian and does not eat meat.&quot;</span>
+</code></pre></div>
+<h4 id="updated-group-to-include-new-agent">Updated group to include new agent</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">group</span> <span class="o">=</span> <span class="n">MagenticGroupChat</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        <span class="n">user_agent</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        <span class="n">location_agent</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="n">time_agent</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="n">chef_agent</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="n">nutritionist_agent</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="n">summary_agent</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="p">]</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="solution-behaviorexpected-output">Solution Behavior/Expected Output:</h3>
+<ul>
+<li>The <code>chef_agent</code> should now consider "low-carb" preferences and avoid recommending dishes like pasta.</li>
+<li>The <code>nutritionist_agent</code> should evaluate the dish, e.g.:</li>
+</ul>
+<blockquote>
+<p>“This dish is balanced and aligns with the user’s low-carb goal.”</p>
+</blockquote>
 <h2 id="solution-84-modifying-reasoning-oversight-o1-group">Solution 8.4: Modifying Reasoning Oversight (o1 Group)</h2>
 <p>Modify <code>src/08-society-of-agents/o1-with-chef-group.py</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ... (imports, model clients, tools, agent definitions remain the same) ...</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Tool for consultation agent to check conversation quality</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">check_conversation</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks the conversation for inconsistencies or open questions.&quot;&quot;&quot;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="c1"># --- Modified Prompt for Reasoning Agent --- </span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Review the conversation. Did the chef confirm the user&#39;s allergies before recommending a meal? Answer yes or no and explain briefly.&quot;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="c1"># -----------------------------------------</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reasoning_agent</span><span class="o">.</span><span class="n">on_messages</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">prompt</span><span class="p">)])</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># ... (consultation_agent definition using check_conversation tool) ...</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># ... (group chat setup, task, main execution remain the same) ...</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ... (imports, model clients, tools, agent definitions remain the same) ...</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Tool for consultation agent to check conversation quality</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">check_conversation</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks the conversation for inconsistencies or open questions.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="c1"># --- Modified Prompt for Reasoning Agent --- </span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Review the conversation. Did the chef confirm the user&#39;s allergies before recommending a meal? Answer yes or no and explain briefly.&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="c1"># -----------------------------------------</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reasoning_agent</span><span class="o">.</span><span class="n">on_messages</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">prompt</span><span class="p">)])</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># ... (consultation_agent definition using check_conversation tool) ...</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1"># ... (group chat setup, task, main execution remain the same) ...</span>
 </code></pre></div>
 <p><strong>Expected Output:</strong>
 When the <code>consultation_agent</code> is invoked by the orchestrator, its output (which comes from the <code>reasoning_agent</code> via the <code>check_conversation</code> tool) should now specifically address whether the chef confirmed allergies. For example:</p>
