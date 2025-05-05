@@ -47,7 +47,7 @@ weather_agent = AssistantAgent(
     description="Knows the weather.",
     system_message="You provide weather information.",
     model_client=model_client,
-    registered_tools=[get_weather]
+    tools=[get_weather]
 )
 # ------------------------------
 
@@ -105,6 +105,69 @@ When the conversation reaches the `chef_agent`, having already learned the usern
 ChefAgent: Okay Dennis, I see no known allergies on file. To make sure I recommend something safe, do you have any food allergies or dietary restrictions I should be aware of?
 ```
 This demonstrates the agent following its instructions to proactively seek missing critical information.
+
+## Exercise 8.4: Adding Constraints and preferences into a planning agent
+
+**File:** `chef-and-group.py`
+**Concepts:** Contextual agents, collaboration, basic tool use
+
+---
+
+### 🔧 Expected Code/Changes
+
+####  Added `nutritionist_agent`
+
+```python
+def analyze_nutrition(meal: str) -> str:
+    if "pasta" in meal.lower():
+        return "High in carbs."
+    if "burger" in meal.lower():
+        return "High in fat"
+    return "Well-balanced."
+
+nutritionist_agent = AssistantAgent(
+    "Nutritionist",
+    model_client=model_client,
+    tools=[analyze_nutrition],
+    description="A helpful assistent that Evaluates the nutritional of meals.",
+)
+
+```
+
+####  Updated user\_agent with dietary constraint
+
+```python
+async def get_diet_preference(username: str) -> str:
+    "Get the diet preference for a given username."
+    print("executing get_diet_preference")
+    return f"{username} is a vegetarian and does not eat meat."
+
+```
+
+####  Updated group to include new agent
+
+```python
+group = MagenticGroupChat(
+    agents=[
+        user_agent,
+        location_agent,
+        time_agent,
+        chef_agent,
+        nutritionist_agent,
+        summary_agent
+    ]
+)
+```
+
+---
+
+### Solution Behavior/Expected Output:
+
+* The `chef_agent` should now consider "low-carb" preferences and avoid recommending dishes like pasta.
+* The `nutritionist_agent` should evaluate the dish, e.g.:
+
+  > “This dish is balanced and aligns with the user’s low-carb goal.”
+
 
 ## Solution 8.4: Modifying Reasoning Oversight (o1 Group)
 
