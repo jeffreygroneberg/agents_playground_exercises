@@ -10,6 +10,8 @@
 
 Having explored how to equip LLMs with tools and structure their thinking (Module 4), we now focus on building agents that can autonomously decide *which* tools to use and *when* to use them to accomplish a given task. A popular pattern for this is **ReAct (Reason + Act)**.
 
+![ReAct Pattern](../../assets/images/react.png)
+
 The ReAct pattern involves an iterative loop:
 
 1.  **Thought:** The agent reasons about the current state, the overall goal, and what action is needed next.

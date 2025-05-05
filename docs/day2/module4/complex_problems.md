@@ -1,5 +1,7 @@
 # Day 2 - Module 4: Solving Complex Problems with Tools & DSLs
 
+![Tools Concept](../../assets/images/tools.png)
+
 **Objective:** Understand how agents can tackle complex, multi-step problems by leveraging external tools, browser automation, and structured thinking patterns like Domain Specific Languages (DSLs).
 
 **Source Code:** [`src/04-complex-problems/`](https://github.com/denniszielke/agentic-playground/tree/main/src/04-complex-problems){target="_blank"}
@@ -26,6 +28,8 @@ This module explores techniques shown in the `04-complex-problems` folder:
     This module marks a shift towards more sophisticated agent capabilities. By combining LLMs with structured planning (DSLs), process management, and the ability to interact with the web, we can build agents capable of handling significantly more complex tasks.
 
 ## 1. Domain Specific Languages (DSLs) for Structured Thinking
+
+![DSL Concept](../../assets/images/dsl.png)
 
 **File:** [`src/04-complex-problems/trucking-plan.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/trucking-plan.py){target="_blank"}
 *   [`src/04-complex-problems/trucking-execute.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/trucking-execute.py){target="_blank"}

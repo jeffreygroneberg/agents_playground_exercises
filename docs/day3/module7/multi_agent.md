@@ -1,6 +1,8 @@
-# Day 3 - Module 7: Multi-Agent Collaboration
+# Day 3 - Module 7: Multi-Agent Collaboration (Structured Workflow)
 
-**Objective:** Explore patterns and frameworks for building systems where multiple specialized agents collaborate to achieve a common goal.
+![Multi-Agent Concept](../../assets/images/multi-agent.png)
+
+**Objective:** Understand how to design and implement systems where multiple specialized agents collaborate in a predefined workflow to achieve a complex goal.
 
 **Source Code:** [`src/07-multi-agent-collaboration/`](https://github.com/denniszielke/agentic-playground/tree/main/src/07-multi-agent-collaboration){target="_blank"}
 

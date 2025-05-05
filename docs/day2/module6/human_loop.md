@@ -1,6 +1,8 @@
-# Day 2 - Module 6: Human-in-the-Loop Patterns
+# Day 2 - Module 6: Human-in-the-Loop (HIL) Workflows
 
-**Objective:** Understand why and how to incorporate human oversight, feedback, and intervention into agent workflows.
+![Human-in-the-Loop Concept](../../assets/images/hil.png)
+
+**Objective:** Understand how to incorporate human review, feedback, and approval into agent workflows, creating more reliable and controllable systems.
 
 **Source Code:** [`src/06-human-in-the-loop/`](https://github.com/denniszielke/agentic-playground/tree/main/src/06-human-in-the-loop){target="_blank"}
 

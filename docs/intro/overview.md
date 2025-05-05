@@ -32,4 +32,4 @@ We encourage you to explore the repository alongside the workshop materials.
 
 **Conceptual Stack:**
 
-![Logical Stack](https://raw.githubusercontent.com/denniszielke/agentic-playground/refs/heads/main/img/logicalstack.png)
+![Logical Stack](../assets/images/logicalstack.png))

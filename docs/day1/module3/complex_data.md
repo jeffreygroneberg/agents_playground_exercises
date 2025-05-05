@@ -23,6 +23,8 @@ While LLMs excel at processing natural language, many real-world tasks involve s
 
 This script demonstrates using an LLM to generate a knowledge graph from a natural language query, representing the answer as structured data.
 
+![Knowledge Graph Example](../../assets/images/knowledge_graph.svg)
+
 **Concept:** Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (`KnowledgeGraph`, `Node`, `Edge`) using the `client.beta.chat.completions.parse` feature (a feature allowing direct parsing into Pydantic models).
 
 **Code Breakdown:**
