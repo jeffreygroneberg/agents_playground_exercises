@@ -51,7 +51,29 @@ These exercises are based on the concepts and code presented in Module 8: Societ
 4.  Run the script (`python chef-and-group.py`) with the task "I want to have something to eat. What would you recommend?."
 5.  Carefully read the conversation flow. Does the `chef_agent`, after finding out there are no known allergies from the `users_agent`, explicitly ask something like "Do you have any allergies I should be aware of?" before recommending a dish? (This depends on its system prompt instructions being followed correctly by the LLM).
 
-## Exercise 8.4: Modifying Reasoning Oversight (o1 Group)
+## Exercise 8.4: Adding Constraints and preferences into a planning agent
+**Goal:** Understand how a group of agents can collaborate without a moderator. Learn how context agents (location, user preferences) feed into a planning agent (chef). Work with a real agent configuration and extend it with constraints. 
+
+1. **Add Domain Expertise (10–15 min):**
+
+   * Add a new agent: `nutritionist_agent`.
+
+     * Role: Evaluate the nutritional quality of the suggested meal.
+   * Provide it a tool: `analyze_nutrition(meal: str)` — mock this as a function returning “balanced”, “high-fat”, etc.
+
+2. **Inject a Constraint (5 min):**
+
+   * Modify `users_agent` to include a dietary preference, e.g., `"low-carb"` or `"vegan"`.
+   * Ensure the `chef_agent` respects this constraint when generating meal options.
+
+3. **Optional Extensions:**
+
+   * Add a `budget_agent` with a `get_cost_estimate(meal)` tool.
+   * Let agents negotiate (by reasoning in messages) over trade-offs between cost and nutrition.
+
+
+
+## Exercise 8.5: Modifying Reasoning Oversight (o1 Group)
 
 **Goal:** Change the focus of the quality check performed by the reasoning agent.
 
