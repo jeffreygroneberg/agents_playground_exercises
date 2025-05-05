@@ -44,5 +44,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site # Directory containing the built site
           # Optional: Specify a custom domain if you have one configured
-          # cname: your.custom.domain.com
+          cname: ailabs.jeff-tech.de
 
