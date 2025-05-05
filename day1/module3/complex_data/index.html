@@ -1366,6 +1366,7 @@
 <h2 id="1-generating-knowledge-graphs">1. Generating Knowledge Graphs</h2>
 <p><strong>File:</strong> <a href="https://github.com/denniszielke/agentic-playground/blob/main/src/03-complex-data/knowledge-graphs.py" target="_blank"><code>src/03-complex-data/knowledge-graphs.py</code></a></p>
 <p>This script demonstrates using an LLM to generate a knowledge graph from a natural language query, representing the answer as structured data.</p>
+<p><img alt="Knowledge Graph Example" src="../../../assets/images/knowledge_graph.svg" /></p>
 <p><strong>Concept:</strong> Instead of just a text answer, we ask the model to structure its response according to a predefined Python class structure (<code>KnowledgeGraph</code>, <code>Node</code>, <code>Edge</code>) using the <code>client.beta.chat.completions.parse</code> feature (a feature allowing direct parsing into Pydantic models).</p>
 <p><strong>Code Breakdown:</strong></p>
 <ul>
