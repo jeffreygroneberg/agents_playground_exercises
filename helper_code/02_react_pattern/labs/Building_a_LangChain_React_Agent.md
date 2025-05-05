@@ -441,7 +441,7 @@ nav:
 *   **Original ReAct Paper:** Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
 *   **ReAct Project Page:** [https://react-lm.github.io/](https://react-lm.github.io/)
 *   **Google Research Blog Post:** [ReAct: Synergizing Reasoning and Acting in Language Models](https://research.google/blog/react-synergizing-reasoning-and-acting-in-language-models/)
-*   **Prompting Guide (ReAct):** [https://www.promptingguide.ai/techniques/react](https://www.promptingguide.ai/techniques/react)
+*   **Prompting Guide (ReAct):**[https://www.promptingguide.ai/techniques/react](https://www.promptingguide.ai/techniques/react)
 *   **LangChain Documentation (Agents):** [https://python.langchain.com/docs/modules/agents/](https://python.langchain.com/docs/modules/agents/)
 
 ---

@@ -158,7 +158,7 @@ Relevant files for this section include:
 *   [`src/04-complex-problems/do-research.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/do-research.py){target="_blank"}
 *   [`src/04-complex-problems/apply-for-job.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/apply-for-job.py){target="_blank"}
 *   [`src/04-complex-problems/find-contract.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/04-complex-problems/find-contract.py){target="_blank"}
-*   The custom library used by these scripts: [`src/browser_use/`](https://github.com/denniszielke/agentic-playground/tree/main/src/browser_use){target="_blank"}
+*   The custom library used by these scripts: [`src/browser_use/`](https://github.com/denniszielke/agentic-playground/tree/main/src/04-browser-use){target="_blank"}
 
 Many tasks require interacting with websites. Agents can use browser automation tools (like Playwright, Selenium, or the custom `browser_use` library here) to perform actions like:
 

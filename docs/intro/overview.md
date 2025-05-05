@@ -19,7 +19,6 @@ The workshop combines presentations, detailed code walkthroughs based on the rep
 **Repository:**
 All code examples are sourced from the following GitHub repository:
 [https://github.com/denniszielke/agentic-playground](https://github.com/denniszielke/agentic-playground)
-
 We encourage you to explore the repository alongside the workshop materials.
 
 **Workshop Structure:**
