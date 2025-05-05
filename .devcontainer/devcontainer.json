@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+	"name": "C# (.NET) and Python AI Setup",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-9.0-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "latest"
+		},
+		"azure-cli": "latest"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csdevkit",
+				"GitHub.copilot",
+				"ms-python.python",
+				"ms-azuretools.vscode-azureappservice",
+				"ms-azuretools.vscode-azurefunctions",
+				"ms-azuretools.vscode-azureresourcegroups",
+				"ms-azuretools.vscode-azurestorage",
+				"ms-azuretools.vscode-azurecli",
+				"ms-toolsai.jupyter",
+				"kevinrose.vsc-python-indent"
+			]
+		}
+	},
+	"postCreateCommand": "pip3 install semantic-kernel jupyter openai langchain python-dotenv langchain-openai scipy tenacity tiktoken termcolor mkdocs 'mkdocstrings[python]' mkdocs-material browser-use" 
+}

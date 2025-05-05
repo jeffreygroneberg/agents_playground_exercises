@@ -1,5 +1,8 @@
 site_name: AI Agent Workshop
-site_url: https://example.com/ # Placeholder URL
+site_url: https:/ailabs.jeff-tech.de
+repo_url: https://github.com/jeffreygroneberg/agents_playground_exercises
+repo_name: Agents Playground Exercises
+edit_uri: edit/main/docs/
 
 theme:
   name: material
