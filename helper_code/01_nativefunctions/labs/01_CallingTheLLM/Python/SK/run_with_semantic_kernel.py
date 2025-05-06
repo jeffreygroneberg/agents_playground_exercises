@@ -16,7 +16,6 @@ logging.getLogger("kernel").setLevel(logging.DEBUG)
 kernel = Kernel()
 
 token = os.environ["GITHUB_TOKEN"]
-endpoint = "https://models.github.ai/inference"
 model_name = "openai/gpt-4o"
 
 chat_client = openai.AsyncOpenAI(
