@@ -19,7 +19,7 @@ chat = ChatOpenAI(
 
 messages = [
     SystemMessage(content="You are a helpful assistant."),
-    HumanMessage(content="What is the capital of France?")
+    HumanMessage(content="What is the capital of Germany?")
 ]
 
 response = chat.invoke(messages)

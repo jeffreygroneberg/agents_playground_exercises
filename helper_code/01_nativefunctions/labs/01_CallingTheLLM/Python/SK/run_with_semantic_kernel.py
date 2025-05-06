@@ -26,7 +26,7 @@ chat = semantic_kernel.connectors.ai.open_ai.OpenAIChatCompletion(
     ai_model_id="gpt-4o",
     async_client=chat_client)
 
-prompt = "What is the capital of France?"
+prompt = "What is the capital of Germany?"
 kernel.add_service(
     chat
 )

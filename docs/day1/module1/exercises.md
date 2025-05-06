@@ -40,10 +40,10 @@ Tool calling allows the LLM to interact with external functions or APIs to retri
 1.  Open the [`src/01-basics/tool-calling.py`](https://github.com/denniszielke/agentic-playground/blob/main/src/01-basics/tool-calling.py){target="_blank"} script.
 2.  **Define a new Python function:** Add a function that performs simple addition.
     ```python
-    def add_numbers(a: int, b: int) -> int:
+    def add_numbers(a: int, b: int) -> str:
         \"\"\"Adds two integer numbers together.\"\"\"
         print(f"Calling function 'add_numbers' with {a} and {b}")
-        return a + b
+        return str(a + b)
     ```
 3.  **Define the tool schema:** Create a new dictionary describing the `add_numbers` function to the LLM, similar to the `get_current_time` schema.
     ```python
